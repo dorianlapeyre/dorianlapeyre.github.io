@@ -220,7 +220,7 @@ nav {
     flex-direction: column;
     padding: 10px;
     border-radius: 15px;
-    border: 1px solid rgba(79, 70, 229, 0.3);
+    border: 1px solid rgba(96, 165, 250, 0.3);
 
     /* État caché par défaut */
     opacity: 0;
@@ -669,7 +669,7 @@ footer {
     padding-top: 56.25%; /* Ratio 16:9 */
     background: var(--card-bg);
     border-radius: 15px;
-    border: 1px solid rgba(79, 70, 229, 0.4);
+    border: 1px solid rgba(96, 165, 250, 0.4);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -713,7 +713,7 @@ footer {
     max-height: 90vh; /* Évite que le PDF ne soit trop long sur les grands écrans */
     background: #525659; /* Couleur grise standard des lecteurs PDF */
     border-radius: 12px;
-    border: 1px solid rgba(79, 70, 229, 0.4);
+    border: 1px solid rgba(96, 165, 250, 0.4);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
@@ -1185,5 +1185,5 @@ footer {
 .download-link-btn:hover {
     transform: translateY(-2px);
     filter: brightness(1.2);
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+    box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
 }
