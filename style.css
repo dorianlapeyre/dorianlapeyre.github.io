@@ -533,7 +533,7 @@ footer {
     max-width: 1000px;
     margin: 40px auto;
     border-radius: 20px;
-    border: 1.5px solid rgba(79, 172, 254, 0.4);
+    border: 1.5px solid rgba(96, 165, 250, 0.4);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
     background-color: #050a0f;
     z-index: 1; /* S'assure que la map reste sous le menu */
