@@ -1017,7 +1017,7 @@ footer {
     box-sizing: border-box !important;
     flex: none !important; 
     background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(79, 70, 229, 0.3) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important;
     color: white !important;
     
     /* Largeur fixe et espacement régulier */
@@ -1045,9 +1045,9 @@ footer {
 }
 
 .toggle-subject-btn:hover {
-    background: var(--accent) !important;
+    background: #2563eb !important;
     transform: translateX(10px);
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
 }
 
 /* LA CARTE : Correction de l'affichage */
@@ -1135,7 +1135,7 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--accent);
+    background: #3b82f6;
     color: white !important;
     text-decoration: none;
     padding: 8px 16px;
@@ -1171,7 +1171,7 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--accent);
+    background: #2563eb;
     color: white !important;
     text-decoration: none;
     padding: 10px 20px;
