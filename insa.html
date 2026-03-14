@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails INSA Toulouse | Dorian Lapeyre</title>
+    <title>INSA | Dorian Lapeyre</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body class="detail-page">
 
     <header class="detail-header">
-        <span class="detail-subtitle">Génie Mécanique</span>
-        <h1>INSA Toulouse</h1>
+        <span class="detail-subtitle">Institut National des Sciences Appliquées - Toulouse</span>
+        <h1>Génie Mécanique</h1>
         
         <a href="index.html" class="back-link">
             ← Retour au portfolio
@@ -22,9 +22,9 @@
         <section class="experience-intro">
             <h2>Mon Expérience</h2>
             <p>
-                Décris ici ton passage à l'INSA Toulouse. C'est l'occasion de souligner tes compétences 
-                techniques en conception, en fabrication et en gestion de projets industriels avant 
-                ton orientation vers les sciences de la mer.
+                Deux années intensives en filière PCSI (Physique, Chimie, Sciences de l'Ingénieur). 
+                Ce cursus exigeant m'a permis de forger une rigueur scientifique exemplaire et une forte capacité de travail, 
+                essentielles pour mon parcours en sciences de la mer.
             </p>
         </section>
 
@@ -32,22 +32,349 @@
             <h2 class="center-text">Parcours académique</h2>
             
             <div class="timeline-container">
+                
                 <div class="timeline-item">
-                    <span class="timeline-date">2022 - 2023 | 3ème Année (3A)</span>
-                    <div class="content-box">
-                        <h3>Génie Mécanique</h3>
-                        <ul>
-                            <li>Conception mécanique et bureau d'études.</li>
-                            <li>Cotation fonctionnelle et tolérancement.</li>
-                            <li>Science des matériaux et résistance des matériaux (RDM).</li>
-                        </ul>
-                        <p style="margin-top: 15px; padding: 10px; background: rgba(79, 70, 229, 0.1); border-radius: 8px; border-left: 3px solid var(--accent);">
-                            <strong>Projet majeur : SIMGEST</strong> – Détaille ici ton rôle dans ce projet, les outils utilisés (CAO, calcul) et les résultats obtenus.
-                        </p>
+                    <span class="timeline-date">2023 - 2024 | 3A S5</span>                    
+                    <div class="subjects-container">
+                        <button class="toggle-subject-btn" onclick="toggleSection('edp-insa')">
+                        Équation aux Dérivées Partielles, Séries de Fourrier et Analyse Numérique
+                        </button>
+                    </div>
+                    <div class="subject-card" id="edp-insai">
+                        <button class="close-section-btn" onclick="toggleSection('edp-insa')" title="Fermer">×</button>
+                        <div class="subject-header">
+                            <h3>EDP, Séries de Fourrier et Analyse Numérique</h3>
+                            <a href="pdf/programme-pcsi_physique.pdf" class="download-btn" target="_blank">
+                                <span>📄 Programme EDP</span>
+                            </a>
+                        </div>
+                        <div class="subject-info">
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Introduction aux EDP et classification</p>
+                                <ul>
+                                    <li>Pré-requis en algèbre linéaire.</li>
+                                    <li>Pré-requis en intégration.</li>
+                                    <li>Pré-requis en résolution d'équations différentielles ordinaires.</li>
+                                    <li>Pré-requis en fonctions à plusieurs variables.</li>
+                                    <li>Terminologie et Exemples d'EDP.</li>
+                                    <li> Classification des EDP linéaires d'ordre 2.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Séries de Fourier</p>
+                                <ul>
+                                    <li>Motivation physique.</li>
+                                    <li>Espace des fonctions périodiques de carré intégrable.</li>
+                                    <li>Séries trigonométrique.</li>
+                                    <li>Coefficient de Fourier.</li>
+                                    <li>Série de Fourier dans L<sup>1</sup> (Théorème de Dirichlet) puis dans L<sup>2</sup> (Identité de Parseval).</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Transformée de Fourier</p>
+                                <ul>
+                                    <li>Analyse et Synthèse de la transformée de Fourier sur L<sup>1</sup>.</li>
+                                    <li>Propriétés algébriques et de dérivation.</li>
+                                    <li>Transformée inverse et Formule de Plancherel.</li>
+                                    <li>Convolution.</li>
+                                    <li>Transformée sur L<sup>2</sup> et exemples illustratifs.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Théorie de Sturm Liouville</p>
+                                <ul>
+                                    <li>Définition.</li>
+                                    <li>Exemples et propriétés des solutions.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Résolution d'EDP par séparation des variables</p>
+                                <ul>
+                                    <li>Problème bien posé et Conditions aux limites.</li>
+                                    <li>Équation de la chaleur 1D homogène.</li>
+                                    <li>Équation des ondes 1D homogène.</li>
+                                    <li> Généralités sur la méthode de séparation des variables (Eq homogènes, puis avec terme source, puis avec conditions de bord non homogènes, et intérêt de la connaissance du problème de Sturm Liouville associé).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+<!-- Mathématiques -->
+                    <div class="subjects-container">
+                        <button class="toggle-subject-btn" onclick="toggleSection('maths-pcsi')">
+                        Mathématiques
+                        </button>
+                    </div>  
+                    <div class="subject-card" id="maths-pcsi">
+                        <button class="close-section-btn" onclick="toggleSection('maths-pcsi')" title="Fermer">×</button>
+                        <div class="subject-header">
+                            <h3>Mathématiques</h3>
+                            <a href="pdf/programme-pcsi_maths.pdf" class="download-btn" target="_blank">
+                                <span>📄 Programme Mathématiques</span>
+                            </a>
+                        </div>
+                        <div class="subject-info">
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Analyse (Fondamentaux et Analyse Réelle)</p>
+                                <ul>
+                                    <li>Techniques fondamentales de calcul différentiel et intégral.
+                                        <ul>
+                                            <li>Fonctions d'une variable réelle à valeurs réelles ou complexes.</li>
+                                            <li>Primitives et équations différentielles linéaires.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Nombres réels et suites numériques.</li>
+                                    <li>Fonctions d'une variable réelle : limites et continuité, dérivabilité.
+                                        <ul>
+                                            <li>Limites et continuité.</li>
+                                            <li>Dérivabilité.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Analyse asymptotique.</li>
+                                    <li>Intégrations.</li>
+                                    <li>Séries numériques.</li>
+                                    <li>Fonctions de deux variables.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Algèbre (Ensembles, Nombres et Algèbre Linéaire)</p>
+                                <ul>
+                                    <li>Raisonnement et vocabulaire ensembliste.</li>
+                                    <li>Complément de calcul algébrique et de trigonométrie.</li>
+                                    <li>Nombres complexes.</li>
+                                    <li>Polynômes.</li>
+                                    <li>Calcul matriciel et systèmes linéaires.</li>
+                                    <li>Espaces vectoriels linéaires.
+                                        <ul>
+                                            <li>Espaces vectoriels.</li>
+                                            <li>Espaces de dimension finie.</li>
+                                            <li>Applications linéaires.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Matrice et déterminants.
+                                        <ul>
+                                            <li>Matrices et applications linéaires.</li>
+                                            <li>Déterminants.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Espaces préhilbertiens réels.</li>
+                                </ul>
+                            </div>  
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Probabilités et Dénombrement</p>
+                                <ul>
+                                    <li>Dénombrements.</li>
+                                    <li>Probabilités.
+                                        <ul>
+                                            <li>Probabilités sur un univers fini, variables aléatoires et lois.</li>
+                                            <li>Espérance et variance</li>
+                                        </ul>
+                                    </li>                                                      
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+<!-- chimie -->
+                    <div class="subjects-container">
+                        <button class="toggle-subject-btn" onclick="toggleSection('chimie-pcsi')">
+                        Chimie
+                        </button>
+                    </div>    
+                    <div class="subject-card" id="chimie-pcsi">
+                        <button class="close-section-btn" onclick="toggleSection('chimie-pcsi')" title="Fermer">×</button>
+                        <div class="subject-header">
+                            <h3>Chimie</h3>
+                            <a href="pdf/programme-pcsi_chimie.pdf" class="download-btn" target="_blank">
+                                <span>📄 Programme Chimie</span>
+                            </a>
+                        </div>
+                        <div class="subject-info">
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Transformation de la matière</p>
+                                <ul>
+                                    <li>Description et évolution d'un système vers un état final lors d'une transformation chimique.
+                                        <ul>
+                                            <li>Système physico-chimique.</li>
+                                            <li>Transformation chimique d'un système.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Évolution temporelle d'un système, siège d'une transformation chimique.
+                                        <ul>
+                                            <li>Cinétique en réacteur fermé de composition uniforme.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Relations entre structure des entités chimiques, propriétés physiques et réactivité</p>
+                                <ul>
+                                    <li>Structure des entités chimiques.
+                                        <ul>
+                                            <li>Modèle de Lewis de la liaison covalente.</li>
+                                            <li>Géométrie et polarité des entités chimiques.</li>
+                                            <li>Structure des entités chimiques organiques.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Relations entre structure des entités et propriétés physiques macroscopiques.
+                                        <ul>
+                                            <li>Interactions entre entités.</li>
+                                            <li>Changements d'états.</li>
+                                            <li>Solubilité, miscibilité.</li>
+                                            <li>Amphiphilie.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Réactivité des espèces organiques et premières applications en synthèse.
+                                        <ul>
+                                            <li>Réactivité des espèces organiques et écriture des mécanismes réactionnels.</li>
+                                            <li>Synthèse organique en laboratoire.</li>
+                                            <li>Modifications de groupe caractéristique : exemple des halogénoalcanes.</li>
+                                            <li>Construction du squelette carboné : synthèse et utilisation d'organomagnésiens mixtes.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Transformations de la matière : évolution d'un système et mécanisme réactionnel</p>
+                                <ul>
+                                    <li>Modélisation microscopique d'une transformation chimique.</li>
+                                    <li>Catalyse.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Structures microscopiques et propriétés physiques des solides</p>
+                                <ul>
+                                    <li>Modèle du cristal parfait.</li>
+                                    <li>Métaux et alliages.</li>
+                                    <li>Solides covalents et moléculaires.</li>
+                                    <li>Solides ioniques.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Transformations chimiques en solution aqueuse</p>
+                                <ul>
+                                    <li>Réactions acide-base et de précipitation.
+                                        <ul>
+                                            <li>Réactions acide-base.</li>
+                                            <li>Réactions de dissolution ou de précipitation.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Réactions d'oxydo-réduction.
+                                        <ul>
+                                            <li>Oxydants et réducteurs, réactions d'oxydoréduction.</li>
+                                            <li>Diagramme potentiel-pH.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Réactivité, transformation en chimie organique et stratégie de synthèse</p>
+                                <ul>
+                                    <li>Techniques spectroscopiques de caractérisation.
+                                        <ul>
+                                            <li>Spectroscopies d'absorption UV-visible et infrarouge.</li>
+                                            <li>Spectroscopie de résonance magnétique nucléaire du proton.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Réactions d'oxydo-réduction en chimie organique.
+                                        <ul>
+                                            <li>Niveau d'oxydation des espèces organiques.</li>
+                                            <li>Un exemple d'interconversion entre groupes caractéristiques : du groupe hydroxyalkyle au groupe carbonyle et inversement.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Activation de groupes caractéristiques.
+                                        <ul>
+                                            <li>Activation nucléophile des alcools et phénols.</li>
+                                            <li>Activation électrophile des alcools.</li>
+                                            <li>Activation électrophile du groupe carbonyle.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Protection de groupes caractéristiques et stratégie de synthèse.
+                                        <ul>
+                                            <li>Protection-déprotection.</li>
+                                            <li>Approche élémentaire de l'analyse rétrosynthétique.</li>
+                                            <li>Activation électrophile du groupe carbonyle.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        
+<!-- sii -->
+                    <div class="subjects-container">
+                        <button class="toggle-subject-btn" onclick="toggleSection('sii-pcsi')">
+                        Science de l'ingénieur
+                        </button>
+                    </div>        
+                    <div class="subject-card" id="sii-pcsi">
+                        <button class="close-section-btn" onclick="toggleSection('sii-pcsi')" title="Fermer">×</button>
+                        <div class="subject-header">
+                            <h3>Science de l'ingénieur</h3>
+                            <a href="pdf/programme-pcsi_sii.pdf" class="download-btn" target="_blank">
+                                <span>📄 Programme Science de l'ingénieur</span>
+                            </a>
+                        </div>
+                        <div class="subject-info">
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Analyser</p>
+                                <ul>
+                                    <li>Analyser le besoin et les exigences.</li>
+                                    <li>Définir les fronitères de l'analyse.</li>
+                                    <li>Analyser l'organisation fonctionnelle et structurelle.</li>
+                                    <li>Analyser les performances et les écarts.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Modéliser</p>
+                                <ul>
+                                    <li>Choisir les grandeurs physiques et les caractériser.</li>
+                                    <li>Porposer un modèle de connaissance et de comportement.</li>
+                                    <li>Valider un modèle.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Résoudre</p>
+                                <ul>
+                                    <li>Proposer une démarche de résolution.</li>
+                                    <li>Mettre en oeuvre une démarche de résolution analytique.</li>
+                                    <li>Mettre en oeuvre une démarche de résolution numérique.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Expérimenter</p>
+                                <ul>
+                                    <li>Mettre en oeuvre un système.</li>
+                                    <li>Proposer et justifier un protocole expérimental.</li>
+                                    <li>Mettre en oeuvre un protocole expérimentale.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Communiquer</p>
+                                <ul>
+                                    <li>Rechercher et traiter des informations.</li>
+                                    <li>Produire et échanger de l'information.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">Concevoir</p>
+                                <ul>
+                                    <li>Concevoir l'architecture d'un système innovant.</li>
+                                    <li>Proposer et choisir des solutions techniques.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>    
+
+            <div style="margin-top: 50px; padding: 20px; background: rgba(79, 70, 229, 0.1); border-radius: 15px; border-left: 4px solid var(--accent);">
+                <h4 style="margin-top:0; color: white;">Compétences transversales (Softskills)</h4>
+                <p style="color: var(--text-dim); margin:0;">Rigueur intellectuelle, persévérance face à la complexité, organisation du travail sous forte charge, capacité d'analyse et résilience.</p>
+            </div>
+
+            
                 
-                </div>
+            </div>
         </section>
     </main>
 
@@ -55,5 +382,29 @@
         <p>© 2026 — Dorian Lapeyre</p>
     </footer>
 
+<script>
+function toggleSection(id) {
+    const section = document.getElementById(id);
+    const isVisible = section.classList.contains('active');
+    
+    // 1. On cache toutes les autres sections proprement
+    document.querySelectorAll('.subject-card').forEach(s => {
+        s.classList.remove('active');
+        // On attend la fin de l'animation pour mettre en display none
+        setTimeout(() => { 
+            if(!s.classList.contains('active')) s.style.display = 'none'; 
+        }, 400); 
+    });
+
+    // 2. Si la section n'était pas visible, on l'affiche
+    if (!isVisible) {
+        section.style.display = "block";
+        // On utilise un micro-délai pour que l'animation CSS se déclenche
+        setTimeout(() => {
+            section.classList.add('active');
+        }, 10);
+    }
+}
+</script>
 </body>
 </html>
