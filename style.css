@@ -170,13 +170,22 @@ header.main-header .highlight {
    ========================================================================== */
 nav {
     display: flex;
-    justify-content: flex-end;
-    padding: 1.5rem 10%;
+    justify-content: flex-end; /* Garde le burger à droite */
+    padding: 0 10%;
     align-items: center;
-    position: absolute;
-    top: 0; left: 0; width: 100%;
-    z-index: 1002;
+    position: fixed; /* Fixe le menu en haut */
+    top: 0; 
+    left: 0; 
+    width: 100%;
+    height: 70px; /* Hauteur fixe pour le scroll */
+    z-index: 2000; /* Passe au-dessus de TOUT (Map, Vagues, Modale) */
     box-sizing: border-box;
+    
+    /* Effet Glassmorphism pour la lisibilité lors du scroll */
+    background: rgba(15, 23, 42, 0.8); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .burger-menu {
@@ -185,7 +194,7 @@ nav {
     width: 30px;
     cursor: pointer;
     gap: 5px;
-    z-index: 1005;
+    z-index: 2005;
     transition: 0.3s;
 }
 
@@ -211,7 +220,7 @@ nav {
 
 .nav-links {
     position: absolute;
-    top: 100%;
+    top: 75px; /* Aligné juste sous la nav bar de 70px */
     right: 10%;
     width: 280px;
     background: rgba(26, 26, 26, 0.98);
@@ -221,13 +230,12 @@ nav {
     padding: 10px;
     border-radius: 15px;
     border: 1px solid rgba(96, 165, 250, 0.3);
-
-    /* État caché par défaut */
+    
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 1001;
+    z-index: 2001;
 }
 
 /* État affiché quand la classe .active est ajoutée */
@@ -250,6 +258,24 @@ nav {
     border-radius: 10px;
 }
 
+header.main-header {
+    padding-top: 70px; /* Compense la hauteur de la nav fixe */
+}
+
+nav::before {
+    content: "Dorian Lapeyre";
+    position: absolute;
+    left: 10%;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+/* Sur mobile, on peut cacher le texte pour ne laisser que le burger */
+@media (max-width: 480px) {
+    nav::before { content: "DL"; }
+}
 /* ==========================================================================
    4. SECTIONS ET CARTES (CONSERVÉES)
    ========================================================================== */
