@@ -447,6 +447,27 @@
                 }
             });
         });
+    let lastScrollY = window.scrollY;
+    const navbar = document.querySelector('nav');
+    
+    window.addEventListener('scroll', () => {
+        // Si on descend, on ajoute la classe pour cacher
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            navbar.classList.add('nav-hidden');
+        } 
+        // Si on remonte, on retire la classe pour afficher
+        else {
+            navbar.classList.remove('nav-hidden');
+        }
+        
+        // Fermer le menu burger automatiquement si l'utilisateur scroll
+        if (window.scrollY > lastScrollY) {
+            document.getElementById('burger-menu').classList.remove('active');
+            document.getElementById('nav-links').classList.remove('active');
+        }
+    
+        lastScrollY = window.scrollY;
+    });
     </script>
 </body>
 </html>
