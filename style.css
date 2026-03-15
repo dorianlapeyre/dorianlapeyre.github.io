@@ -170,22 +170,28 @@ header.main-header .highlight {
    ========================================================================== */
 nav {
     display: flex;
-    justify-content: flex-end; /* Garde le burger à droite */
+    justify-content: flex-end;
     padding: 0 10%;
     align-items: center;
-    position: fixed; /* Fixe le menu en haut */
-    top: 0; 
-    left: 0; 
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 70px; /* Hauteur fixe pour le scroll */
-    z-index: 2000; /* Passe au-dessus de TOUT (Map, Vagues, Modale) */
+    height: 70px;
+    z-index: 2000;
     box-sizing: border-box;
-    
-    /* Effet Glassmorphism pour la lisibilité lors du scroll */
-    background: rgba(15, 23, 42, 0.3); 
+    background: rgba(15, 23, 42, 0.4); 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Animation de transition */
+    transition: transform 0.4s ease-in-out, background 0.3s ease;
+}
+
+/* Classe qui cache le menu */
+.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .burger-menu {
