@@ -109,7 +109,10 @@
                 <p>À l’issu de la L3 j’ai effectué un stage eu sein du SIAME dans l’équipe IVS (Interactions Vagues Structures) où j’ai dû réaliser des fonds rugueux océaniques à l’échelle 1/20ème pour étudier la dissipation des vagues par frottement. Cela s’inscrivait dans le cadre du projet COCODYROCK (Collapsing Complexity for wave Dynamics over Reef and rOcky coasts). Cela m’a permis de découvrir l’Océanographie et les enjeux auxquels les zones côtières vont faire face. En effet elles sont le théâtre d’interactions complexes entre l’océan et les milieux terrestres. Elles concentrent de forts enjeux socio-économiques, écologiques et climatiques, tout en étant soumises à des processus dynamiques particulièrement intenses.</p>
                 <p>Au-delà des impacts du changement climatique, je suis particulièrement témoin de l'impact anthropique direct sur nos écosystèmes. Si la nature possède une résilience fascinante face aux perturbations de petite et moyenne ampleur, la destruction brutale et irréversible des habitats par l’artificialisation des sols ou l'élagage intensif représente une violence trop extrême pour permettre une adaptation. En conséquence, nous assistons à des basculements d'écosystèmes.</p>
             </article>
+        </div> <div id="close-wrapper" class="read-more-wrapper" style="display: none;">
+            <button id="btn-close-more" class="btn-read-more">Refermer l'histoire ↑</button>
         </div>
+        
     </section>
 
     <section id="about">
@@ -474,21 +477,36 @@
         lastScrollY = window.scrollY;
     });
     const btnReadMore = document.getElementById('btn-read-more');
+    const btnCloseMore = document.getElementById('btn-close-more');
     const extraContent = document.getElementById('info-content-extra');
+    const closeWrapper = document.getElementById('close-wrapper');
+    const introSection = document.getElementById('infographie'); // La section parente
     
+    // FONCTION OUVRIR
     btnReadMore.addEventListener('click', () => {
-        // 1. Affiche le contenu
         extraContent.classList.add('active');
+        btnReadMore.parentElement.style.display = 'none'; // Cache le wrapper du bouton "Plus"
+        closeWrapper.classList.add('visible'); // Affiche le bouton "Fermer"
         
-        // 2. Cache le bouton
-        btnReadMore.classList.add('hidden');
-    
-        // 3. Petit scroll fluide pour bien caler le texte révélé
         setTimeout(() => {
-            const yOffset = -80; // Pour ne pas coller à la nav
+            const yOffset = -80;
             const y = extraContent.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({top: y, behavior: 'smooth'});
         }, 100);
+    });
+    
+    // FONCTION FERMER
+    btnCloseMore.addEventListener('click', () => {
+        extraContent.classList.remove('active');
+        closeWrapper.classList.remove('visible');
+        btnReadMore.parentElement.style.display = 'block'; // Réaffiche le bouton "Plus"
+    
+        // Remonte l'utilisateur au début de la section "Mon Histoire"
+        setTimeout(() => {
+            const yOffset = -100;
+            const y = introSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
+        }, 50);
     });
     </script>
 </body>
