@@ -211,6 +211,23 @@ header.main-header .highlight {
 .btn-read-more.hidden {
     display: none;
 }
+/* Style pour le bouton de fermeture en bas */
+#close-wrapper {
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+/* Optionnel : animation de fondu pour le bouton fermer */
+#close-wrapper.visible {
+    display: block !important;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* ==========================================================================
    3. NAVIGATION (CORRIGÉE)
    ========================================================================== */
