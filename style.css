@@ -1282,3 +1282,84 @@ footer {
     filter: brightness(1.2);
     box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
 }
+
+/* ==========================================================================
+   13. SECTION MON EXPÉRIENCE (REMODÉLISÉE)
+   ========================================================================== */
+
+/* Centrage global du texte de la section */
+.experience-intro .subject-info {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Titres en bleu (HEX correspondant à votre --accent ou #4facfe) */
+.experience-intro .subject-subtitle {
+    color: #4facfe; 
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    font-weight: 700;
+}
+
+/* Forcer le centrage de tous les paragraphes */
+.experience-intro p {
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 850px;
+}
+
+/* Suppression des puces et stylisation des points clés en blocs verticaux */
+.experience-intro ul {
+    list-style: none !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.experience-intro li {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(79, 172, 254, 0.1);
+    width: 100%;
+    max-width: 800px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    text-align: center; /* Centrage interne */
+}
+
+.experience-intro li:hover {
+    transform: translateY(-5px);
+    border-color: rgba(79, 172, 254, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Suppression du point bleu (::before) spécifique à la classe PCSI s'il hérite */
+.experience-intro li::before {
+    display: none !important;
+}
+
+/* Mise en avant des titres dans les listes */
+.experience-intro li strong {
+    color: #4facfe;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    text-transform: none;
+}
+
+/* Ajustement spécifique pour le texte de transition */
+.experience-intro .subject-section:last-of-type p {
+    font-style: italic;
+    color: var(--text-dim);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
