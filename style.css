@@ -166,6 +166,52 @@ header.main-header .highlight {
 
 
 /* ==========================================================================
+   2.2 Infographie
+   ========================================================================== */
+
+/* Cache le contenu supplémentaire avec une transition */
+.info-content-extra {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease-out, opacity 0.8s ease;
+    opacity: 0;
+}
+
+/* Classe activée par le clic */
+.info-content-extra.active {
+    max-height: 5000px; /* Une valeur assez grande pour tout contenir */
+    opacity: 1;
+}
+
+/* Style du bouton */
+.read-more-wrapper {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.btn-read-more {
+    background: rgba(37, 99, 235, 0.1);
+    color: #4facfe;
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-read-more:hover {
+    background: rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Cache le bouton une fois cliqué */
+.btn-read-more.hidden {
+    display: none;
+}
+/* ==========================================================================
    3. NAVIGATION (CORRIGÉE)
    ========================================================================== */
 nav {
