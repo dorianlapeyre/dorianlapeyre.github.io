@@ -705,6 +705,31 @@
     <footer>
         <p>© 2026 — Dorian Lapeyre</p>
     </footer>
+    
+    <script>
+    function toggleSection(id) {
+        const section = document.getElementById(id);
+        const isVisible = section.classList.contains('active');
+        
+        // 1. On cache toutes les autres sections proprement
+        document.querySelectorAll('.subject-card').forEach(s => {
+            s.classList.remove('active');
+            // On attend la fin de l'animation pour mettre en display none
+            setTimeout(() => { 
+                if(!s.classList.contains('active')) s.style.display = 'none'; 
+            }, 400); 
+        });
+    
+        // 2. Si la section n'était pas visible, on l'affiche
+        if (!isVisible) {
+            section.style.display = "block";
+            // On utilise un micro-délai pour que l'animation CSS se déclenche
+            setTimeout(() => {
+                section.classList.add('active');
+            }, 10);
+        }
+    }
+    </script>
 
 </body>
 </html>
