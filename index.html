@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dorian Lapeyre | Portfolio</title>
+    
+    <title>Dorian Lapeyre | Portfolio Océanographie & Ingénierie</title>
+    <meta name="description" content="Portfolio de Dorian Lapeyre, étudiant en Master Sciences de la Mer (Aix-Marseille). Expertise en modélisation océanique, physique et sauvetage côtier.">
+    <meta name="author" content="Dorian Lapeyre">
+    <meta name="keywords" content="Dorian Lapeyre, Océanographie, Master MER, Marseille, Ingénierie, Sauvetage Côtier, Capbreton, Modélisation Océanique">
+
+    <meta property="og:title" content="Dorian Lapeyre | Portfolio">
+    <meta property="og:description" content="Étudiant en Master Sciences de la Mer & Nageur Sauveteur. Découvrez mon parcours et mes projets.">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
     <style>
-        /* Petit correctif pour s'assurer que Leaflet ne bloque pas l'affichage du néon */
+        /* Correctif pour les marqueurs de la carte */
         .custom-div-icon { background: none !important; border: none !important; }
+        
+        /* Assure que le body prend toute la largeur sans scroll horizontal parasite */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
     </style>
 </head>
 <body>
