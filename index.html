@@ -245,64 +245,6 @@
             </div>
         </div>
     </section>
-    <section id="real-time-data">
-        <h2 class="center-text">Monitoring Océanographique</h2>
-        
-        <div class="dashboard-container">
-            <div class="glass-card city-card">
-                <div class="card-header">
-                    <span class="status-dot pulse"></span>
-                    <h3>Marseille</h3>
-                </div>
-                <div class="stats-grid" id="data-marseille">
-                    <div class="stat-box">
-                        <span class="label">Océan</span>
-                        <div class="main-val"><span class="temp-eau">-</span>°C</div>
-                        <div class="sub-val">Vagues: <span class="vague-h">-</span>m</div>
-                    </div>
-                    <div class="stat-box">
-                        <span class="label">Atmosphère</span>
-                        <div class="main-val"><span class="vent-v">-</span> <small>km/h</small></div>
-                        <div class="sub-val">Dir: <span class="vent-d">-</span></div>
-                    </div>
-                    <div class="stat-box full-width">
-                        <span class="label">Physique des vagues</span>
-                        <div class="mini-grid">
-                            <div>Période: <strong class="vague-p">-</strong>s</div>
-                            <div>Énergie: <strong class="vague-e">-</strong> J/m²</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="glass-card city-card">
-                <div class="card-header">
-                    <span class="status-dot pulse"></span>
-                    <h3>Capbreton</h3>
-                </div>
-                <div class="stats-grid" id="data-capbreton">
-                    <div class="stat-box">
-                        <span class="label">Océan</span>
-                        <div class="main-val"><span class="temp-eau">-</span>°C</div>
-                        <div class="sub-val">Vagues: <span class="vague-h">-</span>m</div>
-                    </div>
-                    <div class="stat-box">
-                        <span class="label">Atmosphère</span>
-                        <div class="main-val"><span class="vent-v">-</span> <small>km/h</small></div>
-                        <div class="sub-val">Dir: <span class="vent-d">-</span></div>
-                    </div>
-                    <div class="stat-box full-width">
-                        <span class="label">Physique des vagues</span>
-                        <div class="mini-grid">
-                            <div>Période: <strong class="vague-p">-</strong>s</div>
-                            <div>Énergie: <strong class="vague-e">-</strong> J/m²</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p class="source-hint">Flux de données synchronisé • Open-Meteo Marine</p>
-    </section>
 
     <footer>
         <p>© 2026 — Dorian Lapeyre</p>
@@ -388,55 +330,9 @@
 
         // Invalider la taille après chargement pour éviter les carrés gris
         setTimeout(() => { map.invalidateSize(); }, 500);
-        /* --- SCRIPT MONITORING OCÉANO MIS À JOUR --- */
-        async function updateDashboard() {
-            const spots = {
-                marseille: { lat: 43.29, lon: 5.36, el: "data-marseille" },
-                capbreton: { lat: 43.64, lon: -1.44, el: "data-capbreton" }
-            };
         
-            for (let s in spots) {
-                const p = spots[s];
-                try {
-                    // Appel API Marine (vagues)
-                    const resM = await fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${p.lat}&longitude=${p.lon}&current=wave_height,wave_direction,wave_period`);
-                    // Appel API Météo (température et vent)
-                    const resW = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&current=temperature_2m,wind_speed_10m,wind_direction_10m`);
-                    
-                    const dm = await resM.json();
-                    const dw = await resW.json();
-                    const container = document.getElementById(p.el);
         
-                    // Calcul Énergie des vagues (1/16 * rho * g * H^2)
-                    // rho (eau de mer) ≈ 1025 kg/m³, g = 9.81 m/s²
-                    const h = dm.current.wave_height;
-                    const energy = Math.round(0.0625 * 1025 * 9.81 * (h * h));
         
-                    // Injection précise dans le nouveau HTML
-                    container.querySelector('.temp-eau').innerText = dw.current.temperature_2m;
-                    container.querySelector('.vague-h').innerText = h;
-                    container.querySelector('.vent-v').innerText = dw.current.wind_speed_10m;
-                    container.querySelector('.vent-d').innerText = getArrow(dw.current.wind_direction_10m);
-                    container.querySelector('.vague-p').innerText = dm.current.wave_period;
-                    container.querySelector('.vague-e').innerText = energy.toLocaleString(); // Formatage avec séparateur de milliers
-        
-                } catch (e) { 
-                    console.error("Erreur lors de la récupération des données pour " + s, e); 
-                }
-            }
-        }
-        
-        // Fonction pour convertir les degrés en flèches directionnelles
-        function getArrow(d) {
-            const a = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
-            return a[Math.round(d / 45) % 8];
-        }
-        
-        // Premier lancement
-        updateDashboard();
-        
-        // Mise à jour automatique toutes les 5 minutes (300 000 ms)
-        setInterval(updateDashboard, 300000);
        // À ajouter dans votre balise <script> existante
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
