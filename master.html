@@ -452,7 +452,7 @@
                                 <p class="subject-subtitle">Partie II</p>
                                 <ul>
                                     <li>Ondes de gravité sans effet de la rotation terrestre et applications (seiches en bassin, résonances propres, mascaret, tsunamis).</li>
-                                    <li>ndes de période proche ou supérieure à la période inertielle locale et applications (ondes de Kelvin, Sverdrup, Poincaré, marée, storm-surge).</li>
+                                    <li>Ondes de période proche ou supérieure à la période inertielle locale et applications (ondes de Kelvin, Sverdrup, Poincaré, marée, storm-surge).</li>
                                     <li>Modifications de la célérité apportées par la rotation terrestre.</li>
                                     <li>Allure des courants associés à la présence des ondes.</li>
                                     <li>Superposition d'ondes, figures amphidromiques, analogie et différences avec les ondes stationnaires sans effet de rotation terrestre.</li>
@@ -461,70 +461,90 @@
                             </div>  
                         </div>
                     </div>
-<!-- Systèmes logiques -->
+<!-- Mesure en Mer -->
                     <div class="subjects-container">
-                        <button class="toggle-subject-btn" onclick="toggleSection('sl-insa')">
-                        Systèmes Logiques
+                        <button class="toggle-subject-btn" onclick="toggleSection('mm-master')">
+                        Mesure en Mer
                         </button>
                     </div>    
-                    <div class="subject-card" id="sl-insa">
-                        <button class="close-section-btn" onclick="toggleSection('sl-insa')" title="Fermer">×</button>
+                    <div class="subject-card" id="mm-master">
+                        <button class="close-section-btn" onclick="toggleSection('mm-master')" title="Fermer">×</button>
                         <div class="subject-header">
-                            <h3>Systèmes Logiques</h3>
+                            <h3>Mesure en Mer</h3>
                             <a href="pdf/programme-insa-3AS6.pdf" class="download-btn" target="_blank">
-                                <span>📄 Programme SL (page 4)</span>
+                                <span>📄 Programme MM (page 4)</span>
                             </a>
                         </div>
                         <div class="subject-info">
                             <div class="subject-section">
-                                <p class="subject-subtitle">Logique combinatoire</p>
+                                <p class="subject-subtitle">CM</p>
                                 <ul>
-                                    <li>Algèbre de Boole.</li>
-                                    <li>Représentations et minimisation des fonctions.</li>
+                                    <li>Référentiel - position en mer - cartographie - calcul de distances.</li>
+                                    <li>Mesures des paramètres T, Conductivité, P et estimation des grandeurs dérivées.</li>
+                                    <li>Mesures de paramètres « Biogéochimiques » (ex. Oxygène, Chl-A).</li>
+                                    <li>Mesure de paramètres physiques.</li>
+                                    <li>Introduction aux système d'observation océaniques :Différentes plateformes.</li>
+                                    <li>Introduction à l'analyse de séries temporelles.</li>
                                 </ul>
                             </div>
                             <div class="subject-section">
-                                <p class="subject-subtitle">Logique séquentielle</p>
+                                <p class="subject-subtitle">TD</p>
                                 <ul>
-                                    <li>Conception des systèmes séquentiels dans le domaine de la production.</li>
-                                    <li>Étude détaillée d'un langage de spécification : le Grafcet.</li>
-                                    <li>Étude du langage Statechart.</li>
-                                    <li>Définition des modes de marche et d'arrêt par l'utilisation conjointe des deux langages.</li>
+                                    <li>Préparation et restitution du travail en mer.</li>
+                                    <li>Représentation graphique des données en océanographie.</li>
+                                    <li>Rédaction du recueil de données.</li>
                                 </ul>
                             </div>
                             <div class="subject-section">
-                                <p class="subject-subtitle">Réalisation des systèmes de commande à partir d'automates programmables</p>
+                                <p class="subject-subtitle">TP</p>
+                                <ul>
+                                    <li>Démonstration de différentes plate-formes de mesures (Stage en mer).</li>
+                                    <li>Mesure de paramètres chimiques sur des échantillons collectés.</li>
+                                </ul>
                             </div> 
                         </div>
                     </div>
                         
-<!-- Introduction à l’Ingénierie des Systèmes -->
+<!-- REDP -->
                     <div class="subjects-container">
-                        <button class="toggle-subject-btn" onclick="toggleSection('is-insa')">
-                        Introduction à l’Ingénierie des Systèmes
+                        <button class="toggle-subject-btn" onclick="toggleSection('redp-master')">
+                        Résolution numérique des équations différentielles aux derivées partielles
                         </button>
                     </div>        
-                    <div class="subject-card" id="is-insa">
-                        <button class="close-section-btn" onclick="toggleSection('is-insa')" title="Fermer">×</button>
+                    <div class="subject-card" id="redp-master">
+                        <button class="close-section-btn" onclick="toggleSection('redp-master')" title="Fermer">×</button>
                         <div class="subject-header">
-                            <h3>Introduction à l’Ingénierie des Systèmes</h3>
+                            <h3>Résolution numérique des équations différentielles aux derivées partielles</h3>
                             <a href="pdf/programme-insa-3AS6.pdf" class="download-btn" target="_blank">
-                                <span>📄 Programme IS (page 5)</span>
+                                <span>📄 Programme REDP (page 5)</span>
                             </a>
                         </div>
                         <div class="subject-info">
                             <div class="subject-section">
-                                <p class="subject-subtitle">Principaux concepts introduits</p>
+                                <p class="subject-subtitle">CM</p>
                                 <ul>
-                                    <li>Analyse des besoins et conception préliminaire.</li>
-                                    <li>Modélisation dynamique et identification des systèmes technologiques multiphysiques.</li>
-                                    <li>Contrôle PID et implémentation numérique.</li>
+                                    <li>Introduction, définitions EDO/EDP, rappels mathématiques, discrétisation en différences finies.</li>
+                                    <li>Élaboration de schémas classiques de discrétisation, discrétisation d'une EDP parabolique.</li>
+                                    <li>Mise sous forme matricielle, discrétisation des conditions aux limites, généralisation en 2D/3D.</li>
+                                    <li>Discrétisation EDP hyperbolique et elliptique, consistance.</li>
+                                    <li>Étude de stabilité (méthodes de Fourier et matricielle), condition CFL, grille d'Arakawa.</li>
+                                    <li>Grilles verticales et transformation des équations, schémas upwind, diffusion numérique, schémas TVD.</li>
+                                    <li>Discrétisation temporelle, méthode des directions alternées, systèmes tridiagonaux, mode interne, externe.</li>
                                 </ul>
                             </div>
                             <div class="subject-section">
-                                <p class="subject-subtitle">Études de cas</p>
+                                <p class="subject-subtitle">TD</p>
                                 <ul>
-                                    <li>Contrôle thermique et le contrôle d'attitude des Cubesats.</li>
+                                    <li>Caractérisation d'EDPs, élaboration de schémas aux différences finies pour les dérivées première et seconde.</li>
+                                    <li>Mise en place et analyse de la résolution numérique d'un problème caractérisé par une EDP hyperbolique.</li>
+                                    <li>Étude de la discrétisation d'une équation de Burger (schéma QUICK et schéma TVD associé), résolution d'un système tridiagonal par la méthode de Thomas.</li>
+                                    <li> Discrétisation et stabilité d'une équation d'advection-diffusion.</li>
+                                </ul>
+                            </div>
+                            <div class="subject-section">
+                                <p class="subject-subtitle">TP</p>
+                                <ul>
+                                    <li>Advection-diffusion d'un contaminant, étude de stabilité, schémas explicite/implicite. Programmation en fortran 90, tracé des résultats avec python.</li>
                                 </ul>
                             </div>
                         </div>
