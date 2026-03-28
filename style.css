@@ -1358,3 +1358,124 @@ footer {
         text-align: left; 
     }
 }
+
+
+/* ==========================================================================
+   13. SPÉCIFIQUE PAGE DÉTAIL MASTER (NOUVEAU)
+   ========================================================================== */
+
+/* Conteneur principal de la page Master */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Grille pour les images de modélisation 3D */
+.modelling-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+/* Style des encadrés d'images */
+.modelling-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.image-wrapper {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    transition: border-color 0.3s ease;
+}
+
+.image-wrapper:hover {
+    border-color: var(--accent);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Légendes des images */
+.caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+/* Zone de téléchargement des PDF */
+.download-zone {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(96, 165, 250, 0.1);
+    color: var(--accent);
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-download:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(96, 165, 250, 0.3);
+}
+
+/* Texte de description justifié pour le Master */
+.description-text p {
+    text-align: justify;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Style spécifique pour le lien de l'université */
+.university-tag {
+    margin: 15px 0;
+    color: var(--text-dim);
+}
+
+.university-tag a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.university-tag a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive pour la zone de téléchargement */
+@media (max-width: 600px) {
+    .download-zone {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+}
