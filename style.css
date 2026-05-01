@@ -1557,7 +1557,7 @@ footer {
     display: block;
     
     /* On utilise 85vw pour que ce soit vraiment grand comme tu le souhaitais */
-    width: 85vw !important; 
+    width: 65vw !important; 
     max-width: 1400px; 
     height: auto; 
     
