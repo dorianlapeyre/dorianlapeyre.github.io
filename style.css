@@ -1518,22 +1518,7 @@ footer {
     padding-top: 50px; /* Espace pour ne pas coller au haut de l'écran */
 }
 
-/* 2. L'image agrandie (Ciblée spécifiquement) */
-.image-modal .modal-content {
-    margin: auto;
-    display: block;
-    
-    /* On force la largeur à 85% de la largeur de l'écran (VRAIMENT GRAND) */
-    width: 75vw !important; 
-    
-    /* On enlève la limite de 320px héritée de la modale de contact */
-    max-width: 1400px; 
-    height: auto; 
-    
-    border-radius: 10px;
-    border: 2px solid var(--accent);
-    animation: zoomIn 0.3s ease;
-}
+
 
 /* 3. Légende et Bouton Fermer */
 #caption {
@@ -1566,19 +1551,32 @@ footer {
 
 
 /* Style pour l'image agrandie (Ciblée par sa nouvelle classe) */
+/* BLOC UNIQUE ET NETTOYÉ */
 .full-res-img {
     margin: auto;
     display: block;
-    width: 65vw;        /* 85% de la largeur de l'écran */
-    max-width: 1200px;  /* Limite pour les très grands écrans */
-    height: auto;       /* Préserve le ratio */
+    
+    /* On utilise 85vw pour que ce soit vraiment grand comme tu le souhaitais */
+    width: 85vw !important; 
+    max-width: 1400px; 
+    height: auto; 
+    
     border-radius: 10px;
     border: 2px solid var(--accent);
     animation: zoomIn 0.3s ease;
-/* --- NOUVEAU POUR LE ZOOM --- */
-    transition: transform 0.1s ease-out; /* Fluidité du mouvement */
-    cursor: zoom-in; /* Indique que l'image est zoomable */
-    transform-origin: center; /* Le zoom part du centre par défaut */
+
+    /* --- PROPRIÉTÉS POUR LE ZOOM --- */
+    transition: transform 0.1s ease-out; 
+    cursor: zoom-in; 
+    transform-origin: center;
+    position: relative;
+    z-index: 3001;
+}
+
+/* État zoomé (à ajouter juste après) */
+.full-res-img.zoomed {
+    cursor: zoom-out;
+    transform: scale(2.5);
 }
 
 /* Classe activée au clic via JS */
