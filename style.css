@@ -1575,6 +1575,17 @@ footer {
     border-radius: 10px;
     border: 2px solid var(--accent);
     animation: zoomIn 0.3s ease;
+/* --- NOUVEAU POUR LE ZOOM --- */
+    transition: transform 0.1s ease-out; /* Fluidité du mouvement */
+    cursor: zoom-in; /* Indique que l'image est zoomable */
+    transform-origin: center; /* Le zoom part du centre par défaut */
+}
+
+/* Classe activée au clic via JS */
+.full-res-img.zoomed {
+    cursor: zoom-out;
+    transform: scale(2.5); /* Niveau de zoom (x2.5) */
+    z-index: 3005;
 }
 
 
