@@ -1537,6 +1537,18 @@ footer {
     animation: zoomIn 0.3s ease;
 }
 
+/* Style pour l'image agrandie (Ciblée par sa nouvelle classe) */
+.full-res-img {
+    margin: auto;
+    display: block;
+    width: 85vw;        /* 85% de la largeur de l'écran */
+    max-width: 1200px;  /* Limite pour les très grands écrans */
+    height: auto;       /* Préserve le ratio */
+    border-radius: 10px;
+    border: 2px solid var(--accent);
+    animation: zoomIn 0.3s ease;
+}
+
 /* Légende sous l'image */
 #caption {
     margin: auto;
