@@ -31,14 +31,14 @@
                 <div class="modelling-grid">
                     <div class="modelling-item">
                         <div class="image-wrapper">
-                            <img src="images/Mode3D/bathy_1_40.png" alt="Bathymetry Model">
+                            <img src="images/Mode3D/bathy_1_40.png" alt="Bathymetry of my model (Bay of Biscay)" onclick="openModal(this)">
                         </div>
                         <p class="caption">Bathymetry of my model (Bay of Biscay)</p>
                     </div>
-
+                
                     <div class="modelling-item">
                         <div class="image-wrapper">
-                            <img src="images/Mode3D/TS_spring.png" alt="Results Analysis">
+                            <img src="images/Mode3D/TS_spring.png" alt="Analyse des résultats de simulation" onclick="openModal(this)">
                         </div>
                         <p class="caption">Analyse des résultats de simulation</p>
                     </div>
@@ -102,6 +102,29 @@
             setTimeout(() => {
                 section.classList.add('active');
             }, 10);
+        }
+    }
+        // Fonction pour ouvrir la modale
+    function openModal(element) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("imgFull");
+        const captionText = document.getElementById("caption");
+    
+        modal.style.display = "block";
+        modalImg.src = element.src;
+        captionText.innerHTML = element.alt; // Utilise l'alt de l'image comme légende
+    }
+    
+    // Fermeture au clic sur la croix
+    document.querySelector(".close-modal").onclick = function() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+    
+    // Fermeture automatique si on clique à côté de l'image
+    window.onclick = function(event) {
+        const modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
     }
     </script>
