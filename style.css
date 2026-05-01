@@ -1520,21 +1520,20 @@ footer {
 }
 
 /* L'image à l'intérieur */
-.modal-content {
+/* On cible spécifiquement l'image DANS la modale d'image */
+.image-modal .modal-content {
     margin: auto;
     display: block;
     
-    /* On utilise 'width' au lieu de 'max-width' pour forcer l'agrandissement */
-    width: 80%; 
+    /* On force la largeur à 85% de la fenêtre */
+    width: 85vw; 
     
-    /* On laisse la hauteur en auto pour garder le ratio sans déformer */
-    height: auto; 
-    
-    /* On garde une sécurité pour les très grands écrans */
-    max-width: 1200px; 
+    /* On annule les restrictions de la modale de contact */
+    max-width: 1400px; 
+    height: auto;
     
     border-radius: 10px;
-    border: 1px solid rgba(96, 165, 250, 0.3);
+    border: 2px solid var(--accent);
     animation: zoomIn 0.3s ease;
 }
 
