@@ -1467,6 +1467,43 @@ footer {
 .university-tag a:hover {
     text-decoration: underline;
 }
+/* Style pour la description du projet */
+.description-text {
+    color: var(--text-dim); /* Utilise ton gris défini dans :root */
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+/* Style de la liste à puces */
+.description-text ul.custom-list {
+    list-style-type: none; /* On enlève les puces par défaut pour en mettre des jolies */
+    padding-left: 5px;
+    margin-top: 15px;
+}
+
+.description-text ul.custom-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    color: var(--text-dim); /* Force le texte de la liste en gris */
+}
+
+/* Création d'une puce personnalisée avec ta couleur d'accent (bleu) */
+.description-text ul.custom-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent); /* Ta variable bleu ciel */
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Assure que le texte en gras n'écrase pas la couleur grise */
+.description-text strong {
+    color: #ffffff; /* Le titre de la puce reste blanc pour la lisibilité */
+    font-weight: 600;
+}
 
 /* Responsive pour la zone de téléchargement */
 @media (max-width: 600px) {
