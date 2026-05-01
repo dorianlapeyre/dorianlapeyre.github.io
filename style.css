@@ -1569,7 +1569,7 @@ footer {
 .full-res-img {
     margin: auto;
     display: block;
-    width: 85vw;        /* 85% de la largeur de l'écran */
+    width: 75vw;        /* 85% de la largeur de l'écran */
     max-width: 1200px;  /* Limite pour les très grands écrans */
     height: auto;       /* Préserve le ratio */
     border-radius: 10px;
