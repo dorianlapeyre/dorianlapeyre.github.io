@@ -1526,7 +1526,7 @@ footer {
     display: block;
     
     /* On force la largeur à 85% de la fenêtre */
-    width: 85vw; 
+    width: 75vw; 
     
     /* On annule les restrictions de la modale de contact */
     max-width: 1400px; 
