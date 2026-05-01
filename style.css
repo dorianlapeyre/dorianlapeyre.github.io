@@ -1504,38 +1504,66 @@ footer {
     color: #ffffff; /* Le titre de la puce reste blanc pour la lisibilité */
     font-weight: 600;
 }
-
-/* Style du Pop-up (Modale) */
+/* 1. Le conteneur de fond (Pop-up) */
 .image-modal {
     display: none; 
     position: fixed;
-    z-index: 3000; /* Au-dessus de la nav */
-    padding-top: 60px;
+    z-index: 3000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(5, 10, 15, 0.95); /* Fond très sombre */
-    backdrop-filter: blur(10px); /* Effet flou comme le reste du site */
+    background-color: rgba(5, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    padding-top: 50px; /* Espace pour ne pas coller au haut de l'écran */
 }
 
-/* L'image à l'intérieur */
-/* On cible spécifiquement l'image DANS la modale d'image */
+/* 2. L'image agrandie (Ciblée spécifiquement) */
 .image-modal .modal-content {
     margin: auto;
     display: block;
     
-    /* On force la largeur à 85% de la fenêtre */
-    width: 65vw; 
+    /* On force la largeur à 85% de la largeur de l'écran (VRAIMENT GRAND) */
+    width: 85vw !important; 
     
-    /* On annule les restrictions de la modale de contact */
+    /* On enlève la limite de 320px héritée de la modale de contact */
     max-width: 1400px; 
-    height: auto;
+    height: auto; 
     
     border-radius: 10px;
     border: 2px solid var(--accent);
     animation: zoomIn 0.3s ease;
 }
+
+/* 3. Légende et Bouton Fermer */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    text-align: center;
+    color: #e0e0e0;
+    padding: 20px 0;
+    font-weight: 600;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 3001;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* L'image à l'intérieur */
+
 
 /* Style pour l'image agrandie (Ciblée par sa nouvelle classe) */
 .full-res-img {
@@ -1549,38 +1577,8 @@ footer {
     animation: zoomIn 0.3s ease;
 }
 
-/* Légende sous l'image */
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    text-align: center;
-    color: #e0e0e0;
-    padding: 20px 0;
-    font-weight: 600;
-}
 
-/* Bouton Fermer */
-.close-modal {
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    color: #fff;
-    font-size: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
 
-.close-modal:hover {
-    color: #60a5fa; /* Bleu accent */
-}
-
-/* Animation */
-@keyframes zoomIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
 
 /* Curseur sur les images cliquables */
 .image-wrapper img {
