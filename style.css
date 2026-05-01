@@ -1524,7 +1524,7 @@ footer {
     display: block;
     
     /* On force la largeur à 85% de la largeur de l'écran (VRAIMENT GRAND) */
-    width: 85vw !important; 
+    width: 75vw !important; 
     
     /* On enlève la limite de 320px héritée de la modale de contact */
     max-width: 1400px; 
@@ -1569,7 +1569,7 @@ footer {
 .full-res-img {
     margin: auto;
     display: block;
-    width: 75vw;        /* 85% de la largeur de l'écran */
+    width: 65vw;        /* 85% de la largeur de l'écran */
     max-width: 1200px;  /* Limite pour les très grands écrans */
     height: auto;       /* Préserve le ratio */
     border-radius: 10px;
