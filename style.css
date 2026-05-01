@@ -1556,16 +1556,21 @@ footer {
     margin: auto;
     display: block;
     
-    /* On utilise 85vw pour que ce soit vraiment grand comme tu le souhaitais */
-    width: 65vw !important; 
-    max-width: 1400px; 
-    height: auto; 
+    /* On laisse la largeur s'adapter pour ne pas déformer l'image */
+    width: auto; 
     
+    /* On impose la hauteur à 85% de la hauteur de l'écran */
+    height: 85vh !important; 
+    
+    /* Sécurités pour ne pas dépasser des écrans PC */
+    max-height: 90vh; 
+    max-width: 95vw; 
+
     border-radius: 10px;
     border: 2px solid var(--accent);
     animation: zoomIn 0.3s ease;
 
-    /* --- PROPRIÉTÉS POUR LE ZOOM --- */
+    /* --- PROPRIÉTÉS POUR LE ZOOM (Gardées intactes) --- */
     transition: transform 0.1s ease-out; 
     cursor: zoom-in; 
     transform-origin: center;
