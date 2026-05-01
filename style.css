@@ -1505,6 +1505,75 @@ footer {
     font-weight: 600;
 }
 
+/* Style du Pop-up (Modale) */
+.image-modal {
+    display: none; 
+    position: fixed;
+    z-index: 3000; /* Au-dessus de la nav */
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 10, 15, 0.95); /* Fond très sombre */
+    backdrop-filter: blur(10px); /* Effet flou comme le reste du site */
+}
+
+/* L'image à l'intérieur */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 85%;
+    max-height: 80vh;
+    border-radius: 15px;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    animation: zoomIn 0.3s ease;
+}
+
+/* Légende sous l'image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    text-align: center;
+    color: #e0e0e0;
+    padding: 20px 0;
+    font-weight: 600;
+}
+
+/* Bouton Fermer */
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #60a5fa; /* Bleu accent */
+}
+
+/* Animation */
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Curseur sur les images cliquables */
+.image-wrapper img {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.image-wrapper img:hover {
+    filter: brightness(1.1);
+}
+
 /* Responsive pour la zone de téléchargement */
 @media (max-width: 600px) {
     .download-zone {
