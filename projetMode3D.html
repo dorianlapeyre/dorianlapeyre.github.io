@@ -88,6 +88,9 @@
 
     
     <script>
+        /* =============================================================
+       1. GESTION DES SECTIONS (ACCORDÉON)
+       ============================================================= */
     function toggleSection(id) {
         const section = document.getElementById(id);
         const isVisible = section.classList.contains('active');
@@ -110,27 +113,66 @@
             }, 10);
         }
     }
-        // Fonction pour ouvrir la modale
-    function openModal(element) {
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("imgFull");
-        const captionText = document.getElementById("caption");
     
+    /* =============================================================
+       2. GESTION DE LA MODALE D'IMAGE & ZOOM
+       ============================================================= */
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgFull");
+    const captionText = document.getElementById("caption");
+    
+    // Fonction pour ouvrir la modale
+    function openModal(element) {
         modal.style.display = "block";
         modalImg.src = element.src;
         captionText.innerHTML = element.alt; // Utilise l'alt de l'image comme légende
+        
+        // Réinitialisation du zoom à l'ouverture
+        modalImg.classList.remove("zoomed");
+        modalImg.style.transform = "scale(1)";
+        modalImg.style.transformOrigin = "center";
     }
+    
+    // Gestion du clic pour Zoomer / Dézoomer
+    modalImg.onclick = function(e) {
+        // On empêche le clic de se propager au window.onclick (qui fermerait la modale)
+        e.stopPropagation(); 
+        
+        this.classList.toggle("zoomed");
+        
+        if (!this.classList.contains("zoomed")) {
+            this.style.transform = "scale(1)";
+            this.style.transformOrigin = "center";
+        } else {
+            this.style.transform = "scale(2.5)"; // Niveau de zoom ajustable ici
+        }
+    };
+    
+    // Suivi de la souris pour déplacer l'image quand elle est zoomée
+    modalImg.onmousemove = function(e) {
+        if (this.classList.contains("zoomed")) {
+            const rect = this.getBoundingClientRect();
+            // Calcul de la position relative de la souris en %
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            // Déplace l'origine du zoom vers le curseur
+            this.style.transformOrigin = `${x}% ${y}%`;
+        }
+    };
     
     // Fermeture au clic sur la croix
     document.querySelector(".close-modal").onclick = function() {
-        document.getElementById("imageModal").style.display = "none";
+        modal.style.display = "none";
+        modalImg.classList.remove("zoomed");
     }
     
-    // Fermeture automatique si on clique à côté de l'image
+    // Fermeture automatique si on clique à côté de l'image (sur le fond sombre)
     window.onclick = function(event) {
-        const modal = document.getElementById("imageModal");
         if (event.target == modal) {
             modal.style.display = "none";
+            modalImg.classList.remove("zoomed");
+            modalImg.style.transform = "scale(1)";
         }
     }
     </script>
