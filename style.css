@@ -1523,11 +1523,18 @@ footer {
 .modal-content {
     margin: auto;
     display: block;
-    max-width: 95%;
-    max-height: 90vh;
-    border-radius: 15px;
+    
+    /* On utilise 'width' au lieu de 'max-width' pour forcer l'agrandissement */
+    width: 80%; 
+    
+    /* On laisse la hauteur en auto pour garder le ratio sans déformer */
+    height: auto; 
+    
+    /* On garde une sécurité pour les très grands écrans */
+    max-width: 1200px; 
+    
+    border-radius: 10px;
     border: 1px solid rgba(96, 165, 250, 0.3);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
     animation: zoomIn 0.3s ease;
 }
 
