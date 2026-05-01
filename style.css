@@ -1523,8 +1523,8 @@ footer {
 .modal-content {
     margin: auto;
     display: block;
-    max-width: 85%;
-    max-height: 80vh;
+    max-width: 95%;
+    max-height: 90vh;
     border-radius: 15px;
     border: 1px solid rgba(96, 165, 250, 0.3);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
