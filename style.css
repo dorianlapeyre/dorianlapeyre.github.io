@@ -1531,15 +1531,31 @@ footer {
     font-weight: 600;
 }
 
+/* Bouton Fermer */
 .close-modal {
     position: absolute;
     top: 20px;
     right: 30px;
-    color: #fff;
+    
+    /* Couleur rouge */
+    color: #ff4d4d; 
+    
     font-size: 50px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 3001;
+    
+    /* PRIORITÉ D'AFFICHAGE */
+    /* On utilise un z-index supérieur à celui de l'image (3001) */
+    z-index: 4000; 
+    
+    transition: 0.3s;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre pour détacher la croix du fond */
+}
+
+/* Effet au survol de la croix */
+.close-modal:hover {
+    color: #ff0000; /* Rouge plus vif au survol */
+    transform: scale(1.1);
 }
 
 @keyframes zoomIn {
