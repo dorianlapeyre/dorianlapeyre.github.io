@@ -1603,7 +1603,64 @@ footer {
 .image-wrapper img:hover {
     filter: brightness(1.1);
 }
+/* --- SECTION GALERIE --- */
+.project-gallery {
+    padding: 60px 5%;
+    background: rgba(15, 23, 42, 0.2);
+}
 
+.gallery-subsection {
+    margin-bottom: 50px;
+}
+
+.gallery-title {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+}
+
+/* --- LE BANDEAU COULISSANT --- */
+.image-bandeau {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Permet le scroll horizontal */
+    scroll-snap-type: x mandatory; /* Effet de "cran" au coulissement */
+    padding: 20px 0;
+    scrollbar-width: thin; /* Barre de scroll fine pour Firefox */
+    scrollbar-color: var(--accent) transparent;
+}
+
+/* Style de la barre de scroll pour Chrome/Safari */
+.image-bandeau::-webkit-scrollbar {
+    height: 6px;
+}
+.image-bandeau::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+/* --- LES IMAGES DANS LE BANDEAU --- */
+.image-bandeau img {
+    height: 300px; /* Hauteur fixe pour le bandeau */
+    width: auto;
+    border-radius: 12px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    object-fit: cover;
+}
+
+/* --- EFFET NÉON AU SURVOL --- */
+.image-bandeau img:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.6), 
+                0 0 40px rgba(96, 165, 250, 0.2);
+    filter: brightness(1.2);
+}
 /* Responsive pour la zone de téléchargement */
 @media (max-width: 600px) {
     .download-zone {
