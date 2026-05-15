@@ -226,76 +226,39 @@
 
     
     <script>
-        /* =============================================================
-       1. GESTION DES SECTIONS (ACCORDÉON)
-       ============================================================= */
-    function toggleSection(id) {
-        const section = document.getElementById(id);
-        const isVisible = section.classList.contains('active');
-        
-        // 1. On cache toutes les autres sections proprement
-        document.querySelectorAll('.subject-card').forEach(s => {
-            s.classList.remove('active');
-            // On attend la fin de l'animation pour mettre en display none
-            setTimeout(() => { 
-                if(!s.classList.contains('active')) s.style.display = 'none'; 
-            }, 400); 
-        });
-    
-        // 2. Si la section n'était pas visible, on l'affiche
-        if (!isVisible) {
-            section.style.display = "block";
-            // On utilise un micro-délai pour que l'animation CSS se déclenche
-            setTimeout(() => {
-                section.classList.add('active');
-            }, 10);
-        }
-    }
-    
     /* =============================================================
-       2. GESTION DE LA MODALE D'IMAGE & ZOOM
+       1. GESTION DE LA MODALE, NAVIGATION ET ZOOM
        ============================================================= */
-    /* =============================================================
-   GESTION DE LA MODALE D'IMAGE, ZOOM & NAVIGATION
-   ============================================================= */
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("imgFull");
     const captionText = document.getElementById("caption");
-    let currentImgElement = null; // Variable cruciale pour la navigation
-    
-    // 1. FONCTION POUR OUVRIR LA MODALE
+    let currentImgElement = null;
+
     function openModal(element) {
         modal.style.display = "block";
-        currentImgElement = element; // On mémorise l'image cliquée
+        currentImgElement = element;
         updateModalContent();
-        
-        // Réinitialisation du zoom à l'ouverture
-        modalImg.classList.remove("zoomed");
-        modalImg.style.transform = "scale(1)";
-        modalImg.style.transformOrigin = "center";
+        resetZoom();
     }
-    
-    // 2. MISE À JOUR DU CONTENU
+
     function updateModalContent() {
         if (!currentImgElement) return;
         modalImg.src = currentImgElement.src;
         captionText.innerHTML = currentImgElement.alt;
     }
-    
-    // 3. FONCTIONS DE NAVIGATION (SUIVANTE / PRÉCÉDENTE)
+
     function nextImage() {
-        if (!currentImgElement) return;
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
         let next = currentImgElement.nextElementSibling;
-        // On vérifie que l'élément suivant est bien une image
         if (next && next.tagName === 'IMG') {
             currentImgElement = next;
             updateModalContent();
-            resetZoom(); // On dézoome quand on change d'image
+            resetZoom();
         }
     }
-    
+
     function prevImage() {
-        if (!currentImgElement) return;
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
         let prev = currentImgElement.previousElementSibling;
         if (prev && prev.tagName === 'IMG') {
             currentImgElement = prev;
@@ -303,26 +266,30 @@
             resetZoom();
         }
     }
-    
+
     function resetZoom() {
         modalImg.classList.remove("zoomed");
         modalImg.style.transform = "scale(1)";
+        modalImg.style.transformOrigin = "center";
     }
-    
-    // 4. GESTION DU CLIC (ZOOM / DEZOOM)
+
+    function closeModal() {
+        modal.style.display = "none";
+        resetZoom();
+    }
+
+    // Zoom au clic
     modalImg.onclick = function(e) {
-        e.stopPropagation(); 
+        e.stopPropagation();
         this.classList.toggle("zoomed");
-        
-        if (!this.classList.contains("zoomed")) {
-            this.style.transform = "scale(1)";
-            this.style.transformOrigin = "center";
-        } else {
+        if (this.classList.contains("zoomed")) {
             this.style.transform = "scale(2.5)";
+        } else {
+            resetZoom();
         }
     };
-    
-    // 5. SUIVI DE LA SOURIS (DÉPLACEMENT DANS LE ZOOM)
+
+    // Suivi souris pour le zoom
     modalImg.onmousemove = function(e) {
         if (this.classList.contains("zoomed")) {
             const rect = this.getBoundingClientRect();
@@ -331,8 +298,8 @@
             this.style.transformOrigin = `${x}% ${y}%`;
         }
     };
-    
-    // 6. ÉCOUTEURS D'ÉVÉNEMENTS (CLAVIER & TRACKPAD)
+
+    // Clavier
     document.addEventListener('keydown', function(e) {
         if (modal.style.display === "block") {
             if (e.key === "ArrowRight") nextImage();
@@ -340,102 +307,18 @@
             if (e.key === "Escape") closeModal();
         }
     });
-    
-    // Détection du balayage horizontal sur Trackpad (Wheel horizontal)
+
+    // Trackpad (balayage horizontal)
     window.addEventListener('wheel', function(e) {
         if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
             if (e.deltaX > 20) nextImage();
             else if (e.deltaX < -20) prevImage();
         }
     }, { passive: true });
-    
-    // 7. FERMETURE DE LA MODALE
-    function closeModal() {
-        modal.style.display = "none";
-        resetZoom();
-    }
-    
-    document.querySelector(".close-modal").onclick = closeModal;
-    
+
+    // Fermeture clic extérieur
     window.onclick = function(event) {
         if (event.target == modal) closeModal();
-    }
-        
-    function nextImage() {
-        if (!currentImgElement) return;
-        // On cherche l'image suivante dans le même conteneur
-        let next = currentImgElement.nextElementSibling;
-        // Si pas de suivante et qu'on est dans une grille, on gère les cas particuliers ou on boucle
-        if (next && next.tagName === 'IMG') {
-            currentImgElement = next;
-            updateModalContent();
-        }
-    }
-    
-    function prevImage() {
-        if (!currentImgElement) return;
-        let prev = currentImgElement.previousElementSibling;
-        if (prev && prev.tagName === 'IMG') {
-            currentImgElement = prev;
-            updateModalContent();
-        }
-    }
-    // NAVIGATION CLAVIER
-    document.addEventListener('keydown', function(e) {
-        if (modal.style.display === "block") {
-            if (e.key === "ArrowRight") nextImage();
-            if (e.key === "ArrowLeft") prevImage();
-            if (e.key === "Escape") { // Touche Echap pour fermer
-                modal.style.display = "none";
-                modalImg.classList.remove("zoomed");
-            }
-        }
-    });
-    
-    // NAVIGATION PAD / SOURIS (Molette horizontale)
-    window.addEventListener('wheel', function(e) {
-        if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
-            // e.deltaX détecte le balayage horizontal sur un trackpad
-            if (e.deltaX > 20) {
-                nextImage();
-            } else if (e.deltaX < -20) {
-                prevImage();
-            }
-        }
-    }, { passive: true });
-        
-    // Fermeture au clic sur la croix
-    document.querySelector(".close-modal").onclick = function() {
-        modal.style.display = "none";
-        modalImg.classList.remove("zoomed");
-    }
-    
-    // Fermeture automatique si on clique à côté de l'image (sur le fond sombre)
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-            modalImg.classList.remove("zoomed");
-            modalImg.style.transform = "scale(1)";
-        }
-    }
-    function nextImage() {
-        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
-        let next = currentImgElement.nextElementSibling;
-        if (next && next.tagName === 'IMG') {
-            currentImgElement = next;
-            updateModalContent();
-            resetZoom();
-        }
-    }
-    
-    function prevImage() {
-        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
-        let prev = currentImgElement.previousElementSibling;
-        if (prev && prev.tagName === 'IMG') {
-            currentImgElement = prev;
-            updateModalContent();
-            resetZoom();
-        }
     }
     </script>
 </body>
