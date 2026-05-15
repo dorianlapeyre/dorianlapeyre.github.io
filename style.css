@@ -1688,3 +1688,41 @@ footer {
         justify-content: center;
     }
 }
+
+/* Style des flèches de navigation */
+.prev-arrow, .next-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 20px;
+    margin-top: -30px;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    transition: 0.3s ease;
+    user-select: none;
+    z-index: 1001; /* Au-dessus de l'image */
+    background-color: rgba(0, 0, 0, 0.2); /* Fond léger pour la lisibilité */
+    border-radius: 0 5px 5px 0;
+}
+
+.next-arrow {
+    right: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+.prev-arrow {
+    left: 0;
+}
+
+.prev-arrow:hover, .next-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #007bff; /* Ou la couleur principale de ton site */
+}
+
+/* On cache les flèches si l'image est zoomée pour ne pas gêner */
+.image-modal:has(.zoomed) .prev-arrow,
+.image-modal:has(.zoomed) .next-arrow {
+    display: none;
+}
