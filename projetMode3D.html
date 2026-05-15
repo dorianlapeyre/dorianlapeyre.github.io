@@ -9,8 +9,12 @@
 </head>
 <div id="imageModal" class="image-modal">
     <span class="close-modal">&times;</span>
-    <!-- CHANGEMENT ICI : on met la classe que tu as choisie -->
+    
+    <span class="prev-arrow" onclick="event.stopPropagation(); prevImage();">&#10094;</span>
+    <span class="next-arrow" onclick="event.stopPropagation(); nextImage();">&#10095;</span>
+    
     <img class="full-res-img" id="imgFull"> 
+    
     <div id="caption"></div>
 </div>
 <body class="detail-page">
@@ -251,15 +255,19 @@
     /* =============================================================
        2. GESTION DE LA MODALE D'IMAGE & ZOOM
        ============================================================= */
+    /* =============================================================
+   GESTION DE LA MODALE D'IMAGE, ZOOM & NAVIGATION
+   ============================================================= */
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("imgFull");
     const captionText = document.getElementById("caption");
+    let currentImgElement = null; // Variable cruciale pour la navigation
     
-    // Fonction pour ouvrir la modale
+    // 1. FONCTION POUR OUVRIR LA MODALE
     function openModal(element) {
         modal.style.display = "block";
-        modalImg.src = element.src;
-        captionText.innerHTML = element.alt; // Utilise l'alt de l'image comme légende
+        currentImgElement = element; // On mémorise l'image cliquée
+        updateModalContent();
         
         // Réinitialisation du zoom à l'ouverture
         modalImg.classList.remove("zoomed");
@@ -267,34 +275,135 @@
         modalImg.style.transformOrigin = "center";
     }
     
-    // Gestion du clic pour Zoomer / Dézoomer
+    // 2. MISE À JOUR DU CONTENU
+    function updateModalContent() {
+        if (!currentImgElement) return;
+        modalImg.src = currentImgElement.src;
+        captionText.innerHTML = currentImgElement.alt;
+    }
+    
+    // 3. FONCTIONS DE NAVIGATION (SUIVANTE / PRÉCÉDENTE)
+    function nextImage() {
+        if (!currentImgElement) return;
+        let next = currentImgElement.nextElementSibling;
+        // On vérifie que l'élément suivant est bien une image
+        if (next && next.tagName === 'IMG') {
+            currentImgElement = next;
+            updateModalContent();
+            resetZoom(); // On dézoome quand on change d'image
+        }
+    }
+    
+    function prevImage() {
+        if (!currentImgElement) return;
+        let prev = currentImgElement.previousElementSibling;
+        if (prev && prev.tagName === 'IMG') {
+            currentImgElement = prev;
+            updateModalContent();
+            resetZoom();
+        }
+    }
+    
+    function resetZoom() {
+        modalImg.classList.remove("zoomed");
+        modalImg.style.transform = "scale(1)";
+    }
+    
+    // 4. GESTION DU CLIC (ZOOM / DEZOOM)
     modalImg.onclick = function(e) {
-        // On empêche le clic de se propager au window.onclick (qui fermerait la modale)
         e.stopPropagation(); 
-        
         this.classList.toggle("zoomed");
         
         if (!this.classList.contains("zoomed")) {
             this.style.transform = "scale(1)";
             this.style.transformOrigin = "center";
         } else {
-            this.style.transform = "scale(2.5)"; // Niveau de zoom ajustable ici
+            this.style.transform = "scale(2.5)";
         }
     };
     
-    // Suivi de la souris pour déplacer l'image quand elle est zoomée
+    // 5. SUIVI DE LA SOURIS (DÉPLACEMENT DANS LE ZOOM)
     modalImg.onmousemove = function(e) {
         if (this.classList.contains("zoomed")) {
             const rect = this.getBoundingClientRect();
-            // Calcul de la position relative de la souris en %
             const x = ((e.clientX - rect.left) / rect.width) * 100;
             const y = ((e.clientY - rect.top) / rect.height) * 100;
-            
-            // Déplace l'origine du zoom vers le curseur
             this.style.transformOrigin = `${x}% ${y}%`;
         }
     };
     
+    // 6. ÉCOUTEURS D'ÉVÉNEMENTS (CLAVIER & TRACKPAD)
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === "block") {
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "Escape") closeModal();
+        }
+    });
+    
+    // Détection du balayage horizontal sur Trackpad (Wheel horizontal)
+    window.addEventListener('wheel', function(e) {
+        if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
+            if (e.deltaX > 20) nextImage();
+            else if (e.deltaX < -20) prevImage();
+        }
+    }, { passive: true });
+    
+    // 7. FERMETURE DE LA MODALE
+    function closeModal() {
+        modal.style.display = "none";
+        resetZoom();
+    }
+    
+    document.querySelector(".close-modal").onclick = closeModal;
+    
+    window.onclick = function(event) {
+        if (event.target == modal) closeModal();
+    }
+        
+    function nextImage() {
+        if (!currentImgElement) return;
+        // On cherche l'image suivante dans le même conteneur
+        let next = currentImgElement.nextElementSibling;
+        // Si pas de suivante et qu'on est dans une grille, on gère les cas particuliers ou on boucle
+        if (next && next.tagName === 'IMG') {
+            currentImgElement = next;
+            updateModalContent();
+        }
+    }
+    
+    function prevImage() {
+        if (!currentImgElement) return;
+        let prev = currentImgElement.previousElementSibling;
+        if (prev && prev.tagName === 'IMG') {
+            currentImgElement = prev;
+            updateModalContent();
+        }
+    }
+    // NAVIGATION CLAVIER
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === "block") {
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "Escape") { // Touche Echap pour fermer
+                modal.style.display = "none";
+                modalImg.classList.remove("zoomed");
+            }
+        }
+    });
+    
+    // NAVIGATION PAD / SOURIS (Molette horizontale)
+    window.addEventListener('wheel', function(e) {
+        if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
+            // e.deltaX détecte le balayage horizontal sur un trackpad
+            if (e.deltaX > 20) {
+                nextImage();
+            } else if (e.deltaX < -20) {
+                prevImage();
+            }
+        }
+    }, { passive: true });
+        
     // Fermeture au clic sur la croix
     document.querySelector(".close-modal").onclick = function() {
         modal.style.display = "none";
@@ -307,6 +416,25 @@
             modal.style.display = "none";
             modalImg.classList.remove("zoomed");
             modalImg.style.transform = "scale(1)";
+        }
+    }
+    function nextImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        let next = currentImgElement.nextElementSibling;
+        if (next && next.tagName === 'IMG') {
+            currentImgElement = next;
+            updateModalContent();
+            resetZoom();
+        }
+    }
+    
+    function prevImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        let prev = currentImgElement.previousElementSibling;
+        if (prev && prev.tagName === 'IMG') {
+            currentImgElement = prev;
+            updateModalContent();
+            resetZoom();
         }
     }
     </script>
