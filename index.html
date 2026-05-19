@@ -365,38 +365,38 @@
         window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
 
         // --- INITIALISATION CARTE ---
-        const map = L.map('experience-map', {
-            scrollWheelZoom: false,
-            zoomControl: false 
-        }).setView([46.0, 2.0], 5); // Centré un peu plus haut pour mieux voir la France et l'Europe
+        // const map = L.map('experience-map', {
+        //     scrollWheelZoom: false,
+        //     zoomControl: false 
+        // }).setView([46.0, 2.0], 5); // Centré un peu plus haut pour mieux voir la France et l'Europe
 
-        // UTILISER UNIQUEMENT CELUI-CI : Les tuiles claires s'inversent mieux en CSS
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; CARTO'
-        }).addTo(map);
+        // // UTILISER UNIQUEMENT CELUI-CI : Les tuiles claires s'inversent mieux en CSS
+        // L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        //     attribution: '&copy; CARTO'
+        // }).addTo(map);
 
-        const neonIcon = L.divIcon({
-            className: 'custom-div-icon',
-            html: "<div class='neon-marker'></div>",
-            iconSize: [12, 12],
-            iconAnchor: [6, 6]
-        });
+        // const neonIcon = L.divIcon({
+        //     className: 'custom-div-icon',
+        //     html: "<div class='neon-marker'></div>",
+        //     iconSize: [12, 12],
+        //     iconAnchor: [6, 6]
+        // });
 
-        const experiences = [
-            { lat: 43.6043, lng: 1.4437, title: "Toulouse", desc: "Génie Mécanique à l'INSA" },
-            { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI" },
-            { lat: 43.4695, lng: -1.5204, title: "Anglet", desc: "Licence & Tutorat UPPA" },
-            { lat: 43.2965, lng: 5.3698, title: "Marseille", desc: "Master Science de la Mer" },
-            { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur, secouriste" }
-        ];
+        // const experiences = [
+        //     { lat: 43.6043, lng: 1.4437, title: "Toulouse", desc: "Génie Mécanique à l'INSA" },
+        //     { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI" },
+        //     { lat: 43.4695, lng: -1.5204, title: "Anglet", desc: "Licence & Tutorat UPPA" },
+        //     { lat: 43.2965, lng: 5.3698, title: "Marseille", desc: "Master Science de la Mer" },
+        //     { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur, secouriste" }
+        // ];
 
-        experiences.forEach(exp => {
-            L.marker([exp.lat, exp.lng], { icon: neonIcon }).addTo(map)
-                .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
-        });
+        // experiences.forEach(exp => {
+        //     L.marker([exp.lat, exp.lng], { icon: neonIcon }).addTo(map)
+        //         .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
+        // });
 
-        // Invalider la taille après chargement pour éviter les carrés gris
-        setTimeout(() => { map.invalidateSize(); }, 500);
+        // // Invalider la taille après chargement pour éviter les carrés gris
+        // setTimeout(() => { map.invalidateSize(); }, 500);
         
         
         
