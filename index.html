@@ -108,22 +108,44 @@
         </div>
     </section>
 
-    <section id="recherche-stage" class="stage-container">
-        <div class="stage-badge">🔍 Recherche de Stage</div>
-        <h2>Stage de Fin d'Études — Master 2 Sciences de la Mer</h2>
+    <section id="recherche-stage">
+        <h2 class="center-text">Recherche de Stage</h2>
         
-        <div class="stage-grid">
-            <div class="stage-info">
-                <p><strong>Objectif :</strong> Intégrer un laboratoire de recherche en océanographie physique, biogéochimie, modélisation 3D Océanique ou traitement de données.</p>
-                <p><strong>Période :</strong> Janvier 2027 (Durée : 6 mois).</p>
-                <p><strong>Mobilité :</strong> France entière et International.</p>
-            </div>
+        <p class="map-intro" style="text-align: center; color: var(--text-dim); margin-bottom: 30px;">
+            Étudiant en Master 1, je suis à la recherche d'un stage de fin d'études.
+        </p>
+    
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
             
-            <div class="stage-cta">
-                <p>Mon profil vous intéresse ? Discutons de vos projets !</p>
-                <a href="mailto:dorian.lapeyre69@gmail.com" class="btn-stage">📧 Me contacter par email</a>
-                <a href="https://www.linkedin.com/in/dorian-lapeyre-04131b176" target="_blank" class="btn-stage secondary">🔗 Profil LinkedIn</a>
+            <div class="card" style="cursor: default;">
+                <h3>Mon Projet de Stage</h3>
+                <p><strong>Domaines :</strong> Océanographie physique, biogéochimie, modélisation 3D océanique ou traitement de données scientifiques.</p>
+                <p><strong>Durée :</strong> 6 mois (Période : Janvier-Juin 2027).</p>
+                <p><strong>Mobilité :</strong> France entière & International.</p>
             </div>
+    
+            <div class="card" style="cursor: default; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h3>Contacts</h3>
+                    <p>Mon profil correspond à vos projets de recherche ? Discutons-en !</p>
+                </div>
+                
+                <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+                    
+                    <a href="https://www.linkedin.com/in/dorian-lapeyre-04131b176" target="_blank" class="card-link" style="margin: 0; padding: 0;">
+                        <div style="background: #0077b5; color: white; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px solid transparent; transition: 0.3s;">
+                            🔗 Consulter mon profil LinkedIn
+                        </div>
+                    </a>
+    
+                    <div id="btn-copy-email" style="background: var(--accent); color: #0f0f0f; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; cursor: pointer; transition: 0.3s; position: relative;">
+                        📧 dorian.lapeyre@etu.univ-amu.fr
+                        <span id="copy-tooltip" style="display: none; position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: #333; color: white; font-size: 0.8rem; padding: 4px 8px; border-radius: 4px; white-space: nowrap;">Copié !</span>
+                    </div>
+    
+                </div>
+            </div>
+    
         </div>
     </section>
     
@@ -491,6 +513,28 @@
             window.scrollTo({top: y, behavior: 'smooth'});
         }, 50);
     });
+   // --- FONCTIONNALITÉ COPIE EMAIL PRESE-PAPIERS ---
+    const btnEmail = document.getElementById('btn-copy-email');
+    const tooltip = document.getElementById('copy-tooltip');
+
+    if (btnEmail) {
+        btnEmail.addEventListener('click', () => {
+            const emailText = "dorian.lapeyre69@gmail.com";
+            
+            // Utilisation de l'API moderne du presse-papiers
+            navigator.clipboard.writeText(emailText).then(() => {
+                // Affiche le petit message "Copié !"
+                tooltip.style.display = "block";
+                
+                // Cache le message après 2 secondes
+                setTimeout(() => {
+                    tooltip.style.display = "none";
+                }, 200);
+            }).catch(err => {
+                console.error('Erreur lors de la copie : ', err);
+            });
+        });
+    }
     </script>
 </body>
 </html>
