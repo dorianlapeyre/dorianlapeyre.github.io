@@ -115,27 +115,51 @@
             Étudiant en Master 1, je suis à la recherche d'un stage de fin d'études.
         </p>
     
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="card" style="max-width: 800px; margin: 0 auto; cursor: default; padding: 40px;">
             
-            <div class="card" style="cursor: default;">
-                <h3>Mon Projet de Stage</h3>
-                <p><strong>Domaines :</strong> Océanographie physique, biogéochimie, modélisation 3D océanique ou traitement de données scientifiques.</p>
-                <p><strong>Durée :</strong> 6 mois (Période : Janvier-Juin 2027).</p>
-                <p><strong>Mobilité :</strong> France entière & International.</p>
+            <div style="margin-bottom: 35px;">
+                <h3 style="color: var(--accent); margin-top: 0; margin-bottom: 20px; font-size: 1.4rem; border-bottom: 1px solid #222; padding-bottom: 8px;">
+                    Mon Projet de Stage
+                </h3>
                 
-                <h3>Contacts</h3>
-                <p>Mon profil correspond à vos projets de recherche ? Discutons-en !</p>
-                <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                    <li style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="color: var(--accent);">•</span>
+                        <span><strong>Domaines clés :</strong> Océanographie physique, biogéochimie, modélisation 3D océanique ou traitement de données.</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: var(--accent);">•</span>
+                        <span><strong>Durée & Période :</strong> 6 mois (Janvier – Juin 2027).</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: var(--accent);">•</span>
+                        <span><strong>Mobilité géographique :</strong> France entière & International.</span>
+                    </li>
+                </ul>
+            </div>
+    
+            <div>
+                <h3 style="color: var(--accent); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 1px solid #222; padding-bottom: 8px;">
+                    Contact
+                </h3>
+                <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 0.95rem;">
+                    Mon profil correspond à votre projet ? Discutons-en !
+                </p>
+                
+                <div class="download-zone" style="margin-top: 20px; gap: 16px; justify-content: center;">
                     
-                    <a href="https://www.linkedin.com/in/dorian-lapeyre-04131b176" target="_blank" class="card-link" style="margin: 0; padding: 0;">
-                        <div style="background: #0077b5; color: white; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px solid transparent; transition: 0.3s;">
-                            🔗 Consulter mon profil LinkedIn
+                    <a href="https://www.linkedin.com/in/dorian-lapeyre-04131b176" target="_blank" class="card-link" style="margin: 0; padding: 0; flex: 1; max-width: 320px; width: 100%;">
+                        <div style="background: #0077b5; color: white; padding: 14px 20px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px solid transparent; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);">
+                            🔗 Profil LinkedIn
                         </div>
                     </a>
     
-                    <div id="btn-copy-email" style="background: var(--accent); color: #0f0f0f; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; cursor: pointer; transition: 0.3s; position: relative;">
+                    <div id="btn-copy-email" style="background: var(--accent); color: #0f0f0f; padding: 14px 20px; border-radius: 8px; text-align: center; font-weight: bold; cursor: pointer; transition: 0.3s; position: relative; flex: 1; max-width: 320px; width: 100%; box-shadow: 0 4px 15px rgba(96, 165, 250, 0.2);">
                         📧 dorian.lapeyre@etu.univ-amu.fr
-                        <span id="copy-tooltip" style="display: none; position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); background: #333; color: white; font-size: 0.8rem; padding: 4px 8px; border-radius: 4px; white-space: nowrap;">Copié !</span>
+                        
+                        <span id="copy-tooltip" style="display: none; position: absolute; top: -35px; left: 50%; transform: translateX(-50%); background: #222; color: var(--accent); border: 1px solid var(--accent); font-size: 0.8rem; padding: 4px 10px; border-radius: 4px; white-space: nowrap; box-shadow: 0 0 10px rgba(96,165,250,0.5);">
+                            Copié !
+                        </span>
                     </div>
     
                 </div>
@@ -514,7 +538,7 @@
 
     if (btnEmail) {
         btnEmail.addEventListener('click', () => {
-            const emailText = "dorian.lapeyre69@gmail.com";
+            const emailText = "dorian.lapeyre@etu.univ-amu.fr";
             
             // Utilisation de l'API moderne du presse-papiers
             navigator.clipboard.writeText(emailText).then(() => {
