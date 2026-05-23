@@ -1728,4 +1728,24 @@ footer {
 }
 
 
+/* --- SURVOLS SOBRES BOUTONS STAGE --- */
+
+/* Assure que la carte ne bouge pas du tout au survol */
+#recherche-stage .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: #222 !important;
+}
+
+/* Changement de couleur simple pour LinkedIn */
+.stage-btn-linkedin div:hover {
+    background: #04669a !important;
+}
+
+/* Léger effet d'opacité classique pour le bouton Mail */
+.stage-btn-email:hover {
+    opacity: 0.85;
+}
+
+
 
