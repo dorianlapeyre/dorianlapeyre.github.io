@@ -1726,3 +1726,94 @@ footer {
 .image-modal:has(.zoomed) .next-arrow {
     display: none;
 }
+
+
+/* ==========================================================================
+   14. Recherche stage
+   ========================================================================== */
+/* Style de la section Recherche de Stage */
+.stage-container {
+    background: #f4f7f9; /* Un fond bleu très léger pour attirer l'œil */
+    border-left: 5px solid #0077b5; /* Une barre bleue (couleur pro/LinkedIn) */
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 900px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+.stage-badge {
+    display: inline-block;
+    background: #e1f5fe;
+    color: #0288d1;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.stage-container h2 {
+    margin-top: 0;
+    color: #111;
+}
+
+.stage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Version mobile */
+@media (max-width: 768px) {
+    .stage-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.stage-info p {
+    margin: 10px 0;
+    color: #444;
+    line-height: 1.5;
+}
+
+.stage-cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.btn-stage {
+    display: inline-block;
+    background: #0077b5;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 80%;
+    transition: background 0.3s;
+}
+
+.btn-stage:hover {
+    background: #005987;
+}
+
+.btn-stage.secondary {
+    background: #f1f1f1;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn-stage.secondary:hover {
+    background: #e1e1e1;
+}
