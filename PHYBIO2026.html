@@ -9,11 +9,12 @@
 </head>
 <div id="imageModal" class="image-modal">
     <span class="close-modal" onclick="closeModal()">&times;</span>
-    
     <span class="prev-arrow" onclick="event.stopPropagation(); prevImage();">&#10094;</span>
     <span class="next-arrow" onclick="event.stopPropagation(); nextImage();">&#10095;</span>
     
     <img class="full-res-img" id="imgFull"> 
+    <video class="full-res-img" id="vidFull" controls></video>
+    
     <div id="caption"></div>
 </div>
 <body class="detail-page">
@@ -117,6 +118,10 @@
                     <img src="images/PHYBIO2026/sunset.JPG" alt="Paysage" onclick="openModal(this)">
                 </div>
             </div>
+            <div class="image-wrapper" onclick="openModal(this)">
+                <video src="videos/dauphin.MP4" alt="Dauphins s'amusants dans le sillage du bateau" data-type="video"></video>
+                <div class="video-overlay">▶</div> 
+            </div>
             <div class="gallery-subsection">
                 <h3 class="gallery-title">Analyse</h3>
                 <div class="image-bandeau">
@@ -159,8 +164,25 @@
 
     function updateModalContent() {
         if (!currentImgElement) return;
-        modalImg.src = currentImgElement.src;
-        captionText.innerHTML = currentImgElement.alt;
+    
+        const imgFull = document.getElementById("imgFull");
+        const vidFull = document.getElementById("vidFull");
+        
+        // Vérifie si l'élément cliqué est une vidéo
+        const isVideo = currentImgElement.tagName === 'VIDEO';
+    
+        if (isVideo) {
+            imgFull.style.display = "none";
+            vidFull.style.display = "block";
+            vidFull.src = currentImgElement.src;
+            captionText.innerHTML = currentImgElement.alt;
+        } else {
+            vidFull.style.display = "none";
+            vidFull.pause(); // Stop la vidéo si elle tournait
+            imgFull.style.display = "block";
+            imgFull.src = currentImgElement.src;
+            captionText.innerHTML = currentImgElement.alt;
+        }
     }
 
     function nextImage() {
@@ -191,8 +213,9 @@
 
     function closeModal() {
         modal.style.display = "none";
+        document.getElementById("vidFull").pause(); // Arrête la lecture à la fermeture
         resetZoom();
-    }
+}
 
     // Zoom au clic
     modalImg.onclick = function(e) {
