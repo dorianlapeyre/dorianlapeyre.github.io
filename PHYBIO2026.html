@@ -118,9 +118,13 @@
                     <img src="images/PHYBIO2026/sunset.JPG" alt="Paysage" onclick="openModal(this)">
                 </div>
             </div>
-            <div class="image-wrapper" onclick="openModal(this)">
-                <video src="videos/dauphin.MP4" alt="Dauphins s'amusants dans le sillage du bateau" data-type="video"></video>
-                <div class="video-overlay">▶</div> 
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Dauphins</h3>
+                <div class="image-bandeau">
+                    <div class="image-wrapper">
+                        <video src="videos/dauphin.MP4" alt="Dauphins" onclick="openModal(this)"></video>
+                    </div>
+                </div>
             </div>
             <div class="gallery-subsection">
                 <h3 class="gallery-title">Analyse</h3>
@@ -187,11 +191,15 @@
 
     function nextImage() {
         if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        
+        // On cherche le prochain élément qui est soit une IMG soit une VIDEO
         let next = currentImgElement.nextElementSibling;
-        if (next && next.tagName === 'IMG') {
+        // Si on est dans un wrapper, on remonte au parent pour passer au suivant
+        if (!next) next = currentImgElement.parentElement.nextElementSibling?.querySelector('img, video');
+        
+        if (next && (next.tagName === 'IMG' || next.tagName === 'VIDEO')) {
             currentImgElement = next;
             updateModalContent();
-            resetZoom();
         }
     }
 
