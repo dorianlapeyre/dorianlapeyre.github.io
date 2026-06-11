@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Science de la Mer | Dorian Lapeyre</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<div id="imageModal" class="image-modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    
+    <span class="prev-arrow" onclick="event.stopPropagation(); prevImage();">&#10094;</span>
+    <span class="next-arrow" onclick="event.stopPropagation(); nextImage();">&#10095;</span>
+    
+    <img class="full-res-img" id="imgFull"> 
+    <div id="caption"></div>
+</div>
+<body class="detail-page">
+
+    <header class="detail-header">
+        <div class="header-content">
+            <span class="detail-subtitle">Océanographie Physique et Biogéochimique</span>
+            <h1>Master Science de la Mer</h1>
+            <p class="university-tag">
+                Étudiant à l' <a href="http://www.osupytheas.fr" target="_blank">Institut Pythéas</a>, 
+                <a href="http://www.univ-amu.fr" target="_blank">Université d'Aix-Marseille</a>
+            </p>
+            <a href="index.html" class="back-link">← Retour au portfolio</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="subject-section">
+            <h2 class="section-title">Projet PHYBIO 2026</h2>
+            
+            <div class="subject-card active"> <h3 class="subject-subtitle">Cours OPB201 -Mesure en mer</h3>
+                
+                <div class="modelling-grid">
+                    <div class="modelling-item">
+                        <div class="image-wrapper">
+                            <img src="images/Mode3D/bathy_1_40.png" alt="Bathymetry of my model (Bay of Biscay)" onclick="openModal(this)">
+                        </div>
+                        <p class="caption">Bathymetry of my model (Bay of Biscay)</p>
+                    </div>
+                
+                    <div class="modelling-item">
+                        <div class="image-wrapper">
+                            <img src="images/Mode3D/TS_spring.png" alt="Analyse des résultats de simulation" onclick="openModal(this)">
+                        </div>
+                        <p class="caption">Analyse des résultats de simulation</p>
+                    </div>
+                </div>
+
+                <div class="description-text">
+                    <p>
+                        Ce projet, réalisé dans le cadre de l'unité OPB205 (Modélisation 3D Océanique) au sein du Master Sciences de la Mer d'Aix-Marseille Université, porte sur l'étude de la dynamique océanique dans le sud du Golfe de Gascogne. 
+                    </p>
+                    <p>
+                        À l'aide du modèle numérique CROCO (Coastal and Regional Ocean COmmunity model) configuré à haute résolution, ce travail analyse les structures de méso-échelle et la variabilité saisonnière des masses d'eau. L'étude se concentre particulièrement sur l'Iberian Poleward Current (IPC), un courant de pente crucial pour le transport de chaleur dans la région.
+                    </p>
+                    <p>Le projet s'articule autour des axes d'analyse suivants :</p>
+                    
+                    <ul class="custom-list">
+                        <li><strong>Validation hydrologique :</strong> Analyse des diagrammes Température-Salinité (T-S) pour identifier les masses d'eau (ENACW, MW, LSW).</li>
+                        <li><strong>Dynamique saisonnière :</strong> Mise en évidence du contraste entre un jet stable en hiver et une désintégration tourbillonnaire en été.</li>
+                        <li><strong>Analyse tourbillonnaire :</strong> Utilisation du paramètre d'Okubo-Weiss pour caractériser les structures de méso-échelle (tourbillons anticycloniques et cycloniques).</li>
+                    </ul>
+                </div>
+
+                <div class="download-zone">
+                    <a href="pdf/LAPEYREDorian_rapportOPB205.pdf" class="btn-download" target="_blank">
+                        <span>📄</span> Rapport (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Galerie de Projet -->
+        <section class="project-gallery">
+            <h2 class="center-text">Galerie du Projet</h2>
+        
+            <!-- Sous-section 1 : Modélisation -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Pré-processing : make_ini</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/ini_fig1.png" alt="Figure 1 : script make_ini.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/ini_fig2.png" alt="Figure 2 : script make_ini.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/ini_fig3.png" alt="Figure 3 : script make_ini.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/ini_fig4.png" alt="Figure 4 : script make_ini.m" onclick="openModal(this)">
+                </div>
+            </div>
+        
+            <!-- Sous-section 2 : Simulations -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Pré-processing : make_forcing</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/forcing_fig1.png" alt="Figure 1 : script make_forcing.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/forcing_fig2.png" alt="Figure 2 : script make_forcing.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/forcing_fig3.png" alt="Figure 3 : script make_forcing.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/forcing_fig4.png" alt="Figure 4 : script make_forcing.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/forcing_fig5.png" alt="Figure 5 : script make_forcing.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/forcing_fig6.png" alt="Figure 6 : script make_forcing.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/forcing_fig7.png" alt="Figure 7 : script make_forcing.m" onclick="openModal(this)">
+                </div>
+            </div>
+        
+            <!-- Sous-section 3 : Analyses -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Pré-processing : make_clim</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/clim_fig1.png" alt="Figure 1 : script make_clim.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/clim_fig2.png" alt="Figure 2 : script make_clim.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/clim_fig3.png" alt="Figure 3 : script make_clim.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/clim_fig4.png" alt="Figure 4 : script make_clim.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/clim_fig5.png" alt="Figure 5 : script make_clim.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/clim_fig6.png" alt="Figure 6 : script make_clim.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/clim_fig7.png" alt="Figure 7 : script make_clim.m" onclick="openModal(this)">
+                    <img src="images/Mode3D/clim_fig8.png" alt="Figure 8 : script make_clim.m" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : zeta</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/zeta_winter.png" alt="Carte de zeta en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/zeta_spring.png" alt="Carte de zeta au printemps" onclick="openModal(this)">
+                    <img src="images/Mode3D/zeta_summer.png" alt="Carte de zeta en été " onclick="openModal(this)">
+                    <img src="images/Mode3D/zeta_autumn.png" alt="Carte de zeta en automne" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : SST</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/SST_1_40_winter.png" alt="Carte de SST en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/SST_spring.png" alt="Carte de SST au printemps" onclick="openModal(this)">
+                    <img src="images/Mode3D/SST_summer.png" alt="Carte de SST en été" onclick="openModal(this)">
+                    <img src="images/Mode3D/SST_autumn.png" alt="Carte de SST en automne" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : Temperature profile</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/Temp_profile_43°40__winter.png" alt="Section de températures le long du parallèle 43°40' Nord en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/Temp_profile_43°40__spring.png" alt="Section de températures le long du parallèle 43°40' Nord au printemps" onclick="openModal(this)">
+                    <img src="images/Mode3D/Temp_profile_43°40__summer.png" alt="Section de températures le long du parallèle 43°40' Nord en été" onclick="openModal(this)">
+                    <img src="images/Mode3D/Temp_profile_43°40__autumn.png" alt="Section de températures le long du parallèle 43°40' Nord en automne" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : Surface current</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/surfacecurrent_clear_winter.png" alt="Circulation de surface en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/surfacecurrent_spring.png" alt="Circulation de surface au printemps" onclick="openModal(this)">
+                    <img src="images/Mode3D/surfacecurrent_summer.png" alt="Circulation de surface en été" onclick="openModal(this)">
+                    <img src="images/Mode3D/surfacecurrent_autumn.png" alt="Circulation de surface en automne" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : velocity</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/speed_winterprofile_long.png" alt="Section de vitesses le long du méridien 3°40' Ouest en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/speed_summerprofile_long.png" alt="Section de vitesses le long du méridien 3°40' Ouest en été" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : Current profile</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/current_profile_43°40__winter.png" alt="Section de vitesses le long du parallèle 43°40' Nord en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/current_profile_43°40__spring.png" alt="Section de vitesses le long du parallèle 43°40' Nord au printemps" onclick="openModal(this)">
+                    <img src="images/Mode3D/current_profile_43°40__summer.png" alt="Section de vitesses le long du parallèle 43°40' Nord en été" onclick="openModal(this)">
+                    <img src="images/Mode3D/current_profile_43°40__autumn.png" alt="Section de vitesses le long du parallèle 43°40' Nord en automne" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : TS Diagram</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/TS_spring.png" alt="Diagramme TS de l'ensemble du domaine au printemps" onclick="openModal(this)">
+                    <img src="images/Mode3D/TS_summer.png" alt="Diagramme TS de l'ensemble du domaine en été" onclick="openModal(this)">
+                    <img src="images/Mode3D/TS_autumn.png" alt="Diagramme TS de l'ensemble du domaine en automne" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : IPC (Iberian Poleward Current)</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/IPC_winter.png" alt="Carte de vitesses à 400m de profondeur en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/IPC_summer.png" alt="Carte de vitesses à 400m de profondeur en été" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : MLD (Mixed Layer Depth)</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/MLD_winter.png" alt="Carte de la MLD en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/MLD_summer.png" alt="Carte de la MLD en hiver" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : Okubo-Weiss parameter</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/okubo_winter.png" alt="Carte du paramètre d'Okubo-Weiss en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/okubo_summer.png" alt="Analyse 1" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Analyse : Pycnocline depth</h3>
+                <div class="image-bandeau">
+                    <img src="images/Mode3D/pycnoclineD_winter.png" alt="Carte de la profondeur de la pycnocline en hiver" onclick="openModal(this)">
+                    <img src="images/Mode3D/pycnoclineD_summer.png" alt="Carte de la profondeur de la pycnocline en été" onclick="openModal(this)">
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="update-info">
+            <p><em>Dernière mise à jour : 01/05/2026</em></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 — Dorian Lapeyre</p>
+    </footer>
+
+    
+    <script>
+    /* =============================================================
+       1. GESTION DE LA MODALE, NAVIGATION ET ZOOM
+       ============================================================= */
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgFull");
+    const captionText = document.getElementById("caption");
+    let currentImgElement = null;
+
+    function openModal(element) {
+        modal.style.display = "block";
+        currentImgElement = element;
+        updateModalContent();
+        resetZoom();
+    }
+
+    function updateModalContent() {
+        if (!currentImgElement) return;
+        modalImg.src = currentImgElement.src;
+        captionText.innerHTML = currentImgElement.alt;
+    }
+
+    function nextImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        let next = currentImgElement.nextElementSibling;
+        if (next && next.tagName === 'IMG') {
+            currentImgElement = next;
+            updateModalContent();
+            resetZoom();
+        }
+    }
+
+    function prevImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        let prev = currentImgElement.previousElementSibling;
+        if (prev && prev.tagName === 'IMG') {
+            currentImgElement = prev;
+            updateModalContent();
+            resetZoom();
+        }
+    }
+
+    function resetZoom() {
+        modalImg.classList.remove("zoomed");
+        modalImg.style.transform = "scale(1)";
+        modalImg.style.transformOrigin = "center";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        resetZoom();
+    }
+
+    // Zoom au clic
+    modalImg.onclick = function(e) {
+        e.stopPropagation();
+        this.classList.toggle("zoomed");
+        if (this.classList.contains("zoomed")) {
+            this.style.transform = "scale(2.5)";
+        } else {
+            resetZoom();
+        }
+    };
+
+    // Suivi souris pour le zoom
+    modalImg.onmousemove = function(e) {
+        if (this.classList.contains("zoomed")) {
+            const rect = this.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            this.style.transformOrigin = `${x}% ${y}%`;
+        }
+    };
+
+    // Clavier
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === "block") {
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "Escape") closeModal();
+        }
+    });
+
+    // Trackpad (balayage horizontal)
+    window.addEventListener('wheel', function(e) {
+        if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
+            if (e.deltaX > 20) nextImage();
+            else if (e.deltaX < -20) prevImage();
+        }
+    }, { passive: true });
+
+    // Fermeture clic extérieur
+    window.onclick = function(event) {
+        if (event.target == modal) closeModal();
+    }
+    </script>
+</body>
+</html>
