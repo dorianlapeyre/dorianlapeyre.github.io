@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Science de la Mer | Dorian Lapeyre</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<div id="imageModal" class="image-modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <span class="prev-arrow" onclick="event.stopPropagation(); prevImage();">&#10094;</span>
+    <span class="next-arrow" onclick="event.stopPropagation(); nextImage();">&#10095;</span>
+    
+    <img class="full-res-img" id="imgFull"> 
+    <video class="full-res-img" id="vidFull" controls></video>
+    
+    <div id="caption"></div>
+</div>
+<body class="detail-page">
+
+    <header class="detail-header">
+        <div class="header-content">
+            <!-- BOUTONS DE LANGUE VERSION EN (L'anglais est actif, le lien FR remonte d'un dossier) -->
+            <div class="lang-switch-detail">
+                <a href="../srkproject.html" class="lang-item">FR</a>
+                <span class="lang-separator">|</span>
+                <span class="lang-item active">EN</span>
+            </div>
+
+            <span class="detail-subtitle">Physic Chemical</span>
+            <h1>Bachelor UPPA Anglet</h1>
+            <p class="university-tag">
+                Student at <a href="http://www.osupytheas.fr" target="_blank">Institut Pythéas</a>, 
+                <a href="http://www.univ-amu.fr" target="_blank">Aix-Marseille University</a>
+            </p>
+            <!-- Lien vers l'accueil anglais situé dans le même dossier -->
+            <a href="index.html" class="back-link">← Back to portfolio</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="subject-section">
+            <h2 class="section-title">Projet de modélisation L3</h2>
+            
+            <div class="subject-card active"> <h3 class="subject-subtitle">Projet expérimentale de Physique en anglais</h3>
+                
+                <div class="modelling-grid">
+                    <div class="modelling-item">
+                        <div class="image-wrapper">
+                            <img src="../images/ProjetSRKL3/isotherms.png" alt="Isothermes" onclick="openModal(this)">
+                        </div>
+                        <p class="caption">Isothermes de gaz réels</p>
+                    </div>
+                </div>
+
+                <div class="description-text">
+                  <p>  
+                      Ce projet de modélisation thermodynamique a été réalisé dans le cadre de la Licence 3 Sciences Physiques et Chimiques à l'Université de Pau et des Pays de l'Adour (UPPA) d'Anglet. Il porte sur l'étude et la simulation du comportement PVT (Pression-Volume-Température) des gaz réels.
+                  </p>
+                  <p>
+                      L'objectif central de ce travail était d'implémenter et d'analyser l'équation d'état de <em>Soave-Redlich-Kwong (SRK)</em>. Cette approche permet de décrire avec précision les propriétés thermodynamiques des fluides au-delà des simplifications du modèle des gaz parfaits, en introduisant des corrections pour les interactions moléculaires et le volume propre des particules.
+                  </p>
+                  <p>Le projet s'articule autour des axes d'analyse suivants :</p>
+                  
+                  <ul class="custom-list">
+                      <li><strong>Fondements thermodynamiques :</strong> Analyse comparative entre le modèle des gaz parfaits et l'équation d'état SRK pour la modélisation des fluides réels.</li>
+                      <li><strong>Détermination des paramètres :</strong> Calcul des constantes critiques et du facteur acentrique pour ajuster le modèle aux propriétés spécifiques du gaz étudié.</li>
+                      <li><strong>Validation numérique :</strong> Confrontation des résultats issus de la simulation avec des données expérimentales pour évaluer la fiabilité et les limites du modèle SRK dans différentes conditions de pression et de température.</li>
+                  </ul>
+              </div>
+
+              <div class="download-zone">
+                  <a href="../pdf/Physics project report.pdf" class="btn-download" target="_blank">
+                      <span>📄</span> Rapport (PDF)
+                  </a>
+                <a href="../pdf/Presentation physic project.pdf" class="btn-download" target="_blank">
+                    <span>📊</span> Présentation (PDF)
+                </a>
+            </div>  
+        </section>
+
+        <section class="update-info">
+            <p><em>Dernière mise à jour : 11/06/2026</em></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 — Dorian Lapeyre</p>
+    </footer>
+
+    
+    <script>
+    /* =============================================================
+       1. GESTION DE LA MODALE, NAVIGATION ET ZOOM
+       ============================================================= */
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgFull");
+    const captionText = document.getElementById("caption");
+    let currentImgElement = null;
+
+    function openModal(element) {
+        modal.style.display = "block";
+        currentImgElement = element;
+        updateModalContent();
+        resetZoom();
+    }
+
+    function updateModalContent() {
+        if (!currentImgElement) return;
+    
+        const imgFull = document.getElementById("imgFull");
+        const vidFull = document.getElementById("vidFull");
+        
+        // Vérifie si l'élément cliqué est une vidéo
+        const isVideo = currentImgElement.tagName === 'VIDEO';
+    
+        if (isVideo) {
+            imgFull.style.display = "none";
+            vidFull.style.display = "block";
+            vidFull.src = currentImgElement.src;
+            captionText.innerHTML = currentImgElement.alt;
+        } else {
+            vidFull.style.display = "none";
+            vidFull.pause(); // Stop la vidéo si elle tournait
+            imgFull.style.display = "block";
+            imgFull.src = currentImgElement.src;
+            captionText.innerHTML = currentImgElement.alt;
+        }
+    }
+
+    function nextImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        
+        // On cherche le prochain élément qui est soit une IMG soit une VIDEO
+        let next = currentImgElement.nextElementSibling;
+        // Si on est dans un wrapper, on remonte au parent pour passer au suivant
+        if (!next) next = currentImgElement.parentElement.nextElementSibling?.querySelector('img, video');
+        
+        if (next && (next.tagName === 'IMG' || next.tagName === 'VIDEO')) {
+            currentImgElement = next;
+            updateModalContent();
+        }
+    }
+
+    function prevImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        let prev = currentImgElement.previousElementSibling;
+        if (prev && prev.tagName === 'IMG') {
+            currentImgElement = prev;
+            updateModalContent();
+            resetZoom();
+        }
+    }
+
+    function resetZoom() {
+        modalImg.classList.remove("zoomed");
+        modalImg.style.transform = "scale(1)";
+        modalImg.style.transformOrigin = "center";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        document.getElementById("vidFull").pause(); // Arrête la lecture à la fermeture
+        resetZoom();
+}
+
+    // Zoom au clic
+    modalImg.onclick = function(e) {
+        e.stopPropagation();
+        this.classList.toggle("zoomed");
+        if (this.classList.contains("zoomed")) {
+            this.style.transform = "scale(2.5)";
+        } else {
+            resetZoom();
+        }
+    };
+
+    // Suivi souris pour le zoom
+    modalImg.onmousemove = function(e) {
+        if (this.classList.contains("zoomed")) {
+            const rect = this.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            this.style.transformOrigin = `${x}% ${y}%`;
+        }
+    };
+
+    // Clavier
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === "block") {
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "Escape") closeModal();
+        }
+    });
+
+    // Trackpad (balayage horizontal)
+    window.addEventListener('wheel', function(e) {
+        if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
+            if (e.deltaX > 20) nextImage();
+            else if (e.deltaX < -20) prevImage();
+        }
+    }, { passive: true });
+
+    // Fermeture clic extérieur
+    window.onclick = function(event) {
+        if (event.target == modal) closeModal();
+    }
+    </script>
+</body>
+</html>
