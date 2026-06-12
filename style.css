@@ -1770,3 +1770,55 @@ footer {
 
 
 
+
+/* ==========================================================================
+   SÉLECTEUR DE LANGUE (NAVBAR)
+   ========================================================================== */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto; /* Pousse le sélecteur à droite */
+    margin-right: 25px; /* Laisse de l'espace avant le menu burger */
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    z-index: 1002; /* Reste cliquable et au-dessus de la navbar */
+}
+
+/* Style de base des éléments de langue */
+.lang-item {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+/* État survolé pour les langues non actives */
+a.lang-item:hover {
+    color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* Langue actuellement sélectionnée (lumineuse) */
+.lang-item.active {
+    color: var(--text-main);
+    border-bottom: 2px solid var(--accent);
+    cursor: default;
+    padding-bottom: 2px;
+}
+
+/* Séparateur vertical discret */
+.lang-separator {
+    color: #333;
+    user-select: none;
+}
+
+/* Ajustement responsive pour les smartphones */
+@media (max-width: 768px) {
+    .lang-switch {
+        margin-right: 15px; /* Ajustement de l'espace sur mobile */
+        font-size: 0.85rem;
+    }
+}
+
