@@ -1,1 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYQMKEHGBB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SYQMKEHGBB');
+    </script>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="o7Jf8j03K1pThnCea-X9xUeDstPmLf3vngkHnI-L5A4" />
+    
+    <title>Dorian Lapeyre | Portfolio</title>
+    <meta name="description" content="Portfolio de Dorian Lapeyre, étudiant en Master Sciences de la Mer dans le parcours OPB (Aix-Marseille Université, OSU Pythéas) et Nageur Sauveteur à Capbreton.">
+    <meta name="author" content="Dorian Lapeyre">
+    <meta name="keywords" content="Dorian Lapeyre, Océanographie, Master MER, Marseille, Ingénierie, Sauvetage Côtier, Capbreton, Modélisation Océanique, Cycles biogéochimiques">
+    <meta property="og:image" content="https://dorianlapeyre.github.io/images/PortraitDL2.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta property="og:title" content="Dorian Lapeyre | Portfolio">
+    <meta property="og:description" content="Étudiant en Master Sciences de la Mer & Nageur Sauveteur. Découvrez mon parcours et mes projets.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <style>
+        /* Correctif pour les marqueurs de la carte */
+        .custom-div-icon { background: none !important; border: none !important; }
+        
+        /* Assure que le body prend toute la largeur sans scroll horizontal parasite */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>        
+        <div class="burger-menu" id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="lang-switch">
+          <a href="../index.html" class="lang-item">FR</a>
+          <span class="lang-separator">|</span>
+          <span class="lang-item active">EN</span>
+      </div>
+    
+        <div class="nav-links" id="nav-links">
+            <a href="#infographie">Infography</a>
+            <a href="#about">Academic</a>
+            <a href="#projets">Projects</a>
+            <a href="#pro">Professionnal</a>
+            <a href="#asso">Associative</a>
+            <a href="javascript:void(0)" class="contact-trigger">Contact</a>
+        </div>
+    </nav>
+
+    <header class="main-header">
+        <div class="header-profiles">
+            <div class="profile-box">
+                <img src="images/PortraitDL2.jpg" alt="Portrait Dorian Lapeyre">
+            </div>
+        </div>
+        <div class="ocean-waves">
+            <svg class="waves" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(26, 42, 62, 0.7)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(30, 58, 138, 0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(37, 99, 235, 0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(15, 23, 42, 1)" />
+                </g>
+            </svg>
+        </div>
+        <div class="header-name">Dorian Lapeyre</div>
+        <h1>Étudiant en <span class="highlight">Master Science de la mer</span></h1>
+        <p>Au sein d'Aix-Marseille Université dans le parcours <strong>Océanographie Physique et Biogéochimique</strong></p>
+    </header>
+
+    <section id="news-section">
+        <h2 class="center-text">Ressources & Actualités</h2>
+        
+        <p class="map-intro" style="text-align: center; color: #a0a0a0; margin-bottom: 20px;">
+            Retrouvez mon curriculum vitæ à jour ainsi que mon projet de modélisation.
+        </p>
+    
+        <div class="download-zone">
+            <a href="pdf/CV_Lapeyre_Dorian_FR.pdf" class="btn-download" target="_blank">
+                <span>🇫🇷</span> Mon CV (Français)
+            </a>
+    
+            <a href="pdf/CV_Lapeyre_Dorian_EN.pdf" class="btn-download" target="_blank">
+                <span>🇬🇧</span> My CV (English)
+            </a>
+    
+            <a href="projetMode3D.html" class="btn-download">
+                <span>🌊</span> Projet Modélisation 3D
+            </a>
+        </div>
+    </section>
+
+    <section id="recherche-stage">
+        <h2 class="center-text">Recherche de Stage</h2>
+        
+        <p class="map-intro" style="text-align: center; color: var(--text-dim); margin-bottom: 30px;">
+            Étudiant en Master 1, je suis à la recherche d'un stage de fin d'études.
+        </p>
+    
+        <div class="card" style="max-width: 800px; margin: 0 auto; cursor: default; padding: 40px; transform: none !important; box-shadow: none !important; border: 1px solid #222;">
+            
+            <div style="margin-bottom: 35px;">
+                <h3 style="color: var(--accent); margin-top: 0; margin-bottom: 20px; font-size: 1.4rem; border-bottom: 1px solid #222; padding-bottom: 8px;">
+                    Mon Projet de Stage
+                </h3>
+                
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                    <li style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="color: var(--accent); font-weight: bold;">•</span>
+                        <span style="color: var(--text-dim);">
+                            <strong style="color: var(--text-main);">Domaines clés :</strong> Océanographie physique, biogéochimie, modélisation 3D océanique ou traitement de données.
+                        </span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: var(--accent); font-weight: bold;">•</span>
+                        <span style="color: var(--text-dim);">
+                            <strong style="color: var(--text-main);">Durée & Période :</strong> 6 mois (Janvier – Juin 2027).
+                        </span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: var(--accent); font-weight: bold;">•</span>
+                        <span style="color: var(--text-dim);">
+                            <strong style="color: var(--text-main);">Mobilité géographique :</strong> France entière & International.
+                        </span>
+                    </li>
+                </ul>
+            </div>
+    
+            <div>
+                <h3 style="color: var(--accent); margin-bottom: 15px; font-size: 1.4rem; border-bottom: 1px solid #222; padding-bottom: 8px;">
+                    Contact
+                </h3>
+                <p style="color: var(--text-dim); margin-bottom: 25px; font-size: 0.95rem;">
+                    Mon profil vous intéresse ? Discutons-en !
+                </p>
+                
+                <div class="download-zone" style="margin-top: 20px; gap: 12px; justify-content: center; display: flex; flex-direction: column; align-items: center;">
+                    
+                    <a href="https://www.linkedin.com/in/dorian-lapeyre-04131b176" target="_blank" 
+                       class="stage-btn-linkedin"
+                       style="text-decoration: none; flex: 1; max-width: 200px; width: 100%; display: block;">
+                        <div style="background: #0077b5; color: white; padding: 10px 16px; border-radius: 6px; text-align: center; font-weight: 500; font-size: 0.95rem; transition: background 0.2s ease;">
+                            🔗 Profil LinkedIn
+                        </div>
+                    </a>
+    
+                    <div id="btn-copy-email" 
+                         class="stage-btn-email"
+                         style="background: var(--accent); color: #0f0f0f; padding: 10px 16px; border-radius: 6px; text-align: center; font-weight: 500; font-size: 0.95rem; cursor: pointer; transition: opacity 0.2s ease; position: relative; flex: 1; max-width: 200px; width: 100%; box-sizing: border-box;">
+                        📧 Mail
+                        
+                        <span id="copy-tooltip" style="display: none; position: absolute; top: -35px; left: 50%; transform: translateX(-50%); background: #222; color: var(--accent); border: 1px solid var(--accent); font-size: 0.8rem; padding: 4px 10px; border-radius: 4px; white-space: nowrap;">
+                            Copié !
+                        </span>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    
+    <!-- <section id="map-section">
+        <h2 class="center-text">Où ai-je travaillé ?</h2>
+            <p class="map-intro" style="text-align: center; color: #a0a0a0; margin-bottom: 20px;">
+            Explorez les lieux de mes expériences académiques, professionnelles et associatives.
+            </p>
+        <div id="experience-map"></div>
+            <p class="map-intro" style="text-align: center; color: #a0a0a0; margin-bottom: 20px;">
+            Cliquez sur la carte, puis appuyer sur "+" ou "-" pour zoomer à votre guise. Maintenez le clique et coulissez pour vous déplacer.
+            </p>
+    </section> -->
+
+   <section id="infographie" class="infographie-container">
+        <h2 class="center-text">Mon Histoire</h2>
+
+        <article class="info-block">
+            <div class="info-intro">
+                <h3 class="lead-text">Bonjour et bienvenue !</h3> <p>Je m’appelle <strong>Dorian Lapeyre</strong>. Passionné par les sciences, la philosophie, l’art et la nature, je suis actuellement en master Science de la mer en <strong>océanographie physique et biogéochimique</strong>.</p>
+                <p>Bienvenue sur mon site web où j’y expose mon <strong>Portfolio</strong> mais surtout plus de détails sur mes expériences pour mieux comprendre mon profil. Cette démarche vise également à accompagner ceux qui se questionnent sur leur orientation tout en offrant une lecture plus approfondie de mon identité aux curieux.</p>
+            </div>
+        </article>
+
+        <div class="read-more-wrapper">
+            <button id="btn-read-more" class="btn-read-more">En savoir plus sur mon parcours →</button>
+        </div>
+
+        <div id="info-content-extra" class="info-content-extra">
+            <article class="info-block">
+                <h3>Secondaire & CPGE</h3>
+                <p>Mon parcours dans le secondaire est, somme toute, très commun. Doté dès mon plus jeune âge d’une forte appétence pour les sciences et étant d’un naturel curieux, je me suis orienté en filière scientifique avec une spécialité physique. Cette période ne fut cependant pas exempte de difficultés. Le contraste permanent entre le plaisir que j’avais de découvrir la Science sous une forme plus rigoureuse et démonstrative, et ma difficulté à évoluer dans un système compétitif comme peut l'être l'école ont fait naître en moi un fort sentiment d’extranéité.</p>
+                <p>Malgré des résultats peu significatifs, j’ai été pris en Classe Préparatoire aux Grandes Écoles d’Ingénieures (CPGE) au lycée René Cassin de Bayonne en filière PCSI. Ce choix de parcours a été motivé par une vision carriériste et mesurée comme la plupart des Terminales qui ne tranchent pas sur leur poursuite d’études. Cette année a été charnière dans la construction de ma capacité de travail. J’ai appris à développer des méthodes et ma résilience face à l’échec (quasi permanent en prépa). Après une année de labeur le corps enseignant m’a invité à me réorienter en Licence de Physique-Chimie. Ayant de réelles difficultés à performer lors de concours, la deuxième année auraient été un mur infranchissable. J’ai néanmoins découvert que j’avais une meilleure aisance oratoire et que c’était lors des khôlles que je performais le plus.</p>
+            </article>
+    
+            <article class="info-block">
+                <h3>Licence à l'UPPA</h3>
+                <p>La licence de Physique-Chimie (UPPA d’Anglet) a été une révélation et une clé de voute dans ma scolarité. J’ai découvert un monde qui correspondait à ma façon d’apprendre et assouvissait mon insatiable envie de comprendre les concepts qui régissent la nature. Durant cette période j’ai appris à comprendre les nuances qu’apportent la Physique, la Chimie ou les Mathématiques. Je me suis plongé dans des réflexions que nous offrent la Physique (voire la Philosophie) de Neils Bohr, Max Born, Erwin Schrödinger ou Werner Heisenberg. Des visions qui amènent à remettre en cause les notions de temps, d’espaces, d’énergies, d’observations ou bien de mesures. Cet investissement a abouti à de bons résultats. J’ai donc pris la décision en L2 d’intégrer une école d’ingénieure.</p>
+            </article>
+    
+            <article class="info-block">
+                <h3>INSA Toulouse & Choix du Master Science de la mer</h3>
+                <p>De mon passage en école d'ingénieur (Génie Mécanique à l’INSA Toulouse), je retiens paradoxalement une leçon : la lucidité que ce milieu ne constituait pas mon véritable terrain d’épanouissement. L’hyper-individualisme, l’abstraction du vivant, la pensée carriériste et matérialiste, m’ont profondément affecté. J’ai néanmoins réussi à intégrer une filière d'ingénierie système en 4ème année et à obtenir un semestre d’échange dans une des meilleures Université du Japon : Keio University à Tokyo. Pourtant alors que mon départ pour le Japon était imminent, j'ai décidé de quitter l’école, et de revenir en L3 Physique-Chimie pour intégrer ensuite un master Science de la mer. L’océan a toujours été un élément important dans ma vie, j’ai donc souhaité vouloir le comprendre dans ces moindres recoins et j’ai pour cela intégré le master Océanographie Physique et Biogéochimique (OPB) d’Aix-Marseille Université au sein de l’OSU Pythéas.</p>
+            </article>
+    
+            <article class="info-block">
+                <h3>Nageur Sauveteur</h3>
+                <p>Parallèlement à ce cursus académique, depuis 2021, j'œuvre chaque été en tant que nageur sauveteur à la plage de la Piste, à Capbreton. Je suis également bénévole au sein d'associations de secourisme. Travailler au contact immédiat de l'élément marin m'a rendu sensible à sa puissance brute, mais aussi à sa fragilité. Je profite de cette présence quotidienne sur le littoral pour sensibiliser les usagers à la protection de la laisse de mer et de l'écosystème dunaire. Cette dynamique de terrain, où l'on compose sans cesse avec l'océan, a été un des catalyseurs de ma transition vers les sciences de la mer.</p>
+            </article>
+
+            <article class="info-block">
+                <h3>Stage de fin de Licence</h3>
+                <p>À l’issu de la L3 j’ai effectué un stage eu sein du SIAME dans l’équipe IVS (Interactions Vagues Structures) où j’ai dû réaliser des fonds rugueux océaniques à l’échelle 1/20ème pour étudier la dissipation des vagues par frottement. Cela s’inscrivait dans le cadre du projet COCODYROCK (Collapsing Complexity for wave Dynamics over Reef and rOcky coasts). Cela m’a permis de découvrir l’Océanographie et les enjeux auxquels les zones côtières vont faire face. En effet elles sont le théâtre d’interactions complexes entre l’océan et les milieux terrestres. Elles concentrent de forts enjeux socio-économiques, écologiques et climatiques, tout en étant soumises à des processus dynamiques particulièrement intenses.</p>
+            </article>
+    
+            <article class="info-block">
+                <h3>Actuellement</h3>
+                <p>À présent étudiant en Master 1 mon quotidien est avant tout guidé par un lien profond avec le vivant. Je passe la majeure partie de mon temps à l'extérieur, que ce soit pour des sports de pleine nature ou des sorties botaniques. Mon lien avec l'océan, la forêt et la montagne s'inscrit dans une vision non consumériste. J’ai appris à apprécier la nature dans sa plus grande simplicité, de la magnificence d’un arbre centenaire à l’écoulement d’une rivière. Le fait d’étudier et de comprendre des phénomènes qui m’émerveillent lors de mes sorties me conforte grandement dans l’idée que je me sens à ma place là où je suis et que je souhaite œuvrer à la protection des milieux naturels.</p>
+            </article>
+    
+        </div> <div id="close-wrapper" class="read-more-wrapper" style="display: none;">
+            <button id="btn-close-more" class="btn-read-more">Refermer l'histoire ↑</button>
+        </div>
+        
+    </section>
+
+    <section id="about">
+        <h2 class="center-text">Expérience académique</h2>
+        <div class="grid">
+            <a href="pcsi.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_cassin.png" alt="Logo CPGE"></div>
+                    <h3>CPGE</h3>
+                    <p>PCSI</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="licence.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA"></div>
+                    <h3>Licence</h3>
+                    <p>Physique-Chimie</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="insa.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_INSAToulouse-quadri.png" alt="Logo INSA"></div> 
+                    <h3>INSA Toulouse</h3>
+                    <p>Génie Mécanique</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="master.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_opb.png" alt="Logo AMU"></div>
+                    <h3>Master</h3>
+                    <p>Sciences de la Mer</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            
+            
+        </div>
+    </section>
+
+    <section id="projets">
+        <h2 class="center-text">Projets</h2>
+        <div class="grid">
+            <a href="srkproject.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="images/ProjetSRKL3/SRKequation.png" alt="Logo SRK"></div> 
+                    <h3>Modélisation d'une fonction d'état thermodynamique</h3>
+                    <p>Soave-Redlich-Kwong</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="MesureBIO.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="images/MesureBIO/Antédon.png" alt="Logo BIO"></div> 
+                    <h3>Rapport de sortie en mer</h3>
+                    <p>Mesures en océanographie biologique</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="projetMode3D.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="images/Mode3D/Logo_Mode3D.png" alt="Logo Mode3D"></div> 
+                    <h3>Modélisation du Golfe de Gascogne</h3>
+                    <p>Modélisation 3D Océanique</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="PHYBIO2026.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="images/PHYBIO2026/Campagne phybio 2026.png" alt="Logo PHYBIO2026"></div> 
+                    <h3>Recueil de données, PHYBIO 2026</h3>
+                    <p>Mesure en mer</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="pro">
+        <h2 class="center-text">Expériences professionnelles</h2>
+        <div class="grid">
+            <a href="smgbl.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/logo-smgbl.jpg" alt="Logo SMGBL"></div>
+                    <h3>Nageur sauveteur</h3>
+                    <p>SMGBL (Littoral Landais)</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="tuteur.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_UPPA.svg.png" alt="Logo UPPA"></div>
+                    <h3>Tuteur</h3>
+                    <p>Accompagnement universitaire</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="siame.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/SIAME.png" alt="Logo SIAME"></div> 
+                    <h3>Stage de L3</h3>
+                    <p>Laboratoire SIAME</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="asso">
+        <h2 class="center-text">Expériences associatives</h2>
+        <div class="grid">
+            <a href="nsc.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_NSC.png" alt="Logo NSC"></div>
+                    <h3>Sauveteur côtier</h3>
+                    <p>Nageur Sauveteur de Capbreton</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+            <a href="csc.html" class="card-link">
+                <div class="card">
+                    <div class="card-logo"><img src="logos/Logo_CSC.png" alt="Logo CSC"></div>
+                    <h3>Chef/Équipier secouriste</h3>
+                    <p>Capbreton Sauvetage Côtier</p>
+                    <span>En savoir plus →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section id="stack">
+        <h2 class="center-text">Stack Technique & Scientifique</h2>
+        <div class="stack-grid">
+            <div class="stack-item">
+                <div class="stack-icon">🌍</div>
+                <h3>Ocean Data View</h3>
+                <p>Analyse & Visualisation de données océanographiques</p>
+            </div>
+            <div class="stack-item">
+                <div class="card-logo"><img src="logos/matlab.jpg" alt="Logo matlab"></div> 
+                <h3>Matlab</h3>
+                <p>Calcul numérique</p>
+            </div>
+            <div class="stack-item">
+                <div class="card-logo"><img src="logos/python.jpg" alt="Logo python"></div> 
+                <h3>Python</h3>
+                <p>Analyse de données (Pandas, Numpy, Xarray)</p>
+            </div>
+            <div class="stack-item">
+                <div class="card-logo"><img src="logos/excel.jpg" alt="Logo excel"></div> 
+                <h3>Excel</h3>
+                <p>Gestion de données & Macros VBA</p>
+            </div>
+            <div class="stack-item">
+                    <div class="card-logo"><img src="logos/latex.png" alt="Logo latex"></div> 
+                <h3>LaTeX</h3>
+                <p>Rédaction de rapports scientifiques</p>
+            </div>
+            <div class="stack-item">
+                <div class="card-logo"><img src="logos/creo.png" alt="Logo creo"></div> 
+                <h3>CREO</h3>
+                <p>Conception & Modélisation 3D (CAO)</p>
+            </div>
+            <div class="stack-item">
+                <div class="card-logo"><img src="logos/fortran.png" alt="Logo fortran"></div> 
+                <h3>Fortran</h3>
+                <p>Modélisation physique</p>
+            </div>
+            <div class="stack-item">
+                <div class="card-logo"><img src="logos/croco.png" alt="Logo fortran"></div> 
+                <h3>CROCO</h3>
+                <p>Modélisation haute résolution</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 — Dorian Lapeyre</p>
+    </footer>
+
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Me contacter</h2>
+            <div class="contact-links">
+                <a href="mailto:dorian.lapeyre69@gmail.com" class="contact-item">📧 Email</a>
+                <a href="https://www.linkedin.com/in/dorian-lapeyre-04131b176" target="_blank" class="contact-item">🔗 LinkedIn</a>
+                <a href="https://github.com/dorianlepeyre" target="_blank" class="contact-item">💻 GitHub</a>
+            </div>
+        </div>
+    </div>
+
+   <script>
+        // --- GESTION NAVIGATION & MODALE ---
+        const burgerMenu = document.getElementById('burger-menu');
+        const navLinks = document.getElementById('nav-links');
+        const modal = document.getElementById("contact-modal");
+        const contactTriggers = document.querySelectorAll(".contact-trigger");
+        const spanClose = document.querySelector(".close-button");
+
+        // Toggle Menu
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fermer le menu au clic sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Modale Contact
+        contactTriggers.forEach(trigger => {
+            trigger.onclick = function() {
+                modal.style.display = "block";
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        spanClose.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
+
+        // --- INITIALISATION CARTE ---
+        // const map = L.map('experience-map', {
+        //     scrollWheelZoom: false,
+        //     zoomControl: false 
+        // }).setView([46.0, 2.0], 5); // Centré un peu plus haut pour mieux voir la France et l'Europe
+
+        // // UTILISER UNIQUEMENT CELUI-CI : Les tuiles claires s'inversent mieux en CSS
+        // L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        //     attribution: '&copy; CARTO'
+        // }).addTo(map);
+
+        // const neonIcon = L.divIcon({
+        //     className: 'custom-div-icon',
+        //     html: "<div class='neon-marker'></div>",
+        //     iconSize: [12, 12],
+        //     iconAnchor: [6, 6]
+        // });
+
+        // const experiences = [
+        //     { lat: 43.6043, lng: 1.4437, title: "Toulouse", desc: "Génie Mécanique à l'INSA" },
+        //     { lat: 43.4862, lng: -1.4839, title: "Bayonne", desc: "CPGE PCSI" },
+        //     { lat: 43.4695, lng: -1.5204, title: "Anglet", desc: "Licence & Tutorat UPPA" },
+        //     { lat: 43.2965, lng: 5.3698, title: "Marseille", desc: "Master Science de la Mer" },
+        //     { lat: 43.6429, lng: -1.4452, title: "Capbreton", desc: "Nageur Sauveteur, secouriste" }
+        // ];
+
+        // experiences.forEach(exp => {
+        //     L.marker([exp.lat, exp.lng], { icon: neonIcon }).addTo(map)
+        //         .bindPopup(`<b style="color:#4facfe">${exp.title}</b><br>${exp.desc}`);
+        // });
+
+        // // Invalider la taille après chargement pour éviter les carrés gris
+        // setTimeout(() => { map.invalidateSize(); }, 500);
+        
+        
+        
+       // À ajouter dans votre balise <script> existante
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 70; // Hauteur de votre menu + marge
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = target.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+        
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    let lastScrollY = window.scrollY;
+    const navbar = document.querySelector('nav');
+    
+    window.addEventListener('scroll', () => {
+        // Si on descend, on ajoute la classe pour cacher
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            navbar.classList.add('nav-hidden');
+        } 
+        // Si on remonte, on retire la classe pour afficher
+        else {
+            navbar.classList.remove('nav-hidden');
+        }
+        
+        // Fermer le menu burger automatiquement si l'utilisateur scroll
+        if (window.scrollY > lastScrollY) {
+            document.getElementById('burger-menu').classList.remove('active');
+            document.getElementById('nav-links').classList.remove('active');
+        }
+    
+        lastScrollY = window.scrollY;
+    });
+    const btnReadMore = document.getElementById('btn-read-more');
+    const btnCloseMore = document.getElementById('btn-close-more');
+    const extraContent = document.getElementById('info-content-extra');
+    const closeWrapper = document.getElementById('close-wrapper');
+    const introSection = document.getElementById('infographie'); // La section parente
+    
+    // FONCTION OUVRIR
+    btnReadMore.addEventListener('click', () => {
+        extraContent.classList.add('active');
+        btnReadMore.parentElement.style.display = 'none'; // Cache le wrapper du bouton "Plus"
+        closeWrapper.classList.add('visible'); // Affiche le bouton "Fermer"
+        
+        setTimeout(() => {
+            const yOffset = -80;
+            const y = extraContent.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
+        }, 100);
+    });
+    
+    // FONCTION FERMER
+    btnCloseMore.addEventListener('click', () => {
+        extraContent.classList.remove('active');
+        closeWrapper.classList.remove('visible');
+        btnReadMore.parentElement.style.display = 'block'; // Réaffiche le bouton "Plus"
+    
+        // Remonte l'utilisateur au début de la section "Mon Histoire"
+        setTimeout(() => {
+            const yOffset = -100;
+            const y = introSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
+        }, 50);
+    });
+   // --- FONCTIONNALITÉ COPIE EMAIL PRESE-PAPIERS ---
+    const btnEmail = document.getElementById('btn-copy-email');
+    const tooltip = document.getElementById('copy-tooltip');
+
+    if (btnEmail) {
+        btnEmail.addEventListener('click', () => {
+            const emailText = "dorian.lapeyre@etu.univ-amu.fr";
+            
+            // Utilisation de l'API moderne du presse-papiers
+            navigator.clipboard.writeText(emailText).then(() => {
+                // Affiche le petit message "Copié !"
+                tooltip.style.display = "block";
+                
+                // Cache le message après 2 secondes
+                setTimeout(() => {
+                    tooltip.style.display = "none";
+                }, 1200);
+            }).catch(err => {
+                console.error('Erreur lors de la copie : ', err);
+            });
+        });
+    }
+    </script>
+</body>
+</html>
