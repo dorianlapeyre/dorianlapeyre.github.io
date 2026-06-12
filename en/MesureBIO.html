@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Science de la Mer | Dorian Lapeyre</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<div id="imageModal" class="image-modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <span class="prev-arrow" onclick="event.stopPropagation(); prevImage();">&#10094;</span>
+    <span class="next-arrow" onclick="event.stopPropagation(); nextImage();">&#10095;</span>
+    
+    <img class="full-res-img" id="imgFull"> 
+    <video class="full-res-img" id="vidFull" controls></video>
+    
+    <div id="caption"></div>
+</div>
+<body class="detail-page">
+
+    <header class="detail-header">
+        <div class="header-content">
+            <div class="lang-switch-detail">
+                <a href="../MesureBIO.html" class="lang-item">FR</a>
+                <span class="lang-separator">|</span>
+                <span class="lang-item active">EN</span>
+            </div>
+            <span class="detail-subtitle">Océanographie Physique et Biogéochimique</span>
+            <h1>Master Science de la Mer</h1>
+            <p class="university-tag">
+                Étudiant à l' <a href="http://www.osupytheas.fr" target="_blank">Institut Pythéas</a>, 
+                <a href="http://www.univ-amu.fr" target="_blank">Université d'Aix-Marseille</a>
+            </p>
+            <a href="index.html" class="back-link">← Retour au portfolio</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="subject-section">
+            <h2 class="section-title">Sortie en mer</h2>
+            
+            <div class="subject-card active"> <h3 class="subject-subtitle">Cours : Mesures en océanographie biologique</h3>
+                
+                <div class="modelling-grid">
+                    <div class="modelling-item">
+                        <div class="image-wrapper">
+                            <img src="images/MesureBIO/manta.jpg" alt="Filet Manta" onclick="openModal(this)">
+                        </div>
+                        <p class="caption">Filet manta</p>
+                    </div>
+                </div>
+
+                <div class="description-text">
+                  <p>
+                      Ce projet a été réalisé dans le cadre de l'UE "Mesures en Océanographie Biologique" du Master 1 Sciences de la Mer d'Aix-Marseille Université. Il s'appuie sur une série de six sorties en mer effectuées à bord du navire <em>Antedon II</em> au sein de la station SOMLIT du Frioul.
+                  </p>
+                  <p>
+                      L'étude visait à corréler les paramètres physico-chimiques de la colonne d'eau avec la dynamique des communautés planctoniques. En combinant mesures in situ et analyses en laboratoire, nous avons cherché à mieux comprendre le fonctionnement de cet écosystème côtier sous l'influence des variations environnementales saisonnières.
+                  </p>
+                  <p>Le projet s'est articulé autour des axes d'analyse suivants :</p>
+                  
+                  <ul class="custom-list">
+                      <li><strong>Dynamique des masses d'eau :</strong> Caractérisation de la température et de la salinité via sonde CTD pour mettre en évidence les phénomènes de stratification et de mélange vertical.</li>
+                      <li><strong>Cycle de l'oxygène dissous :</strong> Évaluation des processus de respiration et de bioturbation afin de mesurer l'impact du système océan-atmosphère.</li>
+                      <li><strong>Étude de la turbidité :</strong> Analyse des profils de matière en suspension pour identifier les facteurs influençant la clarté de la colonne d'eau.</li>
+                      <li><strong>Suivi phytoplanctonique :</strong> Évaluation de la biomasse et de l'activité biologique par l'utilisation d'indicateurs en chlorophylle <em>a</em> et mesures de rayonnement photosynthétique actif (PAR).</li>
+                  </ul>
+                </div>
+
+                <div class="download-zone">
+                    <a href="pdf/Rapport de TP en mer_DLapeyre_JGarnier_TGauthier.pdf" class="btn-download" target="_blank">
+                        <span>📄</span> Rapport (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Galerie de Projet -->
+        <section class="project-gallery">
+            <h2 class="center-text">Galerie du Projet</h2>
+        
+            <!-- Sous-section 1 : Modélisation -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Sortie</h3>
+                <div class="image-bandeau">
+                    <img src="images/MesureBIO/colectezoo.jpg" alt="Collecte de zooplanctons" onclick="openModal(this)">
+                    <img src="images/MesureBIO/treuil.png" alt="Treuil" onclick="openModal(this)">
+                    <img src="images/MesureBIO/niskin.jpg" alt="Niskin" onclick="openModal(this)">
+                </div>
+            </div>
+        
+            <!-- Sous-section 2 : Simulations -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Manipulations</h3>
+                <div class="image-bandeau">
+                    <img src="images/MesureBIO/depotzoo.jpg" alt="Dépôt de zooplanctons" onclick="openModal(this)">
+                    <img src="images/MesureBIO/filetWP2_biomasse.jpg" alt="Biomasse collectée dans le WP2" onclick="openModal(this)">
+                    <img src="images/MesureBIO/filetmanta_biomasse.jpg" alt="Biomasse collectée dans le manta" onclick="openModal(this)">
+                    <img src="images/MesureBIO/filetrégent_biomasse.jpg" alt="Biomasse collectée dans le régent" onclick="openModal(this)">
+                    <img src="images/MesureBIO/fluorimétrie.jpg" alt="Fluorimètre" onclick="openModal(this)">
+                    <img src="images/MesureBIO/biovolume.jpg" alt="Biovolume" onclick="openModal(this)">
+                </div>
+            </div>
+        
+            <!-- Sous-section 3 : Analyses -->
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Graphs CTD</h3>
+                <div class="image-bandeau">
+                    <img src="images/MesureBIO/Boxplot_temp_R.png" alt="Boxplot température" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Temperature_plot_R.png" alt="Profils de température" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Salinity_plot_R.png" alt="Profils de salinité" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Densite_plot_R.png" alt="Profils de densité" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Oxygene_plot_R.png" alt="Profils d'oxygène" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Zooplancton</h3>
+                <div class="image-bandeau">
+                    <img src="images/MesureBIO/Zoo_boxplots_humide_R.png" alt="Boxplot de zooplanctons humides" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Zoo_boxplots_sec_R.png" alt="Boxplot de zooplanctons secs" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Manta_biomass_R.png" alt="Histogramme de la biomasse collectée dans le manta" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Regent_biomasse_R.png" alt="Histogramme de la biomasse collectée dans le régent" onclick="openModal(this)">
+                    <img src="images/MesureBIO/WP2_biomasss_R.png" alt="Histogramme de la biomasse collectée dans le WP2" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Filtes_biomass_boxplots_R.png" alt="Histogramme de la biomasse collectée dans tous les filets" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Zoo_cercle_correl_humide_R.png" alt="Cercle de corrélation des classes de zooplanctons humides" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Zoo_cercle_correl_sec_R.png" alt="Cercle de corrélation des classes de zooplanctons secs" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Zoo_PCA_humide_R.png" alt="PLA des classes de zooplanctons humides" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Zoo_PCA_sec_R.png" alt="PLA des classes de zooplanctons secs" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Zoo_matrice_correl_humide_R.png" alt="Matrice de corrélation du zooplanctons humides" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Graphs chlorophylle a</h3>
+                <div class="image-bandeau">
+                    <img src="images/MesureBIO/Chla_active_R.png" alt="Boxplot de chlorophylle a" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Chla_somlit_R.png" alt="Suivi temporelle de la concentration en chla d'après données Somlit" onclick="openModal(this)">
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                  <h3 class="gallery-title">Graphs matières en suspension</h3>
+                  <div class="image-bandeau">
+                      <img src="images/MesureBIO/MES_plot_R.png" alt="Concentrations en MES à trois profondeurs" onclick="openModal(this)">
+                      <img src="images/MesureBIO/MES_somlit_R.png" alt="Suivi temporelle de la concentration en MES d'après données Somlit" onclick="openModal(this)">
+                  </div>
+              </div>
+            <div class="gallery-subsection">
+                <h3 class="gallery-title">Relations</h3>
+                <div class="image-bandeau">
+                    <img src="images/MesureBIO/relation_chla_densité.png" alt="Relation chloropphylle a / densité" onclick="openModal(this)">
+                    <img src="images/MesureBIO/relation_chla_salinité.png" alt="Relation chloropphylle a / salinité" onclick="openModal(this)">
+                    <img src="images/MesureBIO/relation_chla_température.png" alt="Relation chloropphylle a / température" onclick="openModal(this)">
+                    <img src="images/MesureBIO/Comp-chla-mes_R_anova.png" alt="Comparaison MES / chlorophylle a" onclick="openModal(this)">                  
+                </div>
+            </div>
+            <div class="gallery-subsection">
+                  <h3 class="gallery-title">Suivis temporels</h3>
+                  <div class="image-bandeau">
+                      <img src="images/MesureBIO/tempmap.png" alt="Suivi temporelle de la température d'après données Somlit" onclick="openModal(this)">
+                      <img src="images/MesureBIO/salmap.png" alt="Suivi temporelle de la salinité d'après données Somlit" onclick="openModal(this)">
+                      <img src="images/MesureBIO/densmap.png" alt="Suivi temporelle de la densité d'après données Somlit" onclick="openModal(this)">                 
+                  </div>
+              </div>
+            
+        </section>
+
+        <section class="update-info">
+            <p><em>Dernière mise à jour : 11/06/2026</em></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 — Dorian Lapeyre</p>
+    </footer>
+
+    
+    <script>
+    /* =============================================================
+       1. GESTION DE LA MODALE, NAVIGATION ET ZOOM
+       ============================================================= */
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgFull");
+    const captionText = document.getElementById("caption");
+    let currentImgElement = null;
+
+    function openModal(element) {
+        modal.style.display = "block";
+        currentImgElement = element;
+        updateModalContent();
+        resetZoom();
+    }
+
+    function updateModalContent() {
+        if (!currentImgElement) return;
+    
+        const imgFull = document.getElementById("imgFull");
+        const vidFull = document.getElementById("vidFull");
+        
+        // Vérifie si l'élément cliqué est une vidéo
+        const isVideo = currentImgElement.tagName === 'VIDEO';
+    
+        if (isVideo) {
+            imgFull.style.display = "none";
+            vidFull.style.display = "block";
+            vidFull.src = currentImgElement.src;
+            captionText.innerHTML = currentImgElement.alt;
+        } else {
+            vidFull.style.display = "none";
+            vidFull.pause(); // Stop la vidéo si elle tournait
+            imgFull.style.display = "block";
+            imgFull.src = currentImgElement.src;
+            captionText.innerHTML = currentImgElement.alt;
+        }
+    }
+
+    function nextImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        
+        // On cherche le prochain élément qui est soit une IMG soit une VIDEO
+        let next = currentImgElement.nextElementSibling;
+        // Si on est dans un wrapper, on remonte au parent pour passer au suivant
+        if (!next) next = currentImgElement.parentElement.nextElementSibling?.querySelector('img, video');
+        
+        if (next && (next.tagName === 'IMG' || next.tagName === 'VIDEO')) {
+            currentImgElement = next;
+            updateModalContent();
+        }
+    }
+
+    function prevImage() {
+        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
+        let prev = currentImgElement.previousElementSibling;
+        if (prev && prev.tagName === 'IMG') {
+            currentImgElement = prev;
+            updateModalContent();
+            resetZoom();
+        }
+    }
+
+    function resetZoom() {
+        modalImg.classList.remove("zoomed");
+        modalImg.style.transform = "scale(1)";
+        modalImg.style.transformOrigin = "center";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        document.getElementById("vidFull").pause(); // Arrête la lecture à la fermeture
+        resetZoom();
+}
+
+    // Zoom au clic
+    modalImg.onclick = function(e) {
+        e.stopPropagation();
+        this.classList.toggle("zoomed");
+        if (this.classList.contains("zoomed")) {
+            this.style.transform = "scale(2.5)";
+        } else {
+            resetZoom();
+        }
+    };
+
+    // Suivi souris pour le zoom
+    modalImg.onmousemove = function(e) {
+        if (this.classList.contains("zoomed")) {
+            const rect = this.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            this.style.transformOrigin = `${x}% ${y}%`;
+        }
+    };
+
+    // Clavier
+    document.addEventListener('keydown', function(e) {
+        if (modal.style.display === "block") {
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+            if (e.key === "Escape") closeModal();
+        }
+    });
+
+    // Trackpad (balayage horizontal)
+    window.addEventListener('wheel', function(e) {
+        if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
+            if (e.deltaX > 20) nextImage();
+            else if (e.deltaX < -20) prevImage();
+        }
+    }, { passive: true });
+
+    // Fermeture clic extérieur
+    window.onclick = function(event) {
+        if (event.target == modal) closeModal();
+    }
+    </script>
+</body>
+</html>
