@@ -1770,112 +1770,115 @@ footer {
 
 
 
-
 /* ==========================================================================
-   SÉLECTEUR DE LANGUE (NAVBAR)
+   1. SÉLECTEUR DE LANGUE - BARRE DE NAVIGATION (INDEX.HTML)
    ========================================================================== */
 .lang-switch {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-left: auto; /* Pousse le sélecteur à droite */
-    margin-right: 25px; /* Laisse de l'espace avant le menu burger */
+    margin-left: auto;      /* Pousse dynamiquement le bloc vers la droite */
+    margin-right: 20px;     /* Espace propre juste avant le bouton burger */
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     font-weight: 700;
-    z-index: 1002; /* Reste cliquable et au-dessus de la navbar */
+    z-index: 1002;          /* Reste cliquable par-dessus la navbar */
+    user-select: none;
 }
 
-/* Style de base des éléments de langue */
-.lang-item {
+/* Style de base des éléments de langue (Navbar) */
+.lang-switch .lang-item {
     color: var(--text-dim);
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
 }
 
-/* État survolé pour les langues non actives */
-a.lang-item:hover {
+/* État survolé pour la langue non active (Navbar) */
+.lang-switch a.lang-item:hover {
     color: var(--accent);
     transform: translateY(-1px);
 }
 
-/* Langue actuellement sélectionnée (lumineuse) */
-.lang-item.active {
+/* Langue active (Navbar) */
+.lang-switch .lang-item.active {
     color: var(--text-main);
     border-bottom: 2px solid var(--accent);
     cursor: default;
     padding-bottom: 2px;
 }
 
-/* Séparateur vertical discret */
-.lang-separator {
+/* Séparateur vertical discret (Navbar) */
+.lang-switch .lang-separator {
     color: #333;
-    user-select: none;
 }
 
-/* Ajustement responsive pour les smartphones */
-@media (max-width: 768px) {
-    .lang-switch {
-        margin-right: 15px; /* Ajustement de l'espace sur mobile */
-        font-size: 0.85rem;
-    }
 
-
-
-   /* ==========================================================================
-   SÉLECTEUR DE LANGUE - PAGES DE DÉTAIL
+/* ==========================================================================
+   2. SÉLECTEUR DE LANGUE - PAGES SECONDAIRES (TOUT EN HAUT À DROITE)
    ========================================================================== */
 .detail-header .header-content {
-    position: relative; /* Indispensable pour positionner la langue à l'intérieur */
+    position: relative;     /* Définit le repère pour le placement absolu */
+    width: 100%;
 }
 
 .lang-switch-detail {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -20px;             /* Positionne les boutons tout en haut de la page */
+    right: 20px;            /* Aligne les boutons sur le bord droit extrême */
     display: flex;
     align-items: center;
     gap: 8px;
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     font-weight: 700;
+    z-index: 1002;          /* Passe au-dessus de l'ombrage du header */
     user-select: none;
 }
 
-/* Style des liens de langue */
+/* Style de base des éléments de langue (Détails) */
 .lang-switch-detail .lang-item {
-    color: rgba(255, 255, 255, 0.4); /* Gris transparent par défaut sur fond sombre */
+    color: rgba(255, 255, 255, 0.4); /* Gris transparent discret sur fond sombre */
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
 }
 
-/* Effet de survol */
+/* État survolé pour la langue non active (Détails) */
 .lang-switch-detail a.lang-item:hover {
-    color: var(--accent, #4facfe); /* Utilise votre couleur accentuée */
+    color: var(--accent, #60a5fa);
     transform: translateY(-1px);
 }
 
-/* Style de la langue active */
+/* Langue active (Détails) */
 .lang-switch-detail .lang-item.active {
-    color: #ffffff;
-    border-bottom: 2px solid var(--accent, #4facfe);
+    color: #ffffff;         /* Blanc éclatant */
+    border-bottom: 2px solid var(--accent, #60a5fa);
     cursor: default;
     padding-bottom: 2px;
 }
 
-/* Séparateur vertical */
+/* Séparateur vertical (Détails) */
 .lang-switch-detail .lang-separator {
     color: rgba(255, 255, 255, 0.15);
 }
 
-/* Ajustements responsives pour les smartphones */
+
+/* ==========================================================================
+   3. RESPONSIVE / DESIGN SMARTPHONE (POUR LES DEUX SÉLECTEURS)
+   ========================================================================== */
 @media (max-width: 768px) {
+    /* Ajustement Navbar principale sur Mobile */
+    .lang-switch {
+        margin-right: 15px; /* Rapproche légèrement les lettres du burger */
+        font-size: 0.85rem;
+    }
+
+    /* Ajustement Pages Secondaires sur Mobile */
     .lang-switch-detail {
-        position: relative; /* Repasse en flux normal sur mobile pour éviter les chevauchements */
-        justify-content: flex-end;
-        margin-bottom: 20px; /* Donne de l'air avant le titre */
+        top: -10px;         /* Remonte légèrement pour optimiser la place sur petit écran */
+        right: 10px;        /* Se cale plus près du bord de l'écran tactile */
+        font-size: 0.85rem;
     }
 }
 }
