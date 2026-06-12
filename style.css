@@ -1820,5 +1820,63 @@ a.lang-item:hover {
         margin-right: 15px; /* Ajustement de l'espace sur mobile */
         font-size: 0.85rem;
     }
+
+
+
+   /* ==========================================================================
+   SÉLECTEUR DE LANGUE - PAGES DE DÉTAIL
+   ========================================================================== */
+.detail-header .header-content {
+    position: relative; /* Indispensable pour positionner la langue à l'intérieur */
+}
+
+.lang-switch-detail {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    user-select: none;
+}
+
+/* Style des liens de langue */
+.lang-switch-detail .lang-item {
+    color: rgba(255, 255, 255, 0.4); /* Gris transparent par défaut sur fond sombre */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+/* Effet de survol */
+.lang-switch-detail a.lang-item:hover {
+    color: var(--accent, #4facfe); /* Utilise votre couleur accentuée */
+    transform: translateY(-1px);
+}
+
+/* Style de la langue active */
+.lang-switch-detail .lang-item.active {
+    color: #ffffff;
+    border-bottom: 2px solid var(--accent, #4facfe);
+    cursor: default;
+    padding-bottom: 2px;
+}
+
+/* Séparateur vertical */
+.lang-switch-detail .lang-separator {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+/* Ajustements responsives pour les smartphones */
+@media (max-width: 768px) {
+    .lang-switch-detail {
+        position: relative; /* Repasse en flux normal sur mobile pour éviter les chevauchements */
+        justify-content: flex-end;
+        margin-bottom: 20px; /* Donne de l'air avant le titre */
+    }
+}
 }
 
