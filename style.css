@@ -884,6 +884,20 @@ footer {
         grid-template-columns: 1fr 1fr; /* Deux colonnes sur mobile */
     }
 }
+/* S'assure que les cartes gardent leur style propre de bloc */
+a.stack-item {
+    text-decoration: none; /* Supprime le soulignement HTML par défaut */
+    color: inherit;        /* Conserve la couleur de texte définie sur le site (#e0e0e0) */
+    display: block;        /* Permet à toute la surface de la carte d'être cliquable */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optionnel : Léger effet visuel au survol pour faire comprendre que c'est cliquable */
+a.stack-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(96, 165, 250, 0.15); /* Légère lueur avec votre couleur accent */
+}
 /* ==========================================================================
    DASHBOARD MONITORING OCÉANO (DESIGN GLASSMORPHISM)
    ========================================================================== */
