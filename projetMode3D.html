@@ -62,24 +62,24 @@
 
                 <div class="description-text">
                     <p>
-                        Ce projet, réalisé dans le cadre de l'unité <strong>OPB205 (Modélisation 3D Océanique)</strong> au sein du Master Sciences de la Mer d'Aix-Marseille Université (OSU Pythéas, M.I.O), revêt avant tout un <strong>objectif pédagogique</strong>. Il vise à maîtriser la chaîne complète de pré-processing et de configuration d'un modèle hydrodynamique régional (de la définition de la grille spatiale <em>make_grid</em> à la gestion des frontières ouvertes <em>make_clim</em>), tout en évaluant l'impact des paramétrisations numériques sur le réalisme de la physique simulée.
+                        Ce projet, réalisé dans le cadre de l'unité <strong>OPB205 (Modélisation 3D Océanique)</strong> au sein du Master Sciences de la Mer d'Aix-Marseille Université (OSU Pythéas, MIO), revêt avant tout un <strong>objectif pédagogique</strong>. Il vise à maîtriser la chaîne complète d'une simulation c'est-à-dire du pré-processing à la configuration d'un modèle hydrodynamique régional (définition de la grille spatiale <em>make_grid</em>, gestion des frontières ouvertes <em>make_clim</em>, ou encore gestion des conditions initiales <em>make_ini</em>).
                     </p>
                     <p>
-                        À l'aide du modèle numérique <strong>CROCO</strong> (<em>Coastal and Regional Ocean Community model</em>) configuré à haute résolution ($1/40^{\circ}$, soit $dx = 2\text{ km}$), ce travail explore la dynamique saisonnière et les structures de méso-échelle dans le sud du Golfe de Gascogne, une zone hautement complexe caractérisée par l'incision topographique du canyon de Capbreton. 
+                        À l'aide du modèle numérique <strong>CROCO</strong> (<em>Coastal and Regional Ocean COmmunity model</em>) configuré à haute résolution 1/40, soit $dx = 2 km, ce travail explore la dynamique saisonnière et les structures de méso-échelle dans le sud du Golfe de Gascogne, une zone très intéressante de part par l'incision topographique du canyon de Capbreton ou bien la géométrie formée par les plateaux cantabrique et landais. 
                     </p>
                     <p>
-                        L'un des piliers de l'étude a consisté à <strong>confronter les simulations aux articles scientifiques de référence</strong> découverts lors de la synthèse bibliographique, afin de vérifier si le modèle reproduisait des structures physiques cohérentes avec les observations historiques[cite: 1]. Le projet s'articule ainsi autour de trois axes de validation majeurs :
+                        L'étude a premièrement consisté à <strong>confronter les simulations aux articles scientifiques de référence</strong> découverts lors de la synthèse bibliographique, afin de vérifier si le modèle reproduisait des structures physiques cohérentes avec les observations historiques. Le projet s'articule ainsi autour de trois axes de validation majeurs :
                     </p>
                     
                     <ul class="custom-list">
                         <li>
-                            <strong>Validation hydrologique et masses d'eau :</strong> Comparaison des diagrammes Température-Salinité (T-S) extraits du modèle avec les données de référence de <em>Friocourt et al. (2007)</em>[cite: 1]. Le modèle démontre sa cohérence en reproduisant fidèlement la signature de l'Eau Centrale de l'Atlantique Nord (ENACW), le pic de salinité de l'Eau Intermédiaire Méditerranéenne (MW) et les prémices de la Labrador Sea Water (LSW)[cite: 1].
+                            <strong>Validation hydrologique et masses d'eau :</strong> Comparaison des diagrammes Température-Salinité (T-S) extraits du modèle avec les données de référence de <em>Friocourt et al. (2007)</em>. Le modèle démontre sa cohérence en reproduisant fidèlement la signature de l'Eau Centrale de l'Atlantique Nord (ENACW), le pic de salinité de l'Eau Intermédiaire Méditerranéenne (MW) et les prémices de la Labrador Sea Water (LSW).
                         </li>
                         <li>
-                            <strong>Dynamique saisonnière de l'IPC :</strong> Analyse du comportement de l'<em>Iberian Poleward Current</em> (IPC)[cite: 1]. En accord avec la littérature (notamment <em>Pingree et Le Cann</em>), le modèle simule avec succès une veine de courant intense piégée le long du talus continental en hiver, et capture son affaiblissement ainsi que sa signature inverse en surface durant la période estivale sous l'effet des vents de secteur Nord/Nord-Est[cite: 1].
+                            <strong>Dynamique saisonnière de l'IPC :</strong> Analyse du comportement de l'<em>Iberian Poleward Current</em> (IPC). En accord avec la littérature (notamment <em>Pingree et Le Cann</em>), le modèle simule avec succès une veine de courant intense piégée le long du talus continental en hiver, et capture son affaiblissement ainsi que sa signature inverse en surface durant la période estivale sous l'effet des vents de secteur Nord/Nord-Est.
                         </li>
                         <li>
-                            <strong>Caractérisation de la méso-échelle :</strong> Confrontation directe des cartes de courants de surface avec les observations radar HF de <em>Solabarrieta et al. (2014)</em>[cite: 1]. L'utilisation du paramètre diagnostique d'Okubo-Weiss a permis de confirmer la cohérence du modèle en identifiant la déstabilisation du courant de pente en été et la génération de tourbillons anticycloniques de subsurface (SWODDIES), particulièrement actifs aux abords du canyon de Capbreton[cite: 1].
+                            <strong>Caractérisation de la méso-échelle :</strong> Confrontation directe des cartes de courants de surface avec les observations radar HF de <em>Solabarrieta et al. (2014)</em>. L'utilisation du paramètre diagnostique d'Okubo-Weiss a permis de confirmer la cohérence du modèle en identifiant la déstabilisation du courant de pente en été et la génération de tourbillons anticycloniques de subsurface (SWODDIES).
                         </li>
                     </ul>
                 </div>
