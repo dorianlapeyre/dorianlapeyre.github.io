@@ -41,9 +41,9 @@
     <main class="container">
         
         <section class="subject-section">
-            <h2 class="section-title">Projet de modélisation du Sud du Golfe de Gascogne</h2>
+            <h2 class="section-title">Southern Bay of Biscay Modeling Project</h2>
             
-            <div class="subject-card active"> <h3 class="subject-subtitle">Cours OPB205 - Modélisation 3D Océanique</h3>
+            <div class="subject-card active"> <h3 class="subject-subtitle">Course OPB205 - 3D Ocean Modeling</h3>
                 
                 <div class="modelling-grid">
                     <div class="modelling-item">
@@ -57,23 +57,31 @@
                         <div class="image-wrapper">
                             <img src="../images/Mode3D/TS_spring.png" alt="Analyse des résultats de simulation" onclick="openModal(this)">
                         </div>
-                        <p class="caption">Analyse des résultats de simulation</p>
+                        <p class="caption">Simulation Results Analysis</p>
                     </div>
                 </div>
 
                 <div class="description-text">
                     <p>
-                        Ce projet, réalisé dans le cadre de l'unité OPB205 (Modélisation 3D Océanique) au sein du Master Sciences de la Mer d'Aix-Marseille Université, porte sur l'étude de la dynamique océanique dans le sud du Golfe de Gascogne. 
+                        This project, carried out as part of the <strong>OPB205 (3D Ocean Modeling)</strong> course within the Marine Sciences Master's program at Aix-Marseille University (OSU Pythéas, MIO), primarily serves an <strong>educational purpose</strong>. It aims at mastering the complete simulation workflow, from preprocessing to the configuration of a regional hydrodynamic model (defining the spatial grid with <em>make_grid</em>, managing open boundaries with <em>make_clim</em>, and handling initial conditions with <em>make_ini</em>).
                     </p>
                     <p>
-                        À l'aide du modèle numérique CROCO (Coastal and Regional Ocean COmmunity model) configuré à haute résolution, ce travail analyse les structures de méso-échelle et la variabilité saisonnière des masses d'eau. L'étude se concentre particulièrement sur l'Iberian Poleward Current (IPC), un courant de pente crucial pour le transport de chaleur dans la région.
+                        Using the <strong>CROCO</strong> (<em>Coastal and Regional Ocean Community model</em>) numerical model configured at a high resolution of 1/40° (i.e., dx = 2 km), this study explores seasonal dynamics and mesoscale structures in the southern Bay of Biscay. This area is highly interesting due to the topographic incision of the Capbreton canyon and the geometry formed by the Cantabrian and Landes shelves.
                     </p>
-                    <p>Le projet s'articule autour des axes d'analyse suivants :</p>
+                    <p>
+                        The study first consisted in <strong>confronting the simulations with reference scientific papers</strong> identified during the literature review, in order to verify whether the model reproduced physical structures consistent with historical observations. The project is thus structured around three major validation axes:
+                    </p>
                     
                     <ul class="custom-list">
-                        <li><strong>Validation hydrologique :</strong> Analyse des diagrammes Température-Salinité (T-S) pour identifier les masses d'eau (ENACW, MW, LSW).</li>
-                        <li><strong>Dynamique saisonnière :</strong> Mise en évidence du contraste entre un jet stable en hiver et une désintégration tourbillonnaire en été.</li>
-                        <li><strong>Analyse tourbillonnaire :</strong> Utilisation du paramètre d'Okubo-Weiss pour caractériser les structures de méso-échelle (tourbillons anticycloniques et cycloniques).</li>
+                        <li>
+                            <strong>Hydrological validation and water masses:</strong> Comparison of Temperature-Salinity (T-S) diagrams extracted from the model with reference data from <em>Friocourt et al. (2007)</em>. The model demonstrates its consistency by faithfully reproducing the signature of the Eastern North Atlantic Central Water (ENACW), the salinity peak of the Mediterranean Water (MW), and the early stages of the Labrador Sea Water (LSW).
+                        </li>
+                        <li>
+                            <strong>Seasonal dynamics of the IPC:</strong> Analysis of the behavior of the <em>Iberian Poleward Current</em> (IPC). In agreement with the literature (notably <em>Pingree and Le Cann</em>), the model successfully simulates an intense current vein trapped along the continental slope in winter, and captures its weakening as well as its reversal at the surface during the summer period under the influence of North/North-Easterly winds.
+                        </li>
+                        <li>
+                            <strong>Mesoscale characterization:</strong> Direct confrontation of surface current maps with HF radar observations from <em>Solabarrieta et al. (2014)</em>. The use of the Okubo-Weiss diagnostic parameter confirmed the consistency of the model by identifying the destabilization of the slope current in summer and the generation of subsurface anticyclonic eddies (SWODDIES).
+                        </li>
                     </ul>
                 </div>
 
