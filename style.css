@@ -1897,3 +1897,206 @@ a.stack-item:hover {
 }
 }
 
+/* ==========================================================================
+   14. OPTIMISATIONS RESPONSIVES & DESIGN SMARTPHONE GLOBAL
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    
+    /* --- RESET & BASES MOBILE --- */
+    html, body {
+        overflow-x: hidden; /* Sécurité absolue contre le défilement horizontal */
+    }
+
+    section {
+        padding: 50px 6% !important; /* Réduction des marges globales pour maximiser l'espace */
+    }
+
+    .center-text {
+        font-size: 1.8rem !important;
+        margin-bottom: 35px !important;
+    }
+
+    /* --- NAVIGATION & MENUS --- */
+    nav {
+        padding: 0 5% !important;
+    }
+
+    .nav-links {
+        right: 5% !important;
+        width: calc(100% - 10%); /* S'adapte à la largeur du téléphone */
+        max-width: 300px;
+    }
+
+    /* --- PAGES DE DÉTAILS (HEADERS) --- */
+    .detail-header {
+        padding: 100px 5% 30px 5% !important;
+    }
+
+    .detail-header h1 {
+        font-size: 2.2rem !important;
+        word-break: break-word; /* Évite que les longs titres cassent l'écran */
+    }
+
+    /* --- GRILLES DE CARTES (ACCUEIL & EXPERIENCES) --- */
+    .grid {
+        grid-template-columns: 1fr !important; /* Une seule colonne sur téléphone */
+        padding: 20px 0 !important;
+    }
+
+    .card-link {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .card {
+        padding: 20px !important;
+    }
+
+    /* --- TIMELINE (PAGES PARCOURS) --- */
+    .timeline-container {
+        padding-left: 25px !important; /* Rapproche la ligne du bord gauche */
+    }
+
+    .timeline-item {
+        margin-bottom: 35px !important;
+    }
+
+    .timeline-item::before {
+        left: -31px !important; /* Réaligne le point sur la ligne raccourcie */
+        width: 10px !important;
+        height: 10px !important;
+    }
+
+    .content-box {
+        padding: 18px !important;
+    }
+
+    /* --- DASHBOARD MONITORING OCÉANO --- */
+    .dashboard-container {
+        grid-template-columns: 1fr !important; /* Cartes l'une sous l'autre */
+        padding: 10px 0 !important;
+    }
+
+    .glass-card {
+        max-width: 100% !important;
+        padding: 15px !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr !important; /* Une seule colonne de statistiques */
+        gap: 10px !important;
+    }
+
+    .stat-box.full-width {
+        grid-column: auto !important; /* Annule l'étalement */
+    }
+
+    .main-val {
+        font-size: 1.4rem !important;
+    }
+
+    /* --- AGENCEMENT PCSI & CARTES REPLIABLES --- */
+    .subjects-container {
+        align-items: center !important; /* Centre les boutons sur mobile */
+    }
+
+    .toggle-subject-btn {
+        width: 100% !important;
+        font-size: 0.9rem !important;
+        padding: 12px 15px !important;
+    }
+
+    .toggle-subject-btn:hover {
+        transform: none !important; /* Désactive le décalage horizontal au survol sur tactile */
+    }
+
+    .subject-card {
+        width: 100% !important;
+        padding: 20px !important;
+        border-radius: 16px !important;
+    }
+
+    .subject-header {
+        flex-direction: column !important; /* Aligne titre + bouton de téléchargement verticalement */
+        align-items: flex-start !important;
+        gap: 15px !important;
+        padding-right: 40px !important; /* Laisse la place pour la croix de fermeture */
+    }
+
+    .subject-header h3 {
+        font-size: 1.4rem !important;
+    }
+
+    .download-btn {
+        margin-left: 0 !important; /* Aligne le bouton à gauche */
+        width: 100%;
+        justify-content: center;
+    }
+
+    .subject-info ul {
+        grid-template-columns: 1fr !important; /* Liste à puces sur une seule colonne */
+        gap: 10px !important;
+    }
+
+    /* --- MODELISATION 3D & COMPOSANTS EN DUO --- */
+    .modelling-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* --- CARTE MAP LEAFLET --- */
+    #experience-map {
+        height: 350px !important; /* Plus petite sur mobile pour pouvoir scroller la page autour */
+        border-radius: 12px !important;
+    }
+
+    /* --- BANDEAUX DE GALERIE ET SUPPORTS VISUELS --- */
+    .image-bandeau img {
+        height: 200px !important; /* Réduit la hauteur des images coulissantes */
+    }
+
+    .image-bandeau video {
+        width: 150px !important;
+        height: 110px !important;
+    }
+
+    /* --- FENÊTRES MODALES (IMAGES ET VIDEOS AGRANDIES) --- */
+    .full-res-img {
+        height: auto !important;
+        width: 90vw !important; /* S'adapte à la largeur plutôt qu'à la hauteur sur écran vertical */
+        max-height: 70vh !important;
+    }
+
+    .full-res-img.zoomed {
+        transform: scale(1.5) !important; /* Zoom plus modéré sur smartphone */
+    }
+
+    .close-modal {
+        top: 10px !important;
+        right: 20px !important;
+        font-size: 40px !important;
+    }
+
+    .prev-arrow, .next-arrow {
+        padding: 10px !important;
+        font-size: 28px !important;
+        margin-top: -20px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Optimisations extrêmes pour très petits smartphones */
+    .header-name {
+        font-size: 1.6rem !important;
+    }
+    
+    .detail-header h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .modal-content {
+        width: 85% !important;
+        padding: 25px 15px !important;
+    }
+}
