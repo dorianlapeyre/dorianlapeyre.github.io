@@ -1,341 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Science de la Mer | Dorian Lapeyre</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projet de modélisation du Sud du Golfe de Gascogne — Dorian Lapeyre</title>
+<meta name="description" content="Projet de modélisation du Sud du Golfe de Gascogne. Cours OPB205 - Modélisation 3D Océanique.">
+<meta name="author" content="Dorian Lapeyre">
+<link rel="stylesheet" href="style.css">
+<link rel="alternate" hreflang="fr" href="https://dorianlapeyre.github.io/projetMode3D.html">
+<link rel="alternate" hreflang="en" href="https://dorianlapeyre.github.io/en/projetMode3D.html">
+<link rel="alternate" hreflang="es" href="https://dorianlapeyre.github.io/es/projetMode3D.html">
 </head>
-<div id="imageModal" class="image-modal">
-    <span class="close-modal" onclick="closeModal()">&times;</span>
-    
-    <span class="prev-arrow" onclick="event.stopPropagation(); prevImage();">&#10094;</span>
-    <span class="next-arrow" onclick="event.stopPropagation(); nextImage();">&#10095;</span>
-    
-    <img class="full-res-img" id="imgFull"> 
-    <div id="caption"></div>
-</div>
-<body class="detail-page">
-
-    <header class="detail-header">
-        <div class="header-content">
-            <!-- BOUTONS DE LANGUE VERSION FR -->
-            <div class="lang-switch-detail">
-                <span class="lang-item active">FR</span>
-                <span class="lang-separator">|</span>
-                <a href="en/projetMode3D.html" class="lang-item">EN</a>
-            </div>
-
-            <span class="detail-subtitle">Océanographie Physique et Biogéochimique</span>
-            <h1>Master Science de la Mer</h1>
-            <p class="university-tag">
-                Étudiant à l' <a href="http://www.osupytheas.fr" target="_blank">Institut Pythéas</a>, 
-                <a href="http://www.univ-amu.fr" target="_blank">Université d'Aix-Marseille</a>
-            </p>
-            <a href="index.html" class="back-link">← Retour au portfolio</a>
-        </div>
-    </header>
-
-    <main class="container">
-        
-        <section class="subject-section">
-            <h2 class="section-title">Projet de modélisation du Sud du Golfe de Gascogne</h2>
-            
-            <div class="subject-card active"> <h3 class="subject-subtitle">Cours OPB205 - Modélisation 3D Océanique</h3>
-                
-                <div class="modelling-grid">
-                    <div class="modelling-item">
-                        <div class="image-wrapper">
-                            <img src="images/Mode3D/bathy_1_40.png" alt="Bathymetry of my model (Bay of Biscay)" onclick="openModal(this)">
-                        </div>
-                        <p class="caption">Bathymétrie du modèle (Golfe de Gascogne)</p>
-                    </div>
-                
-                    <div class="modelling-item">
-                        <div class="image-wrapper">
-                            <img src="images/Mode3D/TS_spring.png" alt="Analyse des résultats de simulation" onclick="openModal(this)">
-                        </div>
-                        <p class="caption">Analyse des résultats de simulation</p>
-                    </div>
-                </div>
-
-                <div class="description-text">
-                    <p>
-                        Ce projet, réalisé dans le cadre de l'unité <strong>OPB205 (Modélisation 3D Océanique)</strong> au sein du Master Sciences de la Mer d'Aix-Marseille Université (OSU Pythéas, MIO), revêt avant tout un <strong>objectif pédagogique</strong>. Il vise à maîtriser la chaîne complète d'une simulation c'est-à-dire du pré-processing à la configuration d'un modèle hydrodynamique régional (définition de la grille spatiale <em>make_grid</em>, gestion des frontières ouvertes <em>make_clim</em>, ou encore gestion des conditions initiales <em>make_ini</em>).
-                    </p>
-                    <p>
-                        À l'aide du modèle numérique <strong>CROCO</strong> (<em>Coastal and Regional Ocean COmmunity model</em>) configuré à haute résolution 1/40°, soit dx = 2 km, ce travail explore la dynamique saisonnière et les structures de méso-échelle dans le sud du Golfe de Gascogne, une zone très intéressante de part par l'incision topographique du canyon de Capbreton ou bien la géométrie formée par les plateaux cantabrique et landais. 
-                    </p>
-                    <p>
-                        L'étude a premièrement consisté à <strong>confronter les simulations aux articles scientifiques de référence</strong> découverts lors de la synthèse bibliographique, afin de vérifier si le modèle reproduisait des structures physiques cohérentes avec les observations historiques. Le projet s'articule ainsi autour de trois axes de validation majeurs :
-                    </p>
-                    
-                    <ul class="custom-list">
-                        <li>
-                            <strong>Validation hydrologique et masses d'eau :</strong> Comparaison des diagrammes Température-Salinité (T-S) extraits du modèle avec les données de référence de <em>Friocourt et al. (2007)</em>. Le modèle démontre sa cohérence en reproduisant fidèlement la signature de l'Eau Centrale de l'Atlantique Nord (ENACW), le pic de salinité de l'Eau Intermédiaire Méditerranéenne (MW) et les prémices de la Labrador Sea Water (LSW).
-                        </li>
-                        <li>
-                            <strong>Dynamique saisonnière de l'IPC :</strong> Analyse du comportement de l'<em>Iberian Poleward Current</em> (IPC). En accord avec la littérature (notamment <em>Pingree et Le Cann</em>), le modèle simule avec succès une veine de courant intense piégée le long du talus continental en hiver, et capture son affaiblissement ainsi que sa signature inverse en surface durant la période estivale sous l'effet des vents de secteur Nord/Nord-Est.
-                        </li>
-                        <li>
-                            <strong>Caractérisation de la méso-échelle :</strong> Confrontation directe des cartes de courants de surface avec les observations radar HF de <em>Solabarrieta et al. (2014)</em>. L'utilisation du paramètre diagnostique d'Okubo-Weiss a permis de confirmer la cohérence du modèle en identifiant la déstabilisation du courant de pente en été et la génération de tourbillons anticycloniques de subsurface (SWODDIES).
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="download-zone">
-                    <a href="pdf/LAPEYREDorian_rapportOPB205.pdf" class="btn-download" target="_blank">
-                        <span>📄</span> Rapport (PDF)
-                    </a>
-                    <a href="pdf/LAPEYREDorian_presentationOPB205.pdf" class="btn-download" target="_blank">
-                        <span>📊</span> Présentation (PDF)
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Galerie de Projet -->
-        <section class="project-gallery">
-            <h2 class="center-text">Galerie du Projet</h2>
-        
-            <!-- Sous-section 1 : Modélisation -->
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Pré-processing : make_ini</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/ini_fig1.png" alt="Figure 1 : script make_ini.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/ini_fig2.png" alt="Figure 2 : script make_ini.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/ini_fig3.png" alt="Figure 3 : script make_ini.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/ini_fig4.png" alt="Figure 4 : script make_ini.m" onclick="openModal(this)">
-                </div>
-            </div>
-        
-            <!-- Sous-section 2 : Simulations -->
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Pré-processing : make_forcing</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/forcing_fig1.png" alt="Figure 1 : script make_forcing.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/forcing_fig2.png" alt="Figure 2 : script make_forcing.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/forcing_fig3.png" alt="Figure 3 : script make_forcing.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/forcing_fig4.png" alt="Figure 4 : script make_forcing.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/forcing_fig5.png" alt="Figure 5 : script make_forcing.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/forcing_fig6.png" alt="Figure 6 : script make_forcing.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/forcing_fig7.png" alt="Figure 7 : script make_forcing.m" onclick="openModal(this)">
-                </div>
-            </div>
-        
-            <!-- Sous-section 3 : Analyses -->
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Pré-processing : make_clim</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/clim_fig1.png" alt="Figure 1 : script make_clim.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/clim_fig2.png" alt="Figure 2 : script make_clim.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/clim_fig3.png" alt="Figure 3 : script make_clim.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/clim_fig4.png" alt="Figure 4 : script make_clim.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/clim_fig5.png" alt="Figure 5 : script make_clim.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/clim_fig6.png" alt="Figure 6 : script make_clim.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/clim_fig7.png" alt="Figure 7 : script make_clim.m" onclick="openModal(this)">
-                    <img src="images/Mode3D/clim_fig8.png" alt="Figure 8 : script make_clim.m" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : zeta</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/zeta_winter.png" alt="Carte de zeta en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/zeta_spring.png" alt="Carte de zeta au printemps" onclick="openModal(this)">
-                    <img src="images/Mode3D/zeta_summer.png" alt="Carte de zeta en été " onclick="openModal(this)">
-                    <img src="images/Mode3D/zeta_autumn.png" alt="Carte de zeta en automne" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : SST</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/SST_1_40_winter.png" alt="Carte de SST en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/SST_spring.png" alt="Carte de SST au printemps" onclick="openModal(this)">
-                    <img src="images/Mode3D/SST_summer.png" alt="Carte de SST en été" onclick="openModal(this)">
-                    <img src="images/Mode3D/SST_autumn.png" alt="Carte de SST en automne" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : Temperature profile</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/Temp_profile_43°40__winter.png" alt="Section de températures le long du parallèle 43°40' Nord en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/Temp_profile_43°40__spring.png" alt="Section de températures le long du parallèle 43°40' Nord au printemps" onclick="openModal(this)">
-                    <img src="images/Mode3D/Temp_profile_43°40__summer.png" alt="Section de températures le long du parallèle 43°40' Nord en été" onclick="openModal(this)">
-                    <img src="images/Mode3D/Temp_profile_43°40__autumn.png" alt="Section de températures le long du parallèle 43°40' Nord en automne" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : Surface current</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/surfacecurrent_clear_winter.png" alt="Circulation de surface en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/surfacecurrent_spring.png" alt="Circulation de surface au printemps" onclick="openModal(this)">
-                    <img src="images/Mode3D/surfacecurrent_summer.png" alt="Circulation de surface en été" onclick="openModal(this)">
-                    <img src="images/Mode3D/surfacecurrent_autumn.png" alt="Circulation de surface en automne" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : velocity</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/speed_winterprofile_long.png" alt="Section de vitesses le long du méridien 3°40' Ouest en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/speed_summerprofile_long.png" alt="Section de vitesses le long du méridien 3°40' Ouest en été" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : Current profile</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/current_profile_43°40__winter.png" alt="Section de vitesses le long du parallèle 43°40' Nord en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/current_profile_43°40__spring.png" alt="Section de vitesses le long du parallèle 43°40' Nord au printemps" onclick="openModal(this)">
-                    <img src="images/Mode3D/current_profile_43°40__summer.png" alt="Section de vitesses le long du parallèle 43°40' Nord en été" onclick="openModal(this)">
-                    <img src="images/Mode3D/current_profile_43°40__autumn.png" alt="Section de vitesses le long du parallèle 43°40' Nord en automne" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : TS Diagram</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/TS_spring.png" alt="Diagramme TS de l'ensemble du domaine au printemps" onclick="openModal(this)">
-                    <img src="images/Mode3D/TS_summer.png" alt="Diagramme TS de l'ensemble du domaine en été" onclick="openModal(this)">
-                    <img src="images/Mode3D/TS_autumn.png" alt="Diagramme TS de l'ensemble du domaine en automne" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : IPC (Iberian Poleward Current)</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/IPC_winter.png" alt="Carte de vitesses à 400m de profondeur en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/IPC_summer.png" alt="Carte de vitesses à 400m de profondeur en été" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : MLD (Mixed Layer Depth)</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/MLD_winter.png" alt="Carte de la MLD en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/MLD_summer.png" alt="Carte de la MLD en hiver" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : Okubo-Weiss parameter</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/okubo_winter.png" alt="Carte du paramètre d'Okubo-Weiss en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/okubo_summer.png" alt="Analyse 1" onclick="openModal(this)">
-                </div>
-            </div>
-            <div class="gallery-subsection">
-                <h3 class="gallery-title">Analyse : Pycnocline depth</h3>
-                <div class="image-bandeau">
-                    <img src="images/Mode3D/pycnoclineD_winter.png" alt="Carte de la profondeur de la pycnocline en hiver" onclick="openModal(this)">
-                    <img src="images/Mode3D/pycnoclineD_summer.png" alt="Carte de la profondeur de la pycnocline en été" onclick="openModal(this)">
-                </div>
-            </div>
-            
-        </section>
-
-        <section class="update-info">
-            <p><em>Dernière mise à jour : 01/05/2026</em></p>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2026 — Dorian Lapeyre</p>
-    </footer>
-
-    
-    <script>
-    /* =============================================================
-       1. GESTION DE LA MODALE, NAVIGATION ET ZOOM
-       ============================================================= */
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("imgFull");
-    const captionText = document.getElementById("caption");
-    let currentImgElement = null;
-
-    function openModal(element) {
-        modal.style.display = "block";
-        currentImgElement = element;
-        updateModalContent();
-        resetZoom();
-    }
-
-    function updateModalContent() {
-        if (!currentImgElement) return;
-        modalImg.src = currentImgElement.src;
-        captionText.innerHTML = currentImgElement.alt;
-    }
-
-    function nextImage() {
-        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
-        let next = currentImgElement.nextElementSibling;
-        if (next && next.tagName === 'IMG') {
-            currentImgElement = next;
-            updateModalContent();
-            resetZoom();
-        }
-    }
-
-    function prevImage() {
-        if (!currentImgElement || modalImg.classList.contains("zoomed")) return;
-        let prev = currentImgElement.previousElementSibling;
-        if (prev && prev.tagName === 'IMG') {
-            currentImgElement = prev;
-            updateModalContent();
-            resetZoom();
-        }
-    }
-
-    function resetZoom() {
-        modalImg.classList.remove("zoomed");
-        modalImg.style.transform = "scale(1)";
-        modalImg.style.transformOrigin = "center";
-    }
-
-    function closeModal() {
-        modal.style.display = "none";
-        resetZoom();
-    }
-
-    // Zoom au clic
-    modalImg.onclick = function(e) {
-        e.stopPropagation();
-        this.classList.toggle("zoomed");
-        if (this.classList.contains("zoomed")) {
-            this.style.transform = "scale(2.5)";
-        } else {
-            resetZoom();
-        }
-    };
-
-    // Suivi souris pour le zoom
-    modalImg.onmousemove = function(e) {
-        if (this.classList.contains("zoomed")) {
-            const rect = this.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            this.style.transformOrigin = `${x}% ${y}%`;
-        }
-    };
-
-    // Clavier
-    document.addEventListener('keydown', function(e) {
-        if (modal.style.display === "block") {
-            if (e.key === "ArrowRight") nextImage();
-            if (e.key === "ArrowLeft") prevImage();
-            if (e.key === "Escape") closeModal();
-        }
-    });
-
-    // Trackpad (balayage horizontal)
-    window.addEventListener('wheel', function(e) {
-        if (modal.style.display === "block" && !modalImg.classList.contains("zoomed")) {
-            if (e.deltaX > 20) nextImage();
-            else if (e.deltaX < -20) prevImage();
-        }
-    }, { passive: true });
-
-    // Fermeture clic extérieur
-    window.onclick = function(event) {
-        if (event.target == modal) closeModal();
-    }
-    </script>
+<body>
+<header class="top">
+<nav class="banner" aria-label="Menu principal">
+<a href="index.html">Accueil</a>
+<a href="cv.html">Curriculum Vitae</a>
+<a href="projects.html" aria-current="true">Projets</a>
+<a href="research.html">Recherche</a>
+<a href="teaching.html">Enseignement</a>
+<a href="downloads.html">Téléchargements</a>
+<span class="lang" role="group" aria-label="Langue"><b>FR</b> · <a href="en/projetMode3D.html" hreflang="en" lang="en" title="English">EN</a> · <a href="es/projetMode3D.html" hreflang="es" lang="es" title="Español">ES</a></span>
+</nav>
+</header>
+<main>
+<table class="head"><tr><td><a href="images/Mode3D/bathy_1_40.png" title="Agrandir"><img src="images/Mode3D/bathy_1_40.png" width="300" height="215" alt="Bathymétrie du modèle (1/40°)" loading="lazy"></a><br><small>Bathymétrie du modèle (1/40°)</small></td><td><h1>Projet de modélisation du Sud du Golfe de Gascogne</h1><p class="role">Cours OPB205 - Modélisation 3D Océanique</p></td><td><a href="images/Mode3D/SST_summer.png" title="Agrandir"><img src="images/Mode3D/SST_summer.png" width="300" height="215" alt="SST simulée en été" loading="lazy"></a><br><small>SST simulée en été</small></td></tr></table>
+<table class="frame">
+<tr><th scope="row">Formation</th><td>Master Sciences de la Mer — Océanographie Physique et Biogéochimique</td></tr>
+<tr><th scope="row">Description</th><td><p>Ce projet, réalisé dans le cadre de l'unité <strong>OPB205 (Modélisation 3D Océanique)</strong> au sein du Master Sciences de la Mer d'Aix-Marseille Université (OSU Pythéas, MIO), revêt avant tout un <strong>objectif pédagogique</strong>. Il vise à maîtriser la chaîne complète d'une simulation c'est-à-dire du pré-processing à la configuration d'un modèle hydrodynamique régional (définition de la grille spatiale <em>make_grid</em>, gestion des frontières ouvertes <em>make_clim</em>, ou encore gestion des conditions initiales <em>make_ini</em>).</p><p>À l'aide du modèle numérique <strong>CROCO</strong> (<em>Coastal and Regional Ocean COmmunity model</em>) configuré à haute résolution 1/40°, soit dx = 2 km, ce travail explore la dynamique saisonnière et les structures de méso-échelle dans le sud du Golfe de Gascogne, une zone très intéressante de par l'incision topographique du canyon de Capbreton ou bien la géométrie formée par les plateaux cantabrique et landais.</p><p>L'étude a premièrement consisté à <strong>confronter les simulations aux articles scientifiques de référence</strong> découverts lors de la synthèse bibliographique, afin de vérifier si le modèle reproduisait des structures physiques cohérentes avec les observations historiques. Le projet s'articule ainsi autour de trois axes de validation majeurs :</p><ul><li><strong>Validation hydrologique et masses d'eau :</strong> Comparaison des diagrammes Température-Salinité (T-S) extraits du modèle avec les données de référence de <em>Friocourt et al. (2007)</em>. Le modèle démontre sa cohérence en reproduisant fidèlement la signature de l'Eau Centrale de l'Atlantique Nord (ENACW), le pic de salinité de l'Eau Intermédiaire Méditerranéenne (MW) et les prémices de la Labrador Sea Water (LSW).</li><li><strong>Dynamique saisonnière de l'IPC :</strong> Analyse du comportement de l'<em>Iberian Poleward Current</em> (IPC). En accord avec la littérature (notamment <em>Pingree et Le Cann</em>), le modèle simule avec succès une veine de courant intense piégée le long du talus continental en hiver, et capture son affaiblissement ainsi que sa signature inverse en surface durant la période estivale sous l'effet des vents de secteur Nord/Nord-Est.</li><li><strong>Caractérisation de la méso-échelle :</strong> Confrontation directe des cartes de courants de surface avec les observations radar HF de <em>Solabarrieta et al. (2014)</em>. L'utilisation du paramètre diagnostique d'Okubo-Weiss a permis de confirmer la cohérence du modèle en identifiant la déstabilisation du courant de pente en été et la génération de tourbillons anticycloniques de subsurface (SWODDIES).</li></ul></td></tr>
+<tr><th scope="row">Documents</th><td><a href="pdf/LAPEYREDorian_rapportOPB205.pdf">Rapport (PDF, 5,7 Mo)</a> · <a href="pdf/LAPEYREDorian_presentationOPB205.pdf">Présentation (PDF, 3,2 Mo)</a></td></tr>
+<tr><th scope="row">Galerie</th><td><p class="hint">Chaque lien ouvre l'image en taille réelle (jusqu'à 738 ko).</p><ul class="figs"><li><strong>Pré-processing : make_ini</strong> — <a href="images/Mode3D/ini_fig1.png">Figure 1</a> · <a href="images/Mode3D/ini_fig2.png">Figure 2</a> · <a href="images/Mode3D/ini_fig3.png">Figure 3</a> · <a href="images/Mode3D/ini_fig4.png">Figure 4</a></li><li><strong>Pré-processing : make_forcing</strong> — <a href="images/Mode3D/forcing_fig1.png">Figure 1</a> · <a href="images/Mode3D/forcing_fig2.png">Figure 2</a> · <a href="images/Mode3D/forcing_fig3.png">Figure 3</a> · <a href="images/Mode3D/forcing_fig4.png">Figure 4</a> · <a href="images/Mode3D/forcing_fig5.png">Figure 5</a> · <a href="images/Mode3D/forcing_fig6.png">Figure 6</a> · <a href="images/Mode3D/forcing_fig7.png">Figure 7</a></li><li><strong>Pré-processing : make_clim</strong> — <a href="images/Mode3D/clim_fig1.png">Figure 1</a> · <a href="images/Mode3D/clim_fig2.png">Figure 2</a> · <a href="images/Mode3D/clim_fig3.png">Figure 3</a> · <a href="images/Mode3D/clim_fig4.png">Figure 4</a> · <a href="images/Mode3D/clim_fig5.png">Figure 5</a> · <a href="images/Mode3D/clim_fig6.png">Figure 6</a> · <a href="images/Mode3D/clim_fig7.png">Figure 7</a> · <a href="images/Mode3D/clim_fig8.png">Figure 8</a></li><li><strong>Analyse : zeta</strong> — Carte de zeta : <a href="images/Mode3D/zeta_winter.png">en hiver</a> · <a href="images/Mode3D/zeta_spring.png">au printemps</a> · <a href="images/Mode3D/zeta_summer.png">en été</a> · <a href="images/Mode3D/zeta_autumn.png">en automne</a></li><li><strong>Analyse : SST</strong> — Carte de SST : <a href="images/Mode3D/SST_1_40_winter.png">en hiver</a> · <a href="images/Mode3D/SST_spring.png">au printemps</a> · <a href="images/Mode3D/SST_summer.png">en été</a> · <a href="images/Mode3D/SST_autumn.png">en automne</a></li><li><strong>Analyse : profil de température</strong> — Section de températures le long du parallèle 43°40' Nord : <a href="images/Mode3D/Temp_profile_43°40__winter.png">en hiver</a> · <a href="images/Mode3D/Temp_profile_43°40__spring.png">au printemps</a> · <a href="images/Mode3D/Temp_profile_43°40__summer.png">en été</a> · <a href="images/Mode3D/Temp_profile_43°40__autumn.png">en automne</a></li><li><strong>Analyse : courant de surface</strong> — Circulation de surface : <a href="images/Mode3D/surfacecurrent_clear_winter.png">en hiver</a> · <a href="images/Mode3D/surfacecurrent_spring.png">au printemps</a> · <a href="images/Mode3D/surfacecurrent_summer.png">en été</a> · <a href="images/Mode3D/surfacecurrent_autumn.png">en automne</a></li><li><strong>Analyse : vitesse</strong> — Section de vitesses le long du méridien 3°40' Ouest : <a href="images/Mode3D/speed_winterprofile_long.png">en hiver</a> · <a href="images/Mode3D/speed_summerprofile_long.png">en été</a></li><li><strong>Analyse : profil de courant</strong> — Section de vitesses le long du parallèle 43°40' Nord : <a href="images/Mode3D/current_profile_43°40__winter.png">en hiver</a> · <a href="images/Mode3D/current_profile_43°40__spring.png">au printemps</a> · <a href="images/Mode3D/current_profile_43°40__summer.png">en été</a> · <a href="images/Mode3D/current_profile_43°40__autumn.png">en automne</a></li><li><strong>Analyse : diagramme TS</strong> — Diagramme TS de l'ensemble du domaine : <a href="images/Mode3D/TS_spring.png">au printemps</a> · <a href="images/Mode3D/TS_summer.png">en été</a> · <a href="images/Mode3D/TS_autumn.png">en automne</a></li><li><strong>Analyse : IPC (Iberian Poleward Current)</strong> — Carte de vitesses à 400m de profondeur : <a href="images/Mode3D/IPC_winter.png">en hiver</a> · <a href="images/Mode3D/IPC_summer.png">en été</a></li><li><strong>Analyse : MLD (profondeur de la couche de mélange)</strong> — Carte de la MLD : <a href="images/Mode3D/MLD_winter.png">en hiver</a> · <a href="images/Mode3D/MLD_summer.png">en été</a></li><li><strong>Analyse : paramètre d'Okubo-Weiss</strong> — Carte du paramètre d'Okubo-Weiss : <a href="images/Mode3D/okubo_winter.png">en hiver</a> · <a href="images/Mode3D/okubo_summer.png">en été</a></li><li><strong>Analyse : profondeur de la pycnocline</strong> — Carte de la profondeur de la pycnocline : <a href="images/Mode3D/pycnoclineD_winter.png">en hiver</a> · <a href="images/Mode3D/pycnoclineD_summer.png">en été</a></li></ul></td></tr>
+</table>
+<p class="upd">Dernière mise à jour : 01/05/2026</p>
+</main>
+<footer>
+<hr>
+<p>© 2026 Dorian Lapeyre · <a href="https://dorianlapeyre.github.io/">dorianlapeyre.github.io</a> · Mise à jour : novembre 2026</p>
+</footer>
 </body>
 </html>
-
-
