@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coriolis, vu de l’espace</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --page:#E8EDEF; --stage:#FBFCFD; --ctl:#FFFFFF; --ink:#13222C; --ink2:#4B5D69; --rule:#C2CDD4;
+  --sea:#C9DEE8; --sea2:#E1EEF4; --limb:#57798B; --grat:#6C8B99;
+  --rel:#CC3D1B; --abs:#A56A00; --sol:#08697F; --cor:#AE1F78; --aim:#75838C;
+  --serif:"STIX Two Text","STIX Two Math","Times New Roman",Times,serif;
+  --sans:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --page:#0A1218; --stage:#0E1820; --ctl:#14212B; --ink:#E4ECF0; --ink2:#9CAFBA; --rule:#293B48;
+    --sea:#143342; --sea2:#1D4558; --limb:#6494AA; --grat:#86AEBF;
+    --rel:#FF7D5A; --abs:#F0B341; --sol:#56C7DC; --cor:#F376BF; --aim:#8D9CA6;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --page:#0A1218; --stage:#0E1820; --ctl:#14212B; --ink:#E4ECF0; --ink2:#9CAFBA; --rule:#293B48;
+  --sea:#143342; --sea2:#1D4558; --limb:#6494AA; --grat:#86AEBF;
+  --rel:#FF7D5A; --abs:#F0B341; --sol:#56C7DC; --cor:#F376BF; --aim:#8D9CA6;
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding:30px 20px 44px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,46px);line-height:1.06;letter-spacing:-.012em;margin:0 0 10px}
+.lead{max-width:70ch;margin:0 0 22px;color:var(--ink2);font-size:17px;line-height:1.5}
+.bench{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media (min-width:980px){.bench{grid-template-columns:minmax(0,1fr) 330px;align-items:start}}
+.stage{background:var(--stage);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+canvas{display:block;width:100%;height:auto;aspect-ratio:10/7.4;touch-action:pan-y;cursor:grab}
+canvas.drag{cursor:grabbing}
+@media (max-width:560px){canvas{aspect-ratio:1/1.02}}
+.transport{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--rule)}
+.transport input{flex:1;min-width:0}
+.transport output{font-variant-numeric:tabular-nums;min-width:5.6em;text-align:right;font-size:14px;color:var(--ink2)}
+button{font:inherit;color:var(--ink);background:var(--ctl);border:1px solid var(--rule);border-radius:6px;padding:7px 12px;cursor:pointer}
+button:hover{border-color:var(--ink2)}
+#play{min-width:5.6em;font-weight:500}
+input[type=range]{accent-color:var(--ink);height:22px;margin:0}
+input[type=checkbox]{accent-color:var(--ink);width:16px;height:16px;margin:0;flex:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0;border-top:1px solid var(--rule)}
+@media (min-width:720px){.stats{grid-template-columns:.9fr .9fr 1.5fr 1.2fr}}
+.stats>div{padding:10px 14px 12px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 -1px -1px 0}
+.stats dt{font-size:13px;color:var(--ink2);margin:0 0 2px}
+.stats dd{margin:0;font-family:var(--serif);font-size:21px;line-height:1.25;font-variant-numeric:tabular-nums}
+.bars{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:8px;row-gap:3px;font-family:var(--sans)!important;font-size:13px!important}
+.bars .trk{height:8px;background:color-mix(in srgb,var(--rule) 55%,transparent);border-radius:2px;overflow:hidden}
+.bars i{display:block;height:100%;width:0}
+.bars .val{font-family:var(--serif);font-size:16px;min-width:2.6em;text-align:right}
+.k-abs{color:var(--abs)} .k-rel{color:var(--rel)} .k-sol{color:var(--sol)} .k-cor{color:var(--cor)}
+#b-abs{background:var(--abs)} #b-sol{background:var(--sol)}
+.panel{display:grid;gap:18px}
+.panel h2{font-size:14px;font-weight:600;margin:0 0 8px}
+.presets{display:grid;gap:6px;margin-bottom:14px}
+.preset{text-align:left;padding:9px 12px}
+.preset[aria-pressed=true]{background:var(--ink);color:var(--stage);border-color:var(--ink)}
+.row{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--ink2)}
+.row output{color:var(--ink);font-family:var(--serif);font-size:17px}
+#lat{width:100%;display:block;margin:2px 0 12px}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+legend{padding:0;font-size:14px;color:var(--ink2);margin-bottom:5px}
+.seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.seg.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.seg legend{grid-column:1/-1}
+.seg label{position:relative;display:block;margin-right:-1px}
+.seg input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.seg span{display:block;text-align:center;padding:7px 4px;border:1px solid var(--rule);background:var(--ctl);font-size:14px;line-height:1.25}
+.seg label:first-of-type span{border-radius:6px 0 0 6px}
+.seg label:last-of-type span{border-radius:0 6px 6px 0}
+.seg small{display:block;font-size:12px;color:var(--ink2)}
+.seg input:checked+span{background:var(--ink);color:var(--stage);border-color:var(--ink);position:relative}
+.seg input:checked+span small{color:inherit;opacity:.8}
+.seg input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px;position:relative;z-index:1}
+.chk{display:flex;gap:9px;align-items:center;font-size:14.5px;padding:3px 0;cursor:pointer}
+.read p{margin:0 0 9px;font-size:14.5px;line-height:1.5;color:var(--ink)}
+.read b{font-weight:600}
+.read i,.legend i.m,.note i{font-family:var(--serif);font-style:italic;font-size:1.06em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:8px 26px;margin:22px 0 0;padding:16px 0 0;border-top:1px solid var(--rule);list-style:none}
+.legend li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;font-size:14px;line-height:1.4;color:var(--ink2)}
+.legend .sw{height:0;border-top:3px solid var(--c);margin-top:9px}
+.legend .sw.dash{border-top:2px dashed var(--c)}
+.legend .sw.dot{border-top:2px dotted var(--c)}
+.legend .sw.thin{border-top-width:2px}
+.note{max-width:78ch;margin:18px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink2)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>Coriolis, vu de l’espace</h1>
+    <p class="lead">Un boulet tiré vers le nord, un autre vers l’est. Vu d’en haut, chacun garde son élan pendant que le sol tourne dessous ; vu du canon, les deux partent à droite. Faire glisser le globe pour tourner autour.</p>
+  </header>
+
+  <section class="bench">
+    <div class="stage">
+      <canvas id="cv" role="img" tabindex="0" aria-label="Globe terrestre en rotation vu de l’espace : trajectoire d’un boulet, sa trace au sol, les plans tangents, les vecteurs vitesse et la force de Coriolis. Les flèches du clavier font tourner la vue."></canvas>
+      <div class="transport">
+        <button id="play" type="button">Pause</button>
+        <input id="time" type="range" min="0" max="1000" step="1" value="0" aria-label="Temps écoulé depuis le tir">
+        <output id="o-t" for="time">0 h 00</output>
+      </div>
+      <dl class="stats">
+        <div><dt>Latitude du boulet</dt><dd id="o-lat">0°</dd></div>
+        <div><dt>Pivotement du sol</dt><dd id="o-f">0,00 Ω</dd></div>
+        <div><dt>Vitesse vers l’est, en ΩR</dt>
+          <dd class="bars">
+            <span>boulet</span><span class="trk"><i id="b-abs"></i></span><span class="val" id="o-abs">1,00</span>
+            <span>sol dessous</span><span class="trk"><i id="b-sol"></i></span><span class="val" id="o-sol">1,00</span>
+          </dd>
+        </div>
+        <div><dt>Écart à la visée</dt><dd id="o-gap">sur la visée</dd></div>
+      </dl>
+    </div>
+
+    <aside class="panel">
+      <section>
+        <h2>Le tir</h2>
+        <div class="presets">
+          <button type="button" class="preset" data-lat="0" data-head="0" data-vit="1" data-el="28" aria-pressed="true">Vers le nord, depuis l’équateur</button>
+          <button type="button" class="preset" data-lat="45" data-head="90" data-vit="0" data-el="46" aria-pressed="false">Vers l’est, depuis 45° N</button>
+        </div>
+        <label class="row" for="lat"><span>Latitude du canon</span><output id="o-lat0" for="lat">0°</output></label>
+        <input id="lat" type="range" min="-60" max="75" step="1" value="0">
+        <fieldset class="seg" id="cap">
+          <legend>Cap du tir</legend>
+          <label><input type="radio" name="cap" value="0" checked><span>Nord</span></label>
+          <label><input type="radio" name="cap" value="90"><span>Est</span></label>
+          <label><input type="radio" name="cap" value="180"><span>Sud</span></label>
+          <label><input type="radio" name="cap" value="270"><span>Ouest</span></label>
+        </fieldset>
+      </section>
+
+      <section>
+        <h2>Qui regarde</h2>
+        <fieldset class="seg two" id="vue">
+          <legend class="sr">Repère d’observation</legend>
+          <label><input type="radio" name="vue" value="0" checked><span>L’astronaute<small>repère fixe</small></span></label>
+          <label><input type="radio" name="vue" value="1"><span>Le canonnier<small>repère tournant</small></span></label>
+        </fieldset>
+      </section>
+
+      <section>
+        <h2>Ce qui s’affiche</h2>
+        <label class="chk"><input type="checkbox" id="l-vit" checked><span>Vitesses vers l’est, boulet et sol</span></label>
+        <label class="chk"><input type="checkbox" id="l-cor" checked><span>Force de Coriolis et sa projection</span></label>
+        <label class="chk"><input type="checkbox" id="l-plan" checked><span>Plans tangents et pivotement</span></label>
+      </section>
+
+      <section class="read" aria-live="polite">
+        <h2>À regarder</h2>
+        <div id="r-mer">
+          <p><b class="k-abs">Vu de l’espace.</b> En changeant de latitude, le boulet change de distance à l’axe. Son moment cinétique se conserve : plus près de l’axe, il file plus vite vers l’est, alors que le sol, lui, ralentit (<i>ΩR</i> cos <i>φ</i>). L’écart entre les deux barres est sa dérive.</p>
+          <p><b class="k-rel">Vu du canon.</b> Le méridien visé reste en arrière et la trace au sol s’enroule vers la droite.</p>
+          <p><b class="k-cor">La force.</b> <i>−2Ω × v</i> vaut 2<i>Ω</i> sin <i>φ</i> · <i>v</i> et pointe vers l’est. Nulle sur l’équateur, où <i>v</i> est parallèle à l’axe, elle grandit avec la latitude. Une fois le boulet rabattu vers l’est, on retrouve le tir zonal.</p>
+        </div>
+        <div id="r-zon" hidden>
+          <p><b class="k-abs">Vu de l’espace.</b> Tiré vers l’est, le boulet tourne autour de l’axe plus vite que le sol. Le sol est façonné pour retenir ce qui tourne à <i>Ω</i>, pas davantage : l’excès de force centrifuge, 2<i>Ωu</i>, écarte le boulet de l’axe. Vers l’ouest c’est un déficit, et il s’en rapproche.</p>
+          <p><b class="k-rel">Vu du canon.</b> S’écarter de l’axe en restant au sol, c’est glisser vers l’équateur ; s’en rapprocher, c’est glisser vers le pôle. Dans l’hémisphère nord, les deux cas donnent une déviation à droite.</p>
+          <p><b class="k-cor">La force.</b> <i>−2Ω × v</i> sort du plan tangent. Sa projection horizontale, 2<i>Ω</i> sin <i>φ</i> · <i>u</i>, fait la déviation ; le reste allège le boulet (effet Eötvös).</p>
+        </div>
+      </section>
+    </aside>
+  </section>
+
+  <ul class="legend">
+    <li style="--c:var(--rel)"><span class="sw"></span><span>Trace au sol et vitesse <i class="m">v</i> : ce que voit le canonnier</span></li>
+    <li style="--c:var(--abs)"><span class="sw"></span><span>Trajectoire du boulet vue de l’espace, dans le repère fixe</span></li>
+    <li style="--c:var(--sol)"><span class="sw thin"></span><span>Le sol : méridien et parallèle du canon, vitesse d’entraînement, plan tangent du canon</span></li>
+    <li style="--c:var(--cor)"><span class="sw"></span><span>Coriolis, <i class="m">−2Ω × v</i> (trait fin), et sa projection sur le plan tangent (trait épais)</span></li>
+    <li style="--c:var(--ink)"><span class="sw thin"></span><span>Axe, <i class="m">Ω</i> et sa composante verticale <i class="m">Ω</i> sin <i class="m">φ</i> ; tracée le long du méridien pour un tir nord ou sud ; aiguille de Foucault (à pastille) et angle dont le plan du canon a pivoté sous elle</span></li>
+    <li style="--c:var(--ink)"><span class="sw dot"></span><span>Distance <i class="m">r</i> du boulet à l’axe de rotation</span></li>
+    <li style="--c:var(--aim)"><span class="sw dash"></span><span>Visée : le même tir sur une Terre qui ne tournerait pas</span></li>
+  </ul>
+
+  <p class="note">Le boulet est idéalisé : il glisse sans frottement à 0,8 <i>ΩR</i>, soit environ 370 m/s, pendant près de cinq heures, sur une Terre où pesanteur et force centrifuge s’équilibrent pour tout ce qui tourne avec le sol. Un vrai tir dure quelques dizaines de secondes et sa déviation va de quelques centimètres à quelques dizaines de mètres ; le mécanisme est le même. L’excès centrifuge exact d’un boulet filant vers l’est vaut 2<i>Ωu</i> + <i>u</i>²/<i>r</i> : le second terme existe aussi sans rotation (un tir vers l’est suit un grand cercle, pas un parallèle), il est donc déjà compris dans la visée.</p>
+</main>
+
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const cv=$('cv'),ctx=cv.getContext('2d');
+const PI=Math.PI,D2R=PI/180;
+const V=0.8,T_END=1.3,N=780,DIST=5.2,KV=0.34,KA=0.3,DUR=16,VIEW_LON=0.5;
+const SYM='italic 600 17px "STIX Two Text","Times New Roman",serif';
+const TXT='500 12.5px "Instrument Sans",system-ui,sans-serif';
+
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]];
+const sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]];
+const mul=(a,s)=>[a[0]*s,a[1]*s,a[2]*s];
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const len=a=>Math.hypot(a[0],a[1],a[2]);
+const unit=a=>{const l=len(a)||1;return [a[0]/l,a[1]/l,a[2]/l];};
+const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+const rotZ=(a,t)=>{const c=Math.cos(t),s=Math.sin(t);return [a[0]*c-a[1]*s,a[0]*s+a[1]*c,a[2]];};
+const ll=(lat,lon)=>[Math.cos(lat)*Math.cos(lon),Math.cos(lat)*Math.sin(lon),Math.sin(lat)];
+const east=p=>{const h=Math.hypot(p[0],p[1]);return h<1e-9?[0,1,0]:[-p[1]/h,p[0]/h,0];};
+const north=p=>cross(p,east(p));
+const seg=(A,B,n)=>{const o=[];for(let i=0;i<=n;i++)o.push(lerp(A,B,i/n));return o;};
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+
+const S={lat0:0,head:0,tau:0,playing:true,view:0,blend:0,az:48*D2R,el:28*D2R,vit:true,cor:true,plan:true};
+let T=null,F=null,COL={},W=0,H=0,dpr=1,cx=0,cy=0,Rg=1,SC=1;
+let Ch=[1,0,0],Cp=[DIST,0,0],Sx=[0,1,0],Uy=[0,0,1],pass=1,baseA=1;
+
+function build(){
+  const p0=ll(S.lat0*D2R,0),h=S.head*D2R;
+  const d0=add(mul(north(p0),Math.cos(h)),mul(east(p0),Math.sin(h)));
+  const acc=(p,w)=>add(mul(cross(p,w),-2*p[2]),mul(p,-dot(w,w)));
+  const dt=T_END/N;let p=p0,w=mul(d0,V);
+  const P=[p],Wv=[w],I=[p];
+  for(let i=1;i<=N;i++){
+    const a1=acc(p,w);
+    const p2=add(p,mul(w,dt/2)),w2=add(w,mul(a1,dt/2)),a2=acc(p2,w2);
+    const p3=add(p,mul(w2,dt/2)),w3=add(w,mul(a2,dt/2)),a3=acc(p3,w3);
+    const p4=add(p,mul(w3,dt)),w4=add(w,mul(a3,dt)),a4=acc(p4,w4);
+    p=add(p,mul(add(add(w,mul(w2,2)),add(mul(w3,2),w4)),dt/6));
+    w=add(w,mul(add(add(a1,mul(a2,2)),add(mul(a3,2),a4)),dt/6));
+    p=unit(p);w=sub(w,mul(p,dot(w,p)));w=mul(w,V/len(w));
+    P.push(p);Wv.push(w);I.push(rotZ(p,i*dt));
+  }
+  T={P,W:Wv,I,p0,d0};
+}
+
+function colors(){
+  const cs=getComputedStyle(document.documentElement);
+  ['stage','ink','ink2','sea','sea2','limb','grat','rel','abs','sol','cor','aim'].forEach(k=>{COL[k]=cs.getPropertyValue('--'+k).trim()||'#888';});
+}
+function resize(){
+  const r=cv.getBoundingClientRect();
+  dpr=Math.min(window.devicePixelRatio||1,2.5);W=r.width;H=r.height;
+  cv.width=Math.max(2,Math.round(W*dpr));cv.height=Math.max(2,Math.round(H*dpr));
+}
+
+function proj(P){const k=SC/(DIST-dot(P,Ch));return [cx+k*dot(P,Sx),cy-k*dot(P,Uy)];}
+function hid(P){
+  const D=sub(P,Cp),a=dot(D,D),b=2*dot(Cp,D),c=DIST*DIST-1,q=b*b-4*a*c;
+  if(q<=0)return false;
+  const t=(-b-Math.sqrt(q))/(2*a);
+  return t>0&&t<0.9985;
+}
+function path(pts,col,w,dash,al,xray){
+  if(xray&&pass!==1)return;
+  ctx.strokeStyle=col;ctx.lineWidth=w;ctx.setLineDash(dash||[]);ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.globalAlpha=(xray?1:baseA)*(al==null?1:al);
+  ctx.beginPath();let pen=false,pq=null,ph=false;
+  for(let i=0;i<pts.length;i++){
+    const h=xray?false:hid(pts[i]),q=proj(pts[i]);
+    if(i>0){
+      if(((ph||h)?0:1)===pass){if(!pen)ctx.moveTo(pq[0],pq[1]);ctx.lineTo(q[0],q[1]);pen=true;}
+      else pen=false;
+    }
+    pq=q;ph=h;
+  }
+  ctx.stroke();ctx.setLineDash([]);
+}
+function arrow(A,B,col,w,al){
+  const qa=proj(A),qb=proj(B),L=Math.hypot(qb[0]-qa[0],qb[1]-qa[1]);
+  if(L<4)return;
+  const hs=Math.min(5+2.3*w,L*0.62);
+  path(seg(A,lerp(A,B,1-hs*0.75/L),8),col,w,null,al);
+  if((hid(B)?0:1)!==pass)return;
+  const ux=(qb[0]-qa[0])/L,uy=(qb[1]-qa[1])/L,k=0.42*hs;
+  ctx.globalAlpha=baseA*(al==null?1:al);ctx.fillStyle=col;ctx.beginPath();
+  ctx.moveTo(qb[0],qb[1]);
+  ctx.lineTo(qb[0]-ux*hs-uy*k,qb[1]-uy*hs+ux*k);
+  ctx.lineTo(qb[0]-ux*hs+uy*k,qb[1]-uy*hs-ux*k);
+  ctx.closePath();ctx.fill();
+}
+function quad(c,e,n,h,col,fa){
+  const o=mul(c,1.004);
+  if((hid(o)?0:1)!==pass)return;
+  ctx.beginPath();
+  [[-1,-1],[1,-1],[1,1],[-1,1]].forEach((s,i)=>{const q=proj(add(o,add(mul(e,s[0]*h),mul(n,s[1]*h))));if(i)ctx.lineTo(q[0],q[1]);else ctx.moveTo(q[0],q[1]);});
+  ctx.closePath();
+  ctx.globalAlpha=baseA*fa;ctx.fillStyle=col;ctx.fill();
+  ctx.globalAlpha=baseA*0.85;ctx.strokeStyle=col;ctx.lineWidth=1;ctx.setLineDash([]);ctx.stroke();
+}
+function wedge(c,e,n,a1,r,col,fa){
+  const o=mul(c,1.006);
+  if((hid(o)?0:1)!==pass||Math.abs(a1)<0.02)return;
+  const m=Math.max(4,Math.ceil(Math.abs(a1)/0.1));
+  let q=proj(o);ctx.beginPath();ctx.moveTo(q[0],q[1]);
+  for(let k=0;k<=m;k++){const a=a1*k/m;q=proj(add(o,add(mul(n,r*Math.cos(a)),mul(e,r*Math.sin(a)))));ctx.lineTo(q[0],q[1]);}
+  ctx.closePath();ctx.globalAlpha=baseA*fa;ctx.fillStyle=col;ctx.fill();
+}
+function mark(P,r,col,ring,sq){
+  if((hid(P)?0:1)!==pass)return;
+  const q=proj(P);ctx.globalAlpha=baseA;ctx.setLineDash([]);
+  ctx.beginPath();
+  if(sq)ctx.rect(q[0]-r,q[1]-r,2*r,2*r);else ctx.arc(q[0],q[1],r,0,2*PI);
+  if(ring){ctx.fillStyle=COL.stage;ctx.globalAlpha=baseA*0.6;ctx.fill();ctx.globalAlpha=baseA;ctx.strokeStyle=col;ctx.lineWidth=1.8;ctx.stroke();}
+  else{ctx.fillStyle=col;ctx.fill();ctx.strokeStyle=COL.stage;ctx.lineWidth=1.5;ctx.stroke();}
+}
+function put(q,str,col,font,align){
+  ctx.globalAlpha=1;ctx.font=font;ctx.textAlign=align||'center';ctx.textBaseline='middle';
+  ctx.lineWidth=4;ctx.lineJoin='round';ctx.strokeStyle=COL.stage;ctx.globalAlpha=0.82;ctx.strokeText(str,q[0],q[1]);
+  ctx.globalAlpha=1;ctx.fillStyle=col;ctx.fillText(str,q[0],q[1]);
+}
+function label(P,str,col,font,dx,dy,align,xray){
+  if(pass!==1||(!xray&&hid(P)))return;
+  const q=proj(P);put([q[0]+(dx||0),q[1]+(dy||0)],str,col,font,align);
+}
+function tipLabel(A,B,str,col,font,gap){
+  if(pass!==1||hid(B))return;
+  const qa=proj(A),qb=proj(B),L=Math.hypot(qb[0]-qa[0],qb[1]-qa[1]);
+  if(L<14)return;
+  const g=gap||13;put([qb[0]+(qb[0]-qa[0])/L*g,qb[1]+(qb[1]-qa[1])/L*g],str,col,font);
+}
+
+function compute(){
+  const th=S.tau,x=clamp(S.tau/T_END,0,1)*N,i=Math.min(N-1,Math.floor(x)),f=x-i;
+  const p=unit(lerp(T.P[i],T.P[i+1],f)),w=lerp(T.W[i],T.W[i+1],f);
+  const B=rotZ(p,th),WB=rotZ(w,th),eB=east(B),nB=north(B);
+  const cphi=Math.hypot(B[0],B[1]),lat=Math.asin(clamp(B[2],-1,1));
+  const ac=mul(cross([0,0,1],WB),-2),ah=sub(ac,mul(B,dot(ac,B)));
+  const L=rotZ(T.p0,th),eL=east(L),nL=north(L);
+  const s=V*S.tau,g=add(mul(T.p0,Math.cos(s)),mul(T.d0,Math.sin(s)));
+  const tg=add(mul(T.p0,-Math.sin(s)),mul(T.d0,Math.cos(s)));
+  const gap=Math.acos(clamp(dot(p,g),-1,1)),side=dot(sub(p,g),cross(tg,g));
+  const track=[],itr=[];
+  for(let k=0;k<=i;k+=3){track.push(rotZ(T.P[k],th));itr.push(T.I[k]);}
+  track.push(B);itr.push(B);
+  const aim=[];
+  for(let q=0;q<=V*T_END+1e-9;q+=0.02)aim.push(rotZ(add(mul(T.p0,Math.cos(q)),mul(T.d0,Math.sin(q))),th));
+  F={th,B,WB,eB,nB,cphi,lat,ac,ah,L,eL,nL,G:rotZ(g,th),gap,side,track,itr,aim,uabs:dot(WB,eB)+cphi};
+}
+
+function scene(){
+  const th=F.th,sl=Math.sin(S.lat0*D2R);
+  for(let lo=30;lo<360;lo+=30){const pts=[];for(let la=-90;la<=90;la+=5)pts.push(ll(la*D2R,lo*D2R+th));path(pts,COL.grat,0.8,null,0.5);}
+  [-60,-30,0,30,60].forEach(la=>{const pts=[];for(let lo=0;lo<=360;lo+=5)pts.push(ll(la*D2R,lo*D2R));path(pts,COL.grat,la?0.8:1.3,null,la?0.5:0.85);});
+  {const pts=[];for(let la=-90;la<=90;la+=5)pts.push(ll(la*D2R,th));path(pts,COL.sol,1.6,null,0.95);}
+  if(S.lat0!==0){const pts=[];for(let lo=0;lo<=360;lo+=5)pts.push(ll(S.lat0*D2R,lo*D2R));path(pts,COL.sol,1.1,[5,4],0.8);}
+
+  path(seg([0,0,-1],[0,0,1],2),COL.ink,1,[3,4],0.4,true);
+  path(seg([0,0,-1.16],[0,0,-1],4),COL.ink,1.2,null,0.85);
+  path(seg([0,0,1],[0,0,1.14],3),COL.ink,1.2,null,0.85);
+  arrow([0,0,1.14],[0,0,1.58],COL.ink,2.4);
+  {const a0=Math.atan2(Ch[1],Ch[0])-2.2,pts=[];for(let k=0;k<=24;k++){const a=a0+k*0.19;pts.push([0.15*Math.cos(a),0.15*Math.sin(a),1.3]);}
+   path(pts.slice(0,23),COL.ink,1.3,null,0.9);arrow(pts[21],pts[24],COL.ink,1.3,0.9);}
+  label([0,0,1.58],'Ω',COL.ink,SYM,14,-4);
+
+  if(S.plan){
+    const L=F.L,eL=F.eL,nL=F.nL;
+    quad(L,eL,nL,0.25,COL.sol,0.15);
+    arrow(L,add(L,mul(nL,0.25)),COL.sol,1.5);arrow(L,add(L,mul(eL,0.25)),COL.sol,1.5);
+    tipLabel(L,add(L,mul(nL,0.25)),'N',COL.sol,SYM,10);tipLabel(L,add(L,mul(eL,0.25)),'E',COL.sol,SYM,10);
+    const al=sl*S.tau,dF=add(mul(nL,Math.cos(al)),mul(eL,Math.sin(al)));
+    wedge(L,eL,nL,al,0.2,COL.ink,0.2);
+    path(seg(sub(L,mul(dF,0.2)),add(L,mul(dF,0.2)),6),COL.ink,2,null,0.95);
+    mark(add(mul(L,1.004),mul(dF,0.2)),3.2,COL.ink);
+    const tipO=add(L,[0,0,0.42]),tipV=add(L,mul(L,0.42*sl));
+    arrow(L,tipO,COL.ink,1.2,0.7);
+    if(Math.abs(sl)>0.04){
+      arrow(L,tipV,COL.ink,2.6);
+      path(seg(tipO,tipV,6),COL.ink,0.9,[3,3],0.7);
+      tipLabel(L,tipV,'Ω sin φ',COL.ink,SYM,26);
+    }
+    if(S.head===0||S.head===180){
+      for(let la=-60;la<=75;la+=15){
+        if(la===0||Math.abs(la-S.lat0)<8)continue;
+        const A=ll(la*D2R,th),tA=add(A,mul(A,0.42*Math.sin(la*D2R)));
+        arrow(A,tA,COL.ink,1.5,0.8);
+        if(la===60&&Math.abs(sl)<=0.04)tipLabel(A,tA,'Ω sin φ',COL.ink,SYM,26);
+      }
+    }
+  }
+  if(S.vit){
+    for(let la=-60;la<=75;la+=15){const A=ll(la*D2R,th);arrow(A,add(A,mul(east(A),KV*Math.cos(la*D2R))),COL.sol,1.3,0.9);}
+  }
+  path(F.aim,COL.aim,1.3,[6,5],0.95);
+  mark(F.G,5,COL.aim,true);
+  path(F.itr,COL.abs,2,null,0.95);
+  path(F.track,COL.rel,2.8);
+  mark(F.L,4,COL.sol,false,true);
+
+  const B=F.B;
+  if(S.plan)quad(B,F.eB,F.nB,0.19,COL.ink,0.07);
+  if(S.cor){
+    const foot=[0,0,B[2]];
+    path(seg(foot,B,2),COL.ink,1.5,[1,5],0.7,true);
+    label(lerp(foot,B,0.42),'r',COL.ink,SYM,0,-11,'center',true);
+  }
+  if(S.vit){
+    arrow(B,add(B,mul(F.eB,KV*F.uabs)),COL.abs,4.4,0.9);
+    arrow(B,add(B,mul(F.eB,KV*F.cphi)),COL.sol,2);
+  }
+  if(S.cor){
+    const tv=add(B,mul(F.WB,KV)),tc=add(B,mul(F.ac,KA)),thh=add(B,mul(F.ah,KA));
+    path(seg(tc,thh,6),COL.cor,0.9,[3,3],0.8);
+    arrow(B,tc,COL.cor,1.5,0.9);
+    arrow(B,thh,COL.cor,3.4);
+    arrow(B,tv,COL.rel,2.4);
+    tipLabel(B,tv,'v',COL.rel,SYM,11);
+    tipLabel(B,tc,'−2Ω × v',COL.cor,SYM,30);
+  }
+  mark(B,6,COL.ink);
+  if(len(sub(F.G,B))>0.16)label(F.G,'visée',COL.aim,TXT,0,-15);
+  if(len(sub(F.L,B))>0.2)label(F.L,'canon',COL.sol,TXT,0,17);
+}
+
+const fr=(x,n)=>x.toFixed(n).replace('.',',').replace('-','−');
+const fmtLat=la=>{const d=Math.round(Math.abs(la)/D2R);return d===0?'0°':d+'° '+(la>0?'N':'S');};
+const last={};
+function set(id,v){if(last[id]!==v){last[id]=v;$(id).textContent=v;}}
+function hud(){
+  const hrs=S.tau/(2*PI)*23.934;let h=Math.floor(hrs),m=Math.round((hrs-h)*60);if(m===60){h++;m=0;}
+  set('o-t',h+' h '+String(m).padStart(2,'0'));
+  set('o-lat',fmtLat(F.lat));
+  set('o-f',fr(Math.sin(F.lat),2)+' Ω');
+  set('o-abs',fr(F.uabs,2));set('o-sol',fr(F.cphi,2));
+  const wa=Math.round(clamp(Math.abs(F.uabs)/1.8,0,1)*100)+'%',ws=Math.round(clamp(F.cphi/1.8,0,1)*100)+'%';
+  if(last.wa!==wa){last.wa=wa;$('b-abs').style.width=wa;}
+  if(last.ws!==ws){last.ws=ws;$('b-sol').style.width=ws;}
+  const km=Math.round(F.gap*6371/10)*10;
+  set('o-gap',km<40?'sur la visée':km.toLocaleString('fr-FR')+' km '+(Math.abs(F.side)<0.004?'en arrière':F.side>0?'à droite':'à gauche'));
+  const tv=String(Math.round(S.tau/T_END*1000));
+  if(document.activeElement!==$('time')||S.playing){if($('time').value!==tv)$('time').value=tv;}
+}
+
+function draw(){
+  if(!W||!H)return;
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+  cx=W/2;cy=H*0.6;Rg=Math.min(W/2.75,H*0.345);SC=Rg*Math.sqrt(DIST*DIST-1);
+  const az=S.az+S.blend*(S.tau-VIEW_LON),el=S.el;
+  Ch=[Math.cos(el)*Math.cos(az),Math.cos(el)*Math.sin(az),Math.sin(el)];Cp=mul(Ch,DIST);
+  Sx=unit(cross([0,0,1],Ch));Uy=cross(Ch,Sx);
+  compute();
+  const g=ctx.createRadialGradient(cx-Rg*0.32,cy-Rg*0.38,Rg*0.05,cx,cy,Rg);
+  g.addColorStop(0,COL.sea2);g.addColorStop(1,COL.sea);
+  ctx.globalAlpha=1;ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,Rg,0,2*PI);ctx.fill();
+  pass=0;baseA=0.2;scene();
+  ctx.globalAlpha=1;ctx.setLineDash([]);ctx.strokeStyle=COL.limb;ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(cx,cy,Rg,0,2*PI);ctx.stroke();
+  pass=1;baseA=1;scene();
+  ctx.globalAlpha=1;
+  hud();
+}
+
+let prev=0,tick=0;
+function frame(now){
+  const dt=Math.min(0.05,(now-prev)/1000||0);prev=now;
+  if(S.playing){S.tau+=dt*T_END/DUR;if(S.tau>=T_END){S.tau=T_END;S.playing=false;syncPlay();}}
+  S.blend+=((S.view?1:0)-S.blend)*Math.min(1,dt*5);
+  if(++tick%90===0)colors();
+  draw();
+  requestAnimationFrame(frame);
+}
+
+function syncPlay(){$('play').textContent=S.playing?'Pause':(S.tau>=T_END?'Rejouer':'Lecture');}
+function syncShot(){
+  $('lat').value=S.lat0;$('o-lat0').textContent=fmtLat(S.lat0*D2R);
+  document.querySelectorAll('input[name=cap]').forEach(r=>{r.checked=(+r.value===S.head);});
+  document.querySelectorAll('.preset').forEach(b=>{b.setAttribute('aria-pressed',String(+b.dataset.lat===S.lat0&&+b.dataset.head===S.head));});
+  const zon=S.head===90||S.head===270;$('r-zon').hidden=!zon;$('r-mer').hidden=zon;
+  $('l-vit').checked=S.vit;$('l-cor').checked=S.cor;$('l-plan').checked=S.plan;
+}
+function shoot(restart){build();if(restart){S.tau=0;S.playing=!reduce;}syncShot();syncPlay();}
+
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{
+  S.lat0=+b.dataset.lat;S.head=+b.dataset.head;S.vit=b.dataset.vit==='1';S.cor=true;S.plan=true;S.az=48*D2R;S.el=+b.dataset.el*D2R;shoot(true);
+}));
+$('lat').addEventListener('input',e=>{S.lat0=+e.target.value;shoot(true);});
+document.querySelectorAll('input[name=cap]').forEach(r=>r.addEventListener('change',()=>{if(r.checked){S.head=+r.value;shoot(true);}}));
+document.querySelectorAll('input[name=vue]').forEach(r=>r.addEventListener('change',()=>{if(r.checked)S.view=+r.value;}));
+$('l-vit').addEventListener('change',e=>{S.vit=e.target.checked;});
+$('l-cor').addEventListener('change',e=>{S.cor=e.target.checked;});
+$('l-plan').addEventListener('change',e=>{S.plan=e.target.checked;});
+$('play').addEventListener('click',()=>{
+  if(S.tau>=T_END){S.tau=0;S.playing=true;}else S.playing=!S.playing;
+  syncPlay();
+});
+$('time').addEventListener('input',e=>{S.tau=+e.target.value/1000*T_END;S.playing=false;syncPlay();});
+
+let drag=null;
+cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,touch:e.pointerType==='touch'};cv.classList.add('drag');try{cv.setPointerCapture(e.pointerId);}catch(_){}});
+cv.addEventListener('pointermove',e=>{
+  if(!drag)return;
+  S.az-=(e.clientX-drag.x)*0.008;
+  if(!drag.touch)S.el=clamp(S.el+(e.clientY-drag.y)*0.008,-1.25,1.35);
+  drag.x=e.clientX;drag.y=e.clientY;
+});
+const endDrag=()=>{drag=null;cv.classList.remove('drag');};
+cv.addEventListener('keydown',e=>{
+  const k=e.key;
+  if(k==='ArrowLeft')S.az+=0.09;else if(k==='ArrowRight')S.az-=0.09;
+  else if(k==='ArrowUp')S.el=clamp(S.el+0.09,-1.25,1.35);else if(k==='ArrowDown')S.el=clamp(S.el-0.09,-1.25,1.35);
+  else return;
+  e.preventDefault();
+});
+cv.addEventListener('pointerup',endDrag);cv.addEventListener('pointercancel',endDrag);
+
+if(window.ResizeObserver)new ResizeObserver(resize).observe(cv);else window.addEventListener('resize',resize);
+if(window.matchMedia){const mq=window.matchMedia('(prefers-color-scheme: dark)');if(mq.addEventListener)mq.addEventListener('change',colors);}
+if(window.MutationObserver)new MutationObserver(colors).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','class','style']});
+
+if(document.fonts&&document.fonts.load){document.fonts.load(SYM).catch(()=>{});document.fonts.load(TXT).catch(()=>{});}
+colors();resize();build();
+if(reduce){S.playing=false;S.tau=T_END*0.72;}
+syncShot();syncPlay();
+window.__coriolis={S,get T(){return T;},get F(){return F;}};
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
